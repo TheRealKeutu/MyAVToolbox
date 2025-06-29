@@ -1,0 +1,211 @@
+/* styles.css */
+
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: Arial, sans-serif;
+}
+
+.app {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  width: 260px;
+  padding: 1rem;
+  background-color: #f5f5f5;
+  height: 100vh;
+  box-sizing: border-box;
+  overflow-y: auto;
+  border-right: 1px solid #ccc;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.heading {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.buttonGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.button {
+  padding: 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: #ffffff;
+  text-align: left;
+  width: 100%;
+  transition: background 0.2s;
+}
+
+.button:hover {
+  background-color: #e0e0e0;
+}
+
+.content {
+  flex: 1;
+  padding: 1rem;
+  background-color: #ffffff;
+  height: 100vh;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+input, select {
+  padding: 0.4rem;
+  font-size: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 0.2rem;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+}
+
+.input {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.table th,
+.table td {
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+  text-align: left;
+}
+
+.table th {
+  background-color: #f3f3f3;
+}
+
+.synoptic-header {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.synoptic-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  align-items: center;
+}
+
+.synoptic-button {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  color: white;
+  background-color: #0077cc;
+  border: none;
+  cursor: pointer;
+  box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  transition: background-color 0.2s;
+}
+
+.synoptic-button:hover {
+  background-color: #005fa3;
+}
+
+.synoptic-canvas {
+  position: relative;
+  width: 100%;
+  height: 600px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #f9fafb;
+  background-image:
+    repeating-linear-gradient(to right, #e5e7eb 0 1px, transparent 1px 20px),
+    repeating-linear-gradient(to bottom, #e5e7eb 0 1px, transparent 1px 20px);
+}
+
+.synoptic-shape {
+  position: absolute;
+  min-width: 100px;
+  max-width: 200px;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 1px 1px 4px rgba(0,0,0,0.1);
+  user-select: none;
+}
+
+.synoptic-shape.selected {
+  border: 2px solid #0077cc;
+}
+
+.synoptic-image {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  margin: auto;
+}
+
+.synoptic-label-input,
+.synoptic-label-textarea {
+  width: 100%;
+  padding: 0.25rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  border: 1px solid #ccc;
+}
+
+.synoptic-connection-button {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  color: white;
+  background-color: #28a745;
+  border: none;
+  cursor: pointer;
+}
+
+.synoptic-connection-button:hover {
+  background-color: #218838;
+}
+
+.synoptic-connection-end {
+  background-color: #dc3545;
+}
+
+.synoptic-connection-end:hover {
+  background-color: #c82333;
+}

@@ -1,0 +1,175 @@
+import React, { useState } from 'react';
+import data from '../data/l-acoustics-max-loads.json';
+
+const amps = ["LA4", "LA4X", "LA8", "LA12X", "LA2Xi", "LA7"];
+const allSeries = ["A", "X", "SUB", "K", "SY", "Legacy", "All"];
+
+export default function LAcousticsTable() {
+  const [filter, setFilter] = useState("All");
+  const [selection, setSelection] = useState([]);
+
+  const filteredData = Object.entries(data).filter(([_, value]) => {
+    const seriesList = Array.isArray(value.series)
+      ? value.series
+      : value.serie
+        ? [value.serie]
+        : [];
+
+    return filter === "All" || seriesList.includes(filter);
+  });
+
+  const handleAdd = (model) => {
+    setSelection((prev) => {
+      const existing = prev.find((item) => item.model === model);
+      if (existing) {
+        return prev.map((item) =>
+          item.model === model ? { ...item, qty: item.qty + 1 } : item
+        );
+      }
+      return [...prev, { model, qty: 1 }];
+    });
+  };
+
+  const handleQtyChange = (model, qty) => {
+    setSelection((prev) =>
+      prev.map((item) =>
+        item.model === model ? { ...item, qty: parseInt(qty, 10) || 0 } : item
+      )
+    );
+  };
+
+  const handleRemove = (model) => {
+    setSelection((prev) => prev.filter((item) => item.model !== model));
+  };
+
+  const handleReset = () => {
+    setSelection([]);
+  };
+
+  const totalPerAmp = amps.reduce((acc, amp) => {
+    acc[amp] = 0;
+    selection.forEach(({ model, qty }) => {
+      const maxPerAmp = data[model]?.[amp];
+      if (maxPerAmp) {
+        acc[amp] += Math.ceil(qty / maxPerAmp);
+      }
+    });
+    return acc;
+  }, {});
+
+  return (
+    <div className="content">
+      <h1>🔌 Tableau L-Acoustics</h1>
+      <p>Nombre d'enceintes par patte d'ampli et calcul du nombre d'amplis nécessaires.</p>
+
+      <div className="buttonGroup" style={{ flexDirection: 'row', flexWrap: 'wrap', gap: '0.5rem', marginTop: '1rem' }}>
+        {allSeries.map((s) => (
+          <button
+            key={s}
+            onClick={() => setFilter(s)}
+            className="button"
+            style={{
+              backgroundColor: filter === s ? '#facc15' : '#eee',
+              fontWeight: filter === s ? 'bold' : 'normal',
+            }}
+          >
+            {s}
+          </button>
+        ))}
+      </div>
+
+      <div style={{ overflowX: 'auto', marginTop: '1rem' }}>
+        <table className="table" style={{ minWidth: '700px' }}>
+          <thead>
+            <tr>
+              <th>Modèle</th>
+              {amps.map((amp) => (
+                <th key={amp}>{amp}</th>
+              ))}
+              <th>Ajouter</th>
+            </tr>
+          </thead>
+          <tbody>
+            {filteredData.map(([speaker, ampData]) => (
+              <tr key={speaker}>
+                <td><strong>{speaker}</strong></td>
+                {amps.map((amp) => (
+                  <td key={amp} style={{ textAlign: 'center' }}>
+                    {ampData[amp] !== undefined ? ampData[amp] : "--"}
+                  </td>
+                ))}
+                <td style={{ textAlign: 'center' }}>
+                  <button className="button" onClick={() => handleAdd(speaker)}>➕</button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      {selection.length > 0 && (
+        <>
+          <h2 style={{ marginTop: '2rem' }}>📦 Configuration sélectionnée</h2>
+
+          <table className="table" style={{ marginTop: '1rem' }}>
+            <thead>
+              <tr>
+                <th>Modèle</th>
+                <th>Quantité</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {selection.map(({ model, qty }) => (
+                <tr key={model}>
+                  <td><strong>{model}</strong></td>
+                  <td>
+                    <input
+                      type="number"
+                      min="0"
+                      value={qty}
+                      onChange={(e) => handleQtyChange(model, e.target.value)}
+                      className="input"
+                      style={{ width: '60px' }}
+                    />
+                  </td>
+                  <td style={{ textAlign: 'center' }}>
+                    <button className="button" style={{ backgroundColor: '#f87171', color: 'white' }} onClick={() => handleRemove(model)}>❌</button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+
+          <button
+            className="button"
+            onClick={handleReset}
+            style={{ marginTop: '1rem', backgroundColor: '#eee' }}
+          >
+            🔄 Réinitialiser
+          </button>
+
+          <h3 style={{ marginTop: '2rem' }}>📈 Nombre d'amplis nécessaires</h3>
+          <table className="table" style={{ marginTop: '0.5rem' }}>
+            <thead>
+              <tr>
+                {amps.map((amp) => (
+                  <th key={amp}>{amp}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                {amps.map((amp) => (
+                  <td key={amp} style={{ textAlign: 'center', fontWeight: 'bold' }}>
+                    {totalPerAmp[amp]}
+                  </td>
+                ))}
+              </tr>
+            </tbody>
+          </table>
+        </>
+      )}
+    </div>
+  );
+}

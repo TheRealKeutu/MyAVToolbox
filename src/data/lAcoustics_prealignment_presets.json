@@ -1,0 +1,342 @@
+{
+  "families": {
+
+    "L2": {
+      "combinations": [
+        {"config": ["L2/L2D", "KS28_L2"], "delays": {"L2/L2D": 0, "KS28": 5}, "invertPolarity": ["KS28"]},
+        {"config": ["L2/L2D", "KS28_L2_C"], "delays": {"L2/L2D": 0, "KS28": 6 }, "invertPolarity": []},
+        {"config": ["L2/L2D", "KS28_L2_Cx"], "delays": {"L2/L2D": 0, "KS28": 3}, "invertPolarity": ["KS28"]}
+      ]
+    },
+
+    "K1": {
+      "combinations": [
+        {"config": ["K1", "K1SB_X"], "delays": { "K1": 0, "K1SB": 0 }, "invertPolarity": []},
+        {"config": ["K1", "K1SB_60"], "delays": { "K1": 6, "K1SB": 0 }, "invertPolarity": []},
+        {"config": ["K1", "SB28_60"], "delays": { "K1": 0.5, "SB28": 0 }, "invertPolarity": ["SB28"]},
+        {"config": ["K1", "SB28_60_C"], "delays": { "K1": 6, "SB28": 0 }, "invertPolarity": ["SB28"]},
+        {"config": ["K1", "SB28_60_CX"], "delays": { "K1": 4, "SB28": 0 }, "invertPolarity": ["SB28"]},
+        {"config": ["K1", "KS28_60"], "delays": { "K1": 0.5, "KS28": 0 }, "invertPolarity": ["KS28"]},
+        {"config": ["K1", "KS28_60C"], "delays": { "K1": 6, "KS28": 0 }, "invertPolarity": ["KS28"]},
+        {"config": ["K1", "KS28_60CX"], "delays": { "K1": 4, "KS28": 0 }, "invertPolarity": ["KS28"]},
+        {"config": ["K1", "K1SB_X", "SB28_60"], "delays": { "K1": 0, "K1SB": 0, "SB28": 0 }, "invertPolarity": ["SB28"]},
+        {"config": ["K1", "K1SB_X", "SB28_60_C"], "delays": { "K1": 5.5, "K1SB": 5.5, "SB28": 0 }, "invertPolarity": ["SB28"]},
+        {"config": ["K1", "K1SB_X", "SB28_60_CX"], "delays": { "K1": 3.5, "K1SB": 3.5, "SB28": 0 }, "invertPolarity": ["SB28"]},
+        {"config": ["K1", "K1SB_60", "KS28_60"], "delays": { "K1": 6, "K1SB": 0, "KS28": 6 }, "invertPolarity": ["KS28"]},
+        {"config": ["K1", "K1SB_60", "KS28_60_C"], "delays": { "K1": 6, "K1SB": 0, "KS28": 0.5 }, "invertPolarity": ["KS28"]},
+        {"config": ["K1", "K1SB_60", "KS28_60_Cx"], "delays": { "K1": 6, "K1SB": 0, "KS28": 4 }, "invertPolarity": ["KS28"]}
+      ]
+    },
+
+    "K2": {
+    "combinations": [
+      {"config": ["K2", "K1SB_X"], "delays": { "K2": 0, "K1SB": 0 }, "invertPolarity": []},
+      {"config": ["K2", "K1SB_60"], "delays": { "K2": 6, "K1SB": 0 }, "invertPolarity": []},
+      {"config": ["K2", "SB28_60"], "delays": { "K2": 0.5, "SB28": 0 }, "invertPolarity": ["SB28"]},
+      {"config": ["K2", "SB28_60_C"], "delays": { "K2": 6, "SB28": 0 }, "invertPolarity": ["SB28"]},
+      {"config": ["K2", "SB28_60_Cx"], "delays": { "K2": 4, "SB28": 0 }, "invertPolarity": ["SB28"]},
+      {"config": ["K2", "KS28_60"], "delays": { "K2": 0.5, "KS28": 0 }, "invertPolarity": ["KS28"]},
+      {"config": ["K2", "KS28_60_C"], "delays": { "K2": 6, "KS28": 0 }, "invertPolarity": ["KS28"]},
+      {"config": ["K2", "KS28_60_Cx"], "delays": { "K2": 4, "KS28": 0 }, "invertPolarity": ["KS28"]},
+      {"config": ["K2", "K1SB_X", "SB28_60"], "delays": { "K2": 0, "K1SB": 0, "SB28": 0 }, "invertPolarity": ["SB28"]},
+      {"config": ["K2", "K1SB_X", "SB28_60_C"], "delays": { "K2": 5.5, "K1SB": 5.5, "SB28": 0 }, "invertPolarity": ["SB28"]},
+      {"config": ["K2", "K1SB_X", "SB28_60_Cx"], "delays": { "K2": 3.5, "K1SB": 3.5, "SB28": 0 }, "invertPolarity": ["SB28"]},
+      {"config": ["K2", "K1SB_60", "SB28_60"], "delays": { "K2": 6, "K1SB": 0, "SB28": 6 }, "invertPolarity": ["SB28"]},
+      {"config": ["K2", "K1SB_60", "SB28_60_C"], "delays": { "K2": 6, "K1SB": 0, "SB28": 0.5 }, "invertPolarity": ["SB28"]},
+      {"config": ["K2", "K1SB_60", "SB28_60_Cx"], "delays": { "K2": 6, "K1SB": 0, "SB28": 4 }, "invertPolarity": ["SB28"]},
+      {"config": ["K2", "K1SB_X", "KS28_60"], "delays": { "K2": 0, "K1SB": 0, "KS28": 0 }, "invertPolarity": ["KS28"]},
+      {"config": ["K2", "K1SB_X", "KS28_60_C"], "delays": { "K2": 5.5, "K1SB": 5.5, "KS28": 0 }, "invertPolarity": ["KS28"]},
+      {"config": ["K2", "K1SB_X", "KS28_60_Cx"], "delays": { "K2": 3.5, "K1SB": 3.5, "KS28": 0 }, "invertPolarity": ["KS28"]},
+      {"config": ["K2", "K1SB_60", "KS28_60"], "delays": { "K2": 6, "K1SB": 0, "KS28": 6 }, "invertPolarity": ["KS28"]},
+      {"config": ["K2", "K1SB_60", "KS28_60_C"], "delays": { "K2": 6, "K1SB": 0, "KS28": 0.5 }, "invertPolarity": ["KS28"]},
+      {"config": ["K2", "K1SB_60", "KS28_60_Cx"], "delays": { "K2": 6, "K1SB": 0, "KS28": 4 }, "invertPolarity": ["KS28"]}
+    ]
+  },
+
+  "K3": {
+    "combinations": [
+      {"config": ["K3", "KS28_60"], "delays": {"K3": 0.5,"KS28": 0}, "invertPolarity": ["KS28"]},
+      {"config": ["K3", "KS28_60_C"], "delays": {"K3": 6,"KS28": 0}, "invertPolarity": ["KS28"]},
+      {"config": ["K3", "KS28_60_Cx"], "delays": {"K3": 4,"KS28": 0}, "invertPolarity": ["KS28"]},
+      {"config": ["K3", "KS21_60"], "delays": {"K3": 0,"KS21": 0}, "invertPolarity": ["KS21"]},
+      {"config": ["K3", "KS21_60_C"], "delays": {"K3": 5.5,"KS21": 0}, "invertPolarity": ["KS21"]},
+      {"config": ["K3", "KS21_60_Cx"], "delays": {"K3": 5, "KS21": 0}, "invertPolarity": ["KS21"]}
+    ]  
+  },
+
+  "Kudo": {
+    "combinations": [
+      {"config": ["KUDOxx_60", "SB118_60"], "delays": { "KUDOxx": 0, "SB118": 3.5 }, "invertPolarity": []},
+      {"config": ["KUDOxx_60", "SB118_60_C"], "delays": { "KUDOxx": 2, "SB118": 0 }, "invertPolarity": []},
+      {"config": ["KUDOxx_60", "SB18_60"], "delays": { "KUDOxx": 0, "SB18": 3.9 }, "invertPolarity": []},
+      {"config": ["KUDOxx_60", "SB18_60_C"], "delays": { "KUDOxx": 1.6, "SB18": 0 }, "invertPolarity": []},
+      {"config": ["KUDOxx_60", "SB218_60"], "delays": { "KUDOxx": 0, "SB218": 5 }, "invertPolarity": []},
+      {"config": ["KUDOxx_60", "SB28_60"], "delays": { "KUDOxx": 0, "SB28": 5 }, "invertPolarity": ["SB28"]},
+      {"config": ["KUDOxx_60", "SB28_60_C"], "delays": { "KUDOxx": 0.5, "SB28": 0 }, "invertPolarity": ["SB28"]},
+      {"config": ["KUDOxx_60", "KS28_60"], "delays": { "KUDOxx": 0, "KS28": 5 }, "invertPolarity": ["KS28"]},
+      {"config": ["KUDOxx_60", "KS28_60_C"], "delays": { "KUDOxx": 0.5, "KS28": 0 }, "invertPolarity": ["KS28"]}
+    ]
+  },
+
+  "Kara": {
+      "combinations": [
+        { "config": ["KARA", "SB18_100"], "delays": { "KARA": 0, "SB18": 0 }, "invertPolarity": [] },
+        { "config": ["KARA_FI", "SB18_100"], "delays": { "KARA": 3, "SB18": 0 }, "invertPolarity": [] },
+        { "config": ["KARA", "SB18_100_C"], "delays": { "KARA": 5.5, "SB18": 0 }, "invertPolarity": ["SB18"] },
+        { "config": ["KARA", "SB18_100_Cx"], "delays": { "KARA": 4, "SB18": 0 }, "invertPolarity": ["SB18"] },
+        { "config": ["KARA_FI", "SB18_100_C"], "delays": { "KARA": 8.5, "SB18": 0 }, "invertPolarity": ["SB18"] },
+        { "config": ["KARA_FI", "SB18_100_Cx"], "delays": { "KARA": 7, "SB18": 0 }, "invertPolarity": ["SB18"] },
+        { "config": ["KARA", "SB18_60"], "delays": { "KARA": 2.5, "SB18": 0 }, "invertPolarity": [] },
+        { "config": ["KARA", "SB18_60_C"], "delays": { "KARA": 8, "SB18": 0 }, "invertPolarity": ["SB18"] },
+        { "config": ["KARA", "SB18_60_Cx"], "delays": { "KARA": 6.5, "SB18": 0 }, "invertPolarity": ["SB18"] },
+        { "config": ["KARA", "KS21_60"], "delays": { "KARA": 0.5, "KS21": 0 }, "invertPolarity": [] },
+        { "config": ["KARA", "KS21_60_C"], "delays": { "KARA": 6, "KS21": 0 }, "invertPolarity": ["KS21"] },
+        { "config": ["KARA", "KS21_60_Cx"], "delays": { "KARA": 5.5, "KS21": 0 }, "invertPolarity": ["KS21"] },
+        { "config": ["KARA", "KS21_100"], "delays": { "KARA": 0, "KS21": 0.5 }, "invertPolarity": [] },
+        { "config": ["KARA", "KS21_100_C"], "delays": { "KARA": 5, "KS21": 0 }, "invertPolarity": ["KS21"] },
+        { "config": ["KARA", "KS21_100_Cx"], "delays": { "KARA": 4, "KS21": 0 }, "invertPolarity": ["KS21"] },
+        { "config": ["KARA_FI", "KS21_100"], "delays": { "KARA": 0, "KS21": 2.5 }, "invertPolarity": [] },
+        { "config": ["KARA_FI", "KS21_100_C"], "delays": { "KARA": 3, "KS21": 0 }, "invertPolarity": ["KS21"] },
+        { "config": ["KARA_FI", "KS21_100_Cx"], "delays": { "KARA": 2, "KS21": 0 }, "invertPolarity": ["KS21"] },
+        { "config": ["KARA", "SB28_100"], "delays": { "KARA": 0, "SB28": 1 }, "invertPolarity": [] },
+        { "config": ["KARA", "SB28_100_C"], "delays": { "KARA": 4.5, "SB28": 0 }, "invertPolarity": ["SB28"] },
+        { "config": ["KARA", "SB28_100_Cx"], "delays": { "KARA": 7.5, "SB28": 0 }, "invertPolarity": ["SB28"] },
+        { "config": ["KARA", "SB28_60"], "delays": { "KARA": 0, "SB28": 5 }, "invertPolarity": [] },
+        { "config": ["KARA", "SB28_60_C"], "delays": { "KARA": 0.5, "SB28": 0 }, "invertPolarity": ["SB28"] },
+        { "config": ["KARA", "SB28_60_Cx"], "delays": { "KARA": 4.5, "SB28": 0 }, "invertPolarity": ["SB28"] },
+        { "config": ["KARA", "KS28_100"], "delays": { "KARA": 0, "KS28": 1 }, "invertPolarity": [] },
+        { "config": ["KARA", "KS28_100_C"], "delays": { "KARA": 4.5, "KS28": 0 }, "invertPolarity": ["KS28"] },
+        { "config": ["KARA", "KS28_100_Cx"], "delays": { "KARA": 7.5, "KS28": 0 }, "invertPolarity": ["KS28"] },
+        { "config": ["KARA", "KS28_60"], "delays": { "KARA": 0, "KS28": 5 }, "invertPolarity": [] },
+        { "config": ["KARA", "KS28_60_C"], "delays": { "KARA": 0.5, "KS28": 0 }, "invertPolarity": ["KS28"] },
+        { "config": ["KARA", "KS28_60_Cx"], "delays": { "KARA": 4.5, "KS28": 0 }, "invertPolarity": ["KS28"] },
+        { "config": ["KARA", "SB18_100", "SB28_60"], "delays": { "KARA": 0, "SB18": 0, "SB28": 5.5 }, "invertPolarity": [] },
+        { "config": ["KARA", "SB18_100", "SB28_60_C"], "delays": { "KARA": 0, "SB18": 0, "SB28": 0 }, "invertPolarity": ["SB28"] },
+        { "config": ["KARA", "SB18_100", "SB28_60_Cx"], "delays": { "KARA": 5.5, "SB18": 5.5, "SB28": 0 }, "invertPolarity": ["SB28"] },
+        { "config": ["KARA", "SB18_100", "KS28_60"], "delays": { "KARA": 0, "SB18": 0, "KS28": 5.5 }, "invertPolarity": [] },
+        { "config": ["KARA", "SB18_100", "KS28_60_C"], "delays": { "KARA": 0, "SB18": 0, "KS28": 0 }, "invertPolarity": ["KS28"] },
+        { "config": ["KARA", "SB18_100", "KS28_60_Cx"], "delays": { "KARA": 5.5, "SB18": 5.5, "KS28": 0 }, "invertPolarity": ["KS28"] },
+        { "config": ["KARA", "KS21_100", "SB28_60"], "delays": { "KARA": 0, "KS21": 0.5, "SB28": 5.5 }, "invertPolarity": [] },
+        { "config": ["KARA", "KS21_100", "SB28_60_C"], "delays": { "KARA": 0, "KS21": 0.5, "SB28": 0 }, "invertPolarity": ["SB28"] },
+        { "config": ["KARA", "KS21_100", "SB28_60_Cx"], "delays": { "KARA": 5.5, "KS21": 6, "SB28": 0 }, "invertPolarity": ["SB28"] },
+        { "config": ["KARA", "KS21_100", "KS28_60"], "delays": { "KARA": 0, "KS21": 0, "KS28": 5.5 }, "invertPolarity": [] },
+        { "config": ["KARA", "KS21_100", "KS28_60_C"], "delays": { "KARA": 0, "KS21": 0.5, "KS28": 0 }, "invertPolarity": ["KS28"] },
+        { "config": ["KARA", "KS21_100", "KS28_60_Cx"], "delays": { "KARA": 5.5, "KS21": 6, "KS28": 0 }, "invertPolarity": ["KS28"] }
+
+      ]
+    },
+
+  "Kara II": {
+    "combinations": [
+      { "config": ["KARA II", "SB18_100"], "delays": { "KARA II": 0, "SB18": 0 }, "invertPolarity": [] },
+      { "config": ["KARA_II_FI", "SB18_100"], "delays": { "KARA II": 3, "SB18": 0 }, "invertPolarity": [] },
+      { "config": ["KARA II", "SB18_100_C"], "delays": { "KARA II": 5.5, "SB18": 0 }, "invertPolarity": [] },
+      { "config": ["KARA II", "SB18_100_Cx"], "delays": { "KARA II": 4, "SB18": 0 }, "invertPolarity": [] },
+      { "config": ["KARA_II_FI", "SB18_100_C"], "delays": { "KARA II": 8.5, "SB18": 0 }, "invertPolarity": [] },
+      { "config": ["KARA_II_FI", "SB18_100_Cx"], "delays": { "KARA II": 7, "SB18": 0 }, "invertPolarity": [] },
+      { "config": ["KARA II", "SB18_60"], "delays": { "KARA II": 2.5, "SB18": 0 }, "invertPolarity": [] },
+      { "config": ["KARA II", "SB18_60_C"], "delays": { "KARA II": 8, "SB18": 0 }, "invertPolarity": [] },
+      { "config": ["KARA II", "SB18_60_Cx"], "delays": { "KARA II": 6.5, "SB18": 0 }, "invertPolarity": [] },
+      { "config": ["KARA II", "KS21_60"], "delays": { "KARA II": 0.5, "KS21": 0 }, "invertPolarity": [] },
+      { "config": ["KARA II", "KS21_60_C"], "delays": { "KARA II": 6, "KS21": 0 }, "invertPolarity": [] },
+      { "config": ["KARA II", "KS21_60_Cx"], "delays": { "KARA II": 5.5, "KS21": 0 }, "invertPolarity": [] },
+      { "config": ["KARA II", "KS21_100"], "delays": { "KARA II": 0, "KS21": 0.5 }, "invertPolarity": [] },
+      { "config": ["KARA II", "KS21_100_C"], "delays": { "KARA II": 5, "KS21": 0 }, "invertPolarity": [] },
+      { "config": ["KARA II", "KS21_100_Cx"], "delays": { "KARA II": 4, "KS21": 0 }, "invertPolarity": [] },
+      { "config": ["KARA_II_FI", "KS21_100"], "delays": { "KARA II": 0, "KS21": 2.5 }, "invertPolarity": [] },
+      { "config": ["KARA_II_FI", "KS21_100_C"], "delays": { "KARA II": 3, "KS21": 0 }, "invertPolarity": [] },
+      { "config": ["KARA_II_FI", "KS21_100_Cx"], "delays": { "KARA II": 2, "KS21": 0 }, "invertPolarity": [] },
+      { "config": ["KARA II", "SB28_100"], "delays": { "KARA II": 0, "SB28": 1 }, "invertPolarity": ["SB28"] },
+      { "config": ["KARA II", "SB28_100_C"], "delays": { "KARA II": 4.5, "SB28": 0 }, "invertPolarity": ["SB28"] },
+      { "config": ["KARA II", "SB28_100_Cx"], "delays": { "KARA II": 7.5, "SB28": 0 }, "invertPolarity": ["SB28"] },
+      { "config": ["KARA II", "SB28_60"], "delays": { "KARA II": 0, "SB28": 5 }, "invertPolarity": ["SB28"] },
+      { "config": ["KARA II", "SB28_60_C"], "delays": { "KARA II": 0.5, "SB28": 0 }, "invertPolarity": ["SB28"] },
+      { "config": ["KARA II", "SB28_60_Cx"], "delays": { "KARA II": 4.5, "SB28": 0 }, "invertPolarity": ["SB28"] },
+      { "config": ["KARA II", "KS28_100"], "delays": { "KARA II": 0, "KS28": 1 }, "invertPolarity": ["KS28"] },
+      { "config": ["KARA II", "KS28_100_C"], "delays": { "KARA II": 4.5, "KS28": 0 }, "invertPolarity": ["KS28"] },
+      { "config": ["KARA II", "KS28_100_Cx"], "delays": { "KARA II": 7.5, "KS28": 0 }, "invertPolarity": ["KS28"] },
+      { "config": ["KARA II", "KS28_60"], "delays": { "KARA II": 0, "KS28": 5 }, "invertPolarity": ["KS28"] },
+      { "config": ["KARA II", "KS28_60_C"], "delays": { "KARA II": 0.5, "KS28": 0 }, "invertPolarity": ["KS28"] },
+      { "config": ["KARA II", "KS28_60_Cx"], "delays": { "KARA II": 4.5, "KS28": 0 }, "invertPolarity": ["KS28"] },
+      { "config": ["KARA II", "SB18_100", "SB28_60"], "delays": { "KARA II": 0, "SB18": 0, "SB28": 5.5 }, "invertPolarity": ["SB28"] },
+      { "config": ["KARA II", "SB18_100", "SB28_60_C"], "delays": { "KARA II": 0, "SB18": 0, "SB28": 0 }, "invertPolarity": ["SB28"] },
+      { "config": ["KARA II", "SB18_100", "SB28_60_Cx"], "delays": { "KARA II": 5.5, "SB18": 5.5, "SB28": 0 }, "invertPolarity": ["SB28"] },
+      { "config": ["KARA II", "SB18_100", "KS28_60"], "delays": { "KARA II": 0, "SB18": 0, "KS28": 5.5 }, "invertPolarity": ["KS28"] },
+      { "config": ["KARA II", "SB18_100", "KS28_60_C"], "delays": { "KARA II": 0, "SB18": 0, "KS28": 0 }, "invertPolarity": ["KS28"] },
+      { "config": ["KARA II", "SB18_100", "KS28_60_Cx"], "delays": { "KARA II": 5.5, "SB18": 5.5, "KS28": 0 }, "invertPolarity": ["KS28"] },
+      { "config": ["KARA II", "KS21_100", "SB28_60"], "delays": { "KARA II": 0, "KS21": 0.5, "SB28": 5.5 }, "invertPolarity": ["SB28"] },
+      { "config": ["KARA II", "KS21_100", "SB28_60_C"], "delays": { "KARA II": 0, "KS21": 0.5, "SB28": 0 }, "invertPolarity": ["SB28"] },
+      { "config": ["KARA II", "KS21_100", "SB28_60_Cx"], "delays": { "KARA II": 5.5, "KS21": 6, "SB28": 0 }, "invertPolarity": ["SB28"] },
+      { "config": ["KARA II", "KS21_100", "KS28_60"], "delays": { "KARA II": 0, "KS21": 0, "KS28": 5.5 }, "invertPolarity": ["KS28"] },
+      { "config": ["KARA II", "KS21_100", "KS28_60_C"], "delays": { "KARA II": 0, "KS21": 0.5, "KS28": 0 }, "invertPolarity": ["KS28"] },
+      { "config": ["KARA II", "KS21_100", "KS28_60_Cx"], "delays": { "KARA II": 5.5, "KS21": 6, "KS28": 0 }, "invertPolarity": ["KS28"] }
+    ]
+  },
+    
+    "Kiva": {
+    "combinations": [
+      { "config": ["KIVA", "KILO"], "delays": { "KIVA": 0, "KILO": 1.5 }, "invertPolarity": [] },
+      { "config": ["KIVA_KILO", "SB118_60"], "delays": { "KIVA_KILO": 0, "SB118": 5.9 }, "invertPolarity": [] },
+      { "config": ["KIVA_KILO", "SB118_60_C"], "delays": { "KIVA_KILO": 0, "SB118": 0.4 }, "invertPolarity": [] },
+      { "config": ["KIVA_KILO", "SB18_60"], "delays": { "KIVA_KILO": 0, "SB18": 6.3 }, "invertPolarity": [] },
+      { "config": ["KIVA_KILO", "SB18_60_C"], "delays": { "KIVA_KILO": 0, "SB18": 0.8 }, "invertPolarity": [] },
+      { "config": ["KIVA", "SB15_100"], "delays": { "KIVA": 0, "SB15": 1.4 }, "invertPolarity": [] },
+      { "config": ["KIVA", "SB15_100_C"], "delays": { "KIVA": 2.4, "SB15": 0 }, "invertPolarity": [] },
+      { "config": ["KIVA_FI", "SB15_100"], "delays": { "KIVA": 0, "SB15": 0.6 }, "invertPolarity": [] },
+      { "config": ["KIVA_SB15", "SB18_60"], "delays": { "KIVA_SB15": 0, "SB18": 8.5 }, "invertPolarity": [] },
+      { "config": ["KIVA_SB15", "SB18_60_C"], "delays": { "KIVA_SB15": 0, "SB18": 3 }, "invertPolarity": [] },
+      { "config": ["KIVA II", "SB15_100"], "delays": { "KIVA II": 0, "SB15": 1 }, "invertPolarity": [] },
+      { "config": ["KIVA II", "SB15_100_C"], "delays": { "KIVA II": 2.5, "SB15": 0 }, "invertPolarity": [] },
+      { "config": ["KIVA II", "SB15_100_Cx"], "delays": { "KIVA II": 4.5, "SB15": 0 }, "invertPolarity": [] },
+      { "config": ["KIVA II_FI", "SB15_100"], "delays": { "KIVA II": 0, "SB15": 1 }, "invertPolarity": [] },
+      { "config": ["KIVA II_FI", "SB15_100_C"], "delays": { "KIVA II": 2.5, "SB15": 0 }, "invertPolarity": [] },
+      { "config": ["KIVA II_FI", "SB15_100_Cx"], "delays": { "KIVA II": 5, "SB15": 0 }, "invertPolarity": [] },
+      { "config": ["KIVA II", "SB15_100", "SB18_60"], "delays": { "KIVA II": 0, "SB15": 1, "SB18": 1 }, "invertPolarity": [] },
+      { "config": ["KIVA II", "SB15_100", "SB18_60_C"], "delays": { "KIVA II": 4.5, "SB15": 5.5, "SB18": 0 }, "invertPolarity": [] },
+      { "config": ["KIVA II", "SB15_100", "SB18_60_Cx"], "delays": { "KIVA II": 1, "SB15": 2, "SB18": 0 }, "invertPolarity": [] },
+      { "config": ["KIVA II", "SB15_100_C", "SB18_60"], "delays": { "KIVA II": 2.5, "SB15": 0, "SB18": 3.5 }, "invertPolarity": [] },
+      { "config": ["KIVA II", "SB15_100_C", "SB18_60_C"], "delays": { "KIVA II": 4.5, "SB15": 2, "SB18": 0 }, "invertPolarity": [] },
+      { "config": ["KIVA II", "SB15_100_C", "SB18_60_Cx"], "delays": { "KIVA II": 3, "SB15": 0.5, "SB18": 0 }, "invertPolarity": [] }
+    ]
+  },
+
+    "V-DOSC": {
+      "combinations": [
+        { "config": ["V-DOSC_xx_X", "SB218_X"], "delays": { "V-DOSC": 1.8, "SB218": 0 }, "invertPolarity": [] },
+        { "config": ["V-DOSC_xx_60", "SB218_60"], "delays": { "V-DOSC": 0, "SB218": 3.8 }, "invertPolarity": [] },
+        { "config": ["V-DOSC_xx_60", "SB28_60"], "delays": { "V-DOSC": 0, "SB28": 3.8 }, "invertPolarity": [] },
+        { "config": ["V-DOSC_xx_60", "SB28_60_C"], "delays": { "V-DOSC": 1.7, "SB28": 0 }, "invertPolarity": ["SB28"] },
+        { "config": ["V-DOSC_xx_60", "KS28_60"], "delays": { "V-DOSC": 0, "KS28": 3.8 }, "invertPolarity": [] },
+        { "config": ["V-DOSC_xx_60", "KS28_60_C"], "delays": { "V-DOSC": 1.7, "KS28": 0 }, "invertPolarity": ["KS28"] },
+        { "config": ["V-DOSC_xx_X", "dV-S_X"], "delays": { "V-DOSC": 0, "dV-SUB": 0.2 }, "invertPolarity": [] },
+        { "config": ["V-DOSC_xx_60", "dV-S_60_X", "SB218_60"], "delays": { "V-DOSC": 0, "dV-SUB": 0.2, "SB218": 3.7 }, "invertPolarity": [] },
+        { "config": ["V-DOSC_xx_60", "dV-S_60_X", "SB28_60"], "delays": { "V-DOSC": 0, "dV-SUB": 0.2, "SB28": 3.7 }, "invertPolarity": [] },
+        { "config": ["V-DOSC_xx_60", "dV-S_60_X", "SB28_60_C"], "delays": { "V-DOSC": 1.9, "dV-SUB": 2, "SB28": 0 }, "invertPolarity": ["SB28"] },
+        { "config": ["V-DOSC_xx_60", "dV-S_60_X", "KS28_60"], "delays": { "V-DOSC": 0, "dV-SUB": 0.2, "KS28": 3.7 }, "invertPolarity": [] },
+        { "config": ["V-DOSC_xx_60", "dV-S_60_X", "KS28_60_C"], "delays": { "V-DOSC": 1.9, "dV-SUB": 2, "KS28": 0 }, "invertPolarity": ["KS28"] },
+        { "config": ["V-DOSC_xx_60", "dV_xx_100"], "delays": { "V-DOSC": 0, "dV": 0 }, "invertPolarity": [] },
+        { "config": ["V-DOSC_xx_60", "dV_xx_100_downfill"], "delays": { "V-DOSC": 0, "dV": 0.04 }, "invertPolarity": [] }
+      ]
+    },
+
+    "dV-DOSC": {
+      "combinations": [
+        { "config": ["dV_xx_100", "SB118_100"], "delays": { "dV": 2.7, "SB118": 0 }, "invertPolarity": [] },
+        { "config": ["dV_xx_100", "SB118_100_C"], "delays": { "dV": 8.3, "SB118": 0 }, "invertPolarity": ["SB118"] },
+        { "config": ["dV_xx_100", "SB218_100"], "delays": { "dV": 0.8, "SB218": 0 }, "invertPolarity": [] },
+        { "config": ["dV_xx_100", "SB18_100"], "delays": { "dV": 2.4, "SB18": 0 }, "invertPolarity": [] },
+        { "config": ["dV_xx_100", "SB18_100_C"], "delays": { "dV": 8, "SB18": 0 }, "invertPolarity": ["SB18"] },
+        { "config": ["dV_xx_100", "SB28_100"], "delays": { "dV": 0.8, "SB28": 0 }, "invertPolarity": [] },
+        { "config": ["dV_xx_100", "SB28_100_C"], "delays": { "dV": 6.3, "SB28": 0 }, "invertPolarity": ["SB28"] },
+        { "config": ["dV_xx_100", "KS28_100"], "delays": { "dV": 0.8, "KS28": 0 }, "invertPolarity": [] },
+        { "config": ["dV_xx_100", "KS28_100_C"], "delays": { "dV": 6.3, "KS28": 0 }, "invertPolarity": ["KS28"] },
+        { "config": ["dV_xx_100", "dV-S_100"], "delays": { "dV": 0, "dV-SUB": 0 }, "invertPolarity": [] },
+        { "config": ["dV_xx_100", "dV-S_60_100", "SB118_60"], "delays": { "dV": 0, "dV-SUB": 0.75, "SB118": 4 }, "invertPolarity": [] },
+        { "config": ["dV_xx_100", "dV-S_60_100", "SB118_60_C"], "delays": { "dV": 1.5, "dV-SUB": 2.25, "SB118": 0 }, "invertPolarity": ["SB118"] },
+        { "config": ["dV_xx_100", "dV-S_60_100", "SB218_60"], "delays": { "dV": 0, "dV-SUB": 0.75, "SB218": 4.5 }, "invertPolarity": [] },
+        { "config": ["dV_xx_100", "dV-S_60_100", "SB18_60"], "delays": { "dV": 0, "dV-SUB": 0.75, "SB18": 4.4 }, "invertPolarity": [] },
+        { "config": ["dV_xx_100", "dV-S_60_100", "SB18_60_C"], "delays": { "dV": 1.1, "dV-SUB": 1.85, "SB18": 0 }, "invertPolarity": ["SB18"] },
+        { "config": ["dV_xx_100", "dV-S_60_100", "SB28_60"], "delays": { "dV": 0, "dV-SUB": 0.75, "SB28": 4.5 }, "invertPolarity": [] },
+        { "config": ["dV_xx_100", "dV-S_60_100", "SB28_60_C"], "delays": { "dV": 1, "dV-SUB": 1.75, "SB28": 0 }, "invertPolarity": ["SB28"] },
+        { "config": ["dV_xx_100", "dV-S_60_100", "KS28_60"], "delays": { "dV": 0, "dV-SUB": 0.75, "KS28": 4.5 }, "invertPolarity": [] },
+        { "config": ["dV_xx_100", "dV-S_60_100", "KS28_60_C"], "delays": { "dV": 1, "dV-SUB": 1.75, "KS28": 0 }, "invertPolarity": ["KS28"] }
+      ]
+    },
+
+    "ARCS": {
+      "combinations": [
+        { "config": ["ARCS_xx_60", "SB118_60"], "delays": { "ARCS": 0.8, "SB118": 0 }, "invertPolarity": [] },
+        { "config": ["ARCS_xx_60", "SB118_60_C"], "delays": { "ARCS": 6.3, "SB118": 0 }, "invertPolarity": ["SB118"] },
+        { "config": ["ARCS_xx_100", "SB118_100"], "delays": { "ARCS": 1.4, "SB118": 0 }, "invertPolarity": [] },
+        { "config": ["ARCS_xx_100", "SB118_100_C"], "delays": { "ARCS": 6.9, "SB118": 0 }, "invertPolarity": ["SB118"] },
+        { "config": ["ARCS_xx_60", "SB18_60"], "delays": { "ARCS": 0.4, "SB18": 0 }, "invertPolarity": [] },
+        { "config": ["ARCS_xx_60", "SB18_60_C"], "delays": { "ARCS": 5.9, "SB18": 0 }, "invertPolarity": ["SB18"] },
+        { "config": ["ARCS_xx_100", "SB18_100"], "delays": { "ARCS": 1.1, "SB18": 0 }, "invertPolarity": [] },
+        { "config": ["ARCS_xx_100", "SB18_100_C"], "delays": { "ARCS": 6.6, "SB18": 0 }, "invertPolarity": ["SB18"] },
+        { "config": ["ARCS_xx_60", "SB218_60"], "delays": { "ARCS": 0, "SB218": 0.9 }, "invertPolarity": [] },
+        { "config": ["ARCS_xx_100", "SB218_100"], "delays": { "ARCS": 0, "SB218": 0.3 }, "invertPolarity": [] },
+        { "config": ["ARCS_xx_60", "SB28_60"], "delays": { "ARCS": 0, "SB28": 0.6 }, "invertPolarity": [] },
+        { "config": ["ARCS_xx_60", "SB28_60_C"], "delays": { "ARCS": 4.9, "SB28": 0 }, "invertPolarity": ["SB28"] },
+        { "config": ["ARCS_xx_100", "SB28_100"], "delays": { "ARCS": 0, "SB28": 0.5 }, "invertPolarity": [] },
+        { "config": ["ARCS_xx_100", "SB28_100_C"], "delays": { "ARCS": 5.0, "SB28": 0 }, "invertPolarity": ["SB28"] },
+        { "config": ["ARCS_xx_60", "KS28_60"], "delays": { "ARCS": 0, "KS28": 0.6 }, "invertPolarity": [] },
+        { "config": ["ARCS_xx_60", "KS28_60_C"], "delays": { "ARCS": 4.9, "KS28": 0 }, "invertPolarity": ["KS28"] },
+        { "config": ["ARCS_xx_100", "KS28_100"], "delays": { "ARCS": 0, "KS28": 0.5 }, "invertPolarity": [] },
+        { "config": ["ARCS_xx_100", "KS28_100_C"], "delays": { "ARCS": 5.0, "KS28": 0 }, "invertPolarity": ["KS28"] }
+      ]
+    },
+
+    "ARCS II": {
+      "combinations": [
+        { "config": ["ARCS_II", "SB28_60"], "delays": { "ARCS_II": 0, "SB28": 2 }, "invertPolarity": [] },
+        { "config": ["ARCS_II", "SB28_60_C"], "delays": { "ARCS_II": 3.5, "SB28": 0 }, "invertPolarity": ["SB28"] },
+        { "config": ["ARCS_II", "SB28_60_Cx"], "delays": { "ARCS_II": 7.5, "SB28": 0 }, "invertPolarity": ["SB28"] },
+        { "config": ["ARCS_II", "KS28_60"], "delays": { "ARCS_II": 0, "KS28": 2 }, "invertPolarity": [] },
+        { "config": ["ARCS_II", "KS28_60_C"], "delays": { "ARCS_II": 3.5, "KS28": 0 }, "invertPolarity": ["KS28"] },
+        { "config": ["ARCS_II", "KS28_60_Cx"], "delays": { "ARCS_II": 7.5, "KS28": 0 }, "invertPolarity": ["KS28"] }
+      ]
+    },
+    "ARCS Wide/Focus": {
+      "combinations": [
+        { "config": ["ARCS_WIFO", "SB18_60"], "delays": { "ARCS_WIFO": 1.5, "SB18": 0 }, "invertPolarity": [] },
+        { "config": ["ARCS_WIFO", "SB18_60_C"], "delays": { "ARCS_WIFO": 7, "SB18": 0 }, "invertPolarity": ["SB18"] },
+        { "config": ["ARCS_WIFO", "SB18_60_Cx"], "delays": { "ARCS_WIFO": 6, "SB18": 0 }, "invertPolarity": ["SB18"] },
+        { "config": ["ARCS_WIFO_FI", "SB18_60"], "delays": { "ARCS_WIFO": 1.5, "SB18": 0 }, "invertPolarity": [] },
+        { "config": ["ARCS_WIFO_FI", "SB18_60_C"], "delays": { "ARCS_WIFO": 7, "SB18": 0 }, "invertPolarity": ["SB18"] },
+        { "config": ["ARCS_WIFO_FI", "SB18_60_Cx"], "delays": { "ARCS_WIFO": 6, "SB18": 0 }, "invertPolarity": ["SB18"] }
+      ]
+    },
+    "A Series": {
+      "combinations": [
+        { "config": ["A15", "KS21_60"], "delays": { "A15": 3.5, "KS21": 0 }, "invertPolarity": [] },
+        { "config": ["A15", "KS21_60_C"], "delays": { "A15": 9, "KS21": 0 }, "invertPolarity": ["KS21"] },
+        { "config": ["A15", "KS21_60_Cx"], "delays": { "A15": 8, "KS21": 0 }, "invertPolarity": ["KS21"] },
+        { "config": ["A15_FI", "KS21_60"], "delays": { "A15": 3.5, "KS21": 0 }, "invertPolarity": [] },
+        { "config": ["A15_FI", "KS21_60_C"], "delays": { "A15": 9, "KS21": 0 }, "invertPolarity": ["KS21"] },
+        { "config": ["A15_FI", "KS21_60_Cx"], "delays": { "A15": 8, "KS21": 0 }, "invertPolarity": ["KS21"] },
+        { "config": ["A10", "KS21_100"], "delays": { "A10": 0, "KS21": 0 }, "invertPolarity": [] },
+        { "config": ["A10", "KS21_100_C"], "delays": { "A10": 5.5, "KS21": 0 }, "invertPolarity": ["KS21"] },
+        { "config": ["A10", "KS21_100_Cx"], "delays": { "A10": 0, "KS21": 0 }, "invertPolarity": [] },
+        { "config": ["A10_FI", "KS21_100"], "delays": { "A10": 0, "KS21": 0 }, "invertPolarity": [] },
+        { "config": ["A10_FI", "KS21_100_C"], "delays": { "A10": 5.5, "KS21": 0 }, "invertPolarity": ["KS21"] },
+        {"config": ["A10_FI", "KS21_100_Cx"], "delays": { "A10": 0, "KS21": 0 }, "invertPolarity": []}
+      ]
+    },
+
+    "Colinear": {
+      "combinations": [
+        { "config": ["SYVA", "SYVA SUB_100"], "delays": { "SYVA": 0, "SYVA SUB": 2.6 }, "invertPolarity": [] },
+        { "config": ["SYVA", "SYVA LOW", "SYVA SUB_100"], "delays": { "SYVA": 0, "SYVA LOW": 0, "SYVA SUB": 3.8 }, "invertPolarity": [] },
+        { "config": ["SOKA", "SB6_100"], "delays": { "SOKA": 1.4, "SB6i": 0 }, "invertPolarity": [] },
+        { "config": ["SOKA_200", "SB6_200"], "delays": { "SOKA": 1.9, "SB6i": 0 }, "invertPolarity": [] },
+        { "config": ["SOKA_60", "SB6_60"], "delays": { "SOKA": 3.6, "SB6i": 0 }, "invertPolarity": ["SB6i"] },
+        { "config": ["SOKA", "SB10_100"], "delays": { "SOKA": 2.6, "SB10i": 0 }, "invertPolarity": [] },
+        { "config": ["SOKA_200", "SB10_200"], "delays": { "SOKA": 3.2, "SB10i": 0 }, "invertPolarity": [] },
+        { "config": ["SOKA_60", "SB10_60"], "delays": { "SOKA": 9, "SB10i": 0 }, "invertPolarity": ["SB10i"] },
+        { "config": ["SOKA_60", "SYVA SUB_60"], "delays": { "SOKA": 5.6, "SYVA SUB": 0 }, "invertPolarity": ["SYVA SUB"] }
+      ]
+    },
+  
+    "Coaxial": {
+      "combinations": [
+        {"config": ["X15", "SB18_100"], "delays": { "X15": 4, "SB18": 0 }, "invertPolarity": []},
+        { "config": ["X15_MO", "SB18_100"], "delays": { "X15": 0, "SB18": 1 }, "invertPolarity": [] },
+        { "config": ["X15", "KS21_100"], "delays": { "X15": 0, "KS21": 1.5 }, "invertPolarity": [] },
+        { "config": ["X12", "SB15_100"], "delays": { "X12": 1.5, "SB15": 0 }, "invertPolarity": [] },
+        { "config": ["X12_MO", "SB15_100"], "delays": { "X12": 0, "SB15": 3 }, "invertPolarity": [] },
+        { "config": ["X8", "SB15_100"], "delays": { "X8": 2, "SB15": 0 }, "invertPolarity": [] },
+        { "config": ["X8_MO", "SB15_100"], "delays": { "X8": 0, "SB15": 3 }, "invertPolarity": [] },
+        { "config": ["X4", "SYVA SUB_200"], "delays": { "X4": 0, "SYVA SUB": 0.5 }, "invertPolarity": [] },
+        { "config": ["HIQ_FI_100", "SB118_100"], "delays": { "HIQ": 2.6, "SB118": 0 }, "invertPolarity": [] },
+        { "config": ["HIQ_MO_100", "SB18_100"], "delays": { "HIQ": 2.2, "SB18": 0 }, "invertPolarity": [] },
+        { "config": ["12XTA_MO_100", "SB18_100"], "delays": { "12XTA": 2.2, "SB18": 0 }, "invertPolarity": [] },
+        { "config": ["12XTP_FR_100", "SB118_100"], "delays": { "12XTP": 2.4, "SB118": 0 }, "invertPolarity": [] },
+        { "config": ["8XT_MO_100", "SB118_100"], "delays": { "8XT": 3.0, "SB118": 0 }, "invertPolarity": [] },
+        { "config": ["5XT", "SB15_100"], "delays": { "5XT": 0, "SB15": 0 }, "invertPolarity": [] },
+        { "config": ["108a_FR_100", "SB118_100"], "delays": { "108a": 3.6, "SB118": 0 }, "invertPolarity": [] },
+        { "config": ["112b_FR_100", "SB118_100"], "delays": { "112b": 2.5, "SB118": 0 }, "invertPolarity": [] }
+      ]
+    }
+  }
+  
+}

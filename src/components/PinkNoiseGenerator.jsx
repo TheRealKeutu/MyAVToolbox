@@ -1,0 +1,138 @@
+import React, { useRef, useState, useEffect } from 'react';
+
+export default function PinkNoiseGenerator() {
+  const audioCtxRef = useRef(null);
+  const sourceRef = useRef(null);
+  const gainRef = useRef(null);
+  const destinationRef = useRef(null);
+  const audioElementRef = useRef(null);
+
+  const [playing, setPlaying] = useState(false);
+  const [gainDb, setGainDb] = useState(-18);
+  const [devices, setDevices] = useState([]);
+  const [selectedDevice, setSelectedDevice] = useState('');
+
+  const dbToGain = (db) => Math.pow(10, db / 20);
+
+  useEffect(() => {
+    navigator.mediaDevices.enumerateDevices()
+      .then(devices => {
+        const audioOutputs = devices.filter(d => d.kind === 'audiooutput');
+        setDevices(audioOutputs);
+        if (audioOutputs.length > 0) {
+          setSelectedDevice(audioOutputs[0].deviceId);
+        }
+      });
+  }, []);
+
+  useEffect(() => {
+    if (gainRef.current) {
+      gainRef.current.gain.value = dbToGain(gainDb);
+    }
+  }, [gainDb]);
+
+  const generatePinkNoiseBuffer = (audioCtx, duration = 2) => {
+    const sampleRate = audioCtx.sampleRate;
+    const buffer = audioCtx.createBuffer(1, duration * sampleRate, sampleRate);
+    const output = buffer.getChannelData(0);
+
+    let b0 = 0, b1 = 0, b2 = 0, b3 = 0, b4 = 0, b5 = 0, b6 = 0;
+    for (let i = 0; i < output.length; i++) {
+      const white = Math.random() * 2 - 1;
+      b0 = 0.99886 * b0 + white * 0.0555179;
+      b1 = 0.99332 * b1 + white * 0.0750759;
+      b2 = 0.96900 * b2 + white * 0.1538520;
+      b3 = 0.86650 * b3 + white * 0.3104856;
+      b4 = 0.55000 * b4 + white * 0.5329522;
+      b5 = -0.7616 * b5 - white * 0.0168980;
+      b6 = white * 0.115926;
+      output[i] = (b0 + b1 + b2 + b3 + b4 + b5 + b6 + white * 0.5362) * 0.11;
+    }
+
+    return buffer;
+  };
+
+  const start = async () => {
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    const buffer = generatePinkNoiseBuffer(audioCtx);
+    const source = audioCtx.createBufferSource();
+    const gainNode = audioCtx.createGain();
+    const destination = audioCtx.createMediaStreamDestination();
+
+    gainNode.gain.value = dbToGain(gainDb);
+    source.buffer = buffer;
+    source.loop = true;
+
+    source.connect(gainNode).connect(destination);
+    source.start();
+
+    audioElementRef.current.srcObject = destination.stream;
+    try {
+      await audioElementRef.current.setSinkId(selectedDevice);
+    } catch (err) {
+      console.error('setSinkId error:', err);
+      alert('Impossible de changer la sortie audio (votre navigateur ne le permet peut-être pas)');
+    }
+    audioElementRef.current.play();
+
+    audioCtxRef.current = audioCtx;
+    sourceRef.current = source;
+    gainRef.current = gainNode;
+    destinationRef.current = destination;
+    setPlaying(true);
+  };
+
+  const stop = () => {
+    if (sourceRef.current) sourceRef.current.stop();
+    if (audioCtxRef.current) audioCtxRef.current.close();
+    if (audioElementRef.current) audioElementRef.current.pause();
+
+    sourceRef.current = null;
+    audioCtxRef.current = null;
+    setPlaying(false);
+  };
+
+  return (
+    <div>
+      <h1>🔊 Générateur de Bruit Rose</h1>
+
+      <div style={{ marginBottom: '1rem' }}>
+        <label>
+          🎚️ Niveau de sortie ({gainDb} dBFS)
+          <input
+            type="range"
+            min={-60}
+            max={0}
+            value={gainDb}
+            step={1}
+            onChange={(e) => setGainDb(parseInt(e.target.value))}
+            style={{ marginLeft: '1rem', width: '200px' }}
+          />
+        </label>
+      </div>
+
+      <div style={{ marginBottom: '1rem' }}>
+        <label>
+          🎧 Interface audio de sortie :
+          <select
+            value={selectedDevice}
+            onChange={(e) => setSelectedDevice(e.target.value)}
+            style={{ marginLeft: '1rem' }}
+          >
+            {devices.map((d) => (
+              <option key={d.deviceId} value={d.deviceId}>
+                {d.label || `Sortie ${d.deviceId}`}
+              </option>
+            ))}
+          </select>
+        </label>
+      </div>
+
+      <button onClick={playing ? stop : start}>
+        {playing ? '⏹️ Stop' : '▶️ Lancer le bruit rose'}
+      </button>
+
+      <audio ref={audioElementRef} hidden />
+    </div>
+  );
+}

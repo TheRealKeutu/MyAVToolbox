@@ -1,0 +1,28 @@
+{
+  "name": "racktools",
+  "version": "1.0.0",
+  "main": "electron/main.js",
+  "scripts": {
+    "dev": "concurrently -k \"vite\" \"wait-on http://localhost:5173 && electron .\"",
+    "dev-vite": "vite",
+    "build": "vite build",
+    "start": "electron ."
+  },
+  "dependencies": {
+    "html2canvas": "^1.4.1",
+    "jspdf": "^3.0.1",
+    "lucide-react": "^0.513.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-flow-renderer": "^10.3.17",
+    "react-router-dom": "^7.6.1",
+    "uuid": "^11.1.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.5.2",
+    "concurrently": "^8.2.2",
+    "electron": "^28.2.3",
+    "vite": "^6.3.5",
+    "wait-on": "^7.0.1"
+  }
+}
