@@ -1,9 +1,17 @@
-const { app, BrowserWindow, ipcMain } = require('electron');
-const os = require('os');
-const { exec } = require('child_process');
-const path = require('path');
-const dns = require('dns').promises;
-const fs = require('fs');
+import { app, BrowserWindow, ipcMain } from 'electron';
+import os from 'os';
+import { exec, spawn } from 'child_process';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import dns from 'dns';
+import fs from 'fs';
+
+const { promises: dnsPromises } = dns;
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+let oscProcess; // ← processus du serveur OSC
 
 function createWindow() {
   const win = new BrowserWindow({
@@ -15,11 +23,33 @@ function createWindow() {
   });
 
   if (process.env.VITE_DEV_SERVER_URL) {
-    // Mode développement : charger Vite
     win.loadURL(process.env.VITE_DEV_SERVER_URL);
   } else {
-    // Mode production : charger le fichier HTML buildé
     win.loadFile(path.join(__dirname, 'dist', 'index.html'));
+  }
+}
+
+// 🟢 Lancer automatiquement le serveur OSC
+function startOscServer() {
+  const serverPath = path.join(__dirname, 'server', 'osc-server.js');
+  oscProcess = spawn('node', [serverPath], {
+    stdio: 'inherit',
+  });
+
+  oscProcess.on('error', (err) => {
+    console.error('Erreur lancement OSC server :', err);
+  });
+
+  oscProcess.on('exit', (code, signal) => {
+    console.log(`OSC server terminé (code ${code}, signal ${signal})`);
+  });
+}
+
+// 🔴 Tuer le serveur OSC proprement
+function stopOscServer() {
+  if (oscProcess) {
+    oscProcess.kill();
+    oscProcess = null;
   }
 }
 
@@ -75,7 +105,7 @@ ipcMain.handle('get-network-interfaces', async () => {
 ipcMain.handle('set-static-ip', async (event, { name, address, netmask, gateway }) => {
   return new Promise((resolve, reject) => {
     const label = Object.entries(hardwarePortsCache).find(([dev]) => dev === name)?.[1] || name;
-    const safeLabel = label.replace(/"/g, '\"');
+    const safeLabel = label.replace(/"/g, '\\"');
     const cmd = `networksetup -setmanual "${safeLabel}" ${address} ${netmask} ${gateway}`;
     exec(cmd, (err, stdout, stderr) => {
       if (err) {
@@ -90,7 +120,7 @@ ipcMain.handle('set-static-ip', async (event, { name, address, netmask, gateway 
 
 ipcMain.handle('set-dhcp', async (event, { label }) => {
   return new Promise((resolve, reject) => {
-    const safeLabel = label.replace(/"/g, '\"');
+    const safeLabel = label.replace(/"/g, '\\"');
     exec(`networksetup -setdhcp "${safeLabel}"`, (err, stdout, stderr) => {
       if (err) {
         console.error(`Erreur DHCP : ${err.message}`);
@@ -102,7 +132,6 @@ ipcMain.handle('set-dhcp', async (event, { label }) => {
   });
 });
 
-// Scanner le sous-réseau
 ipcMain.handle('scan-subnet', async (event, { subnet }) => {
   const baseIP = subnet.split('.').slice(0, 3).join('.');
   const ips = [];
@@ -113,24 +142,24 @@ ipcMain.handle('scan-subnet', async (event, { subnet }) => {
   const results = await Promise.allSettled(ips.map(ip => pingHost(ip)));
 
   const hostnames = await Promise.all(
-  ips.map(async (ip, idx) => {
-    if (results[idx].status === 'fulfilled') {
-      try {
-        const hostnames = await dns.reverse(ip);
-        return hostnames[0] || null;
-      } catch {
-        return null;
+    ips.map(async (ip, idx) => {
+      if (results[idx].status === 'fulfilled') {
+        try {
+          const names = await dnsPromises.reverse(ip);
+          return names[0] || null;
+        } catch {
+          return null;
+        }
       }
-    }
-    return null;
-  })
-);
+      return null;
+    })
+  );
 
-return ips.map((ip, idx) => ({
-  ip,
-  active: results[idx].status === 'fulfilled',
-  hostname: hostnames[idx],
-}));
+  return ips.map((ip, idx) => ({
+    ip,
+    active: results[idx].status === 'fulfilled',
+    hostname: hostnames[idx],
+  }));
 });
 
 function pingHost(ip) {
@@ -145,16 +174,29 @@ function pingHost(ip) {
   });
 }
 
-//Sauvegarde dans la base de donnée d'équipements
 ipcMain.handle('save-equipment-db', async (event, updatedEquipment) => {
-  const dbPath = path.join(__dirname, 'assets/equipmentDB.json');
+  const dbPath = path.join(__dirname, 'assets', 'equipmentDB.json');
   try {
     fs.writeFileSync(dbPath, JSON.stringify(updatedEquipment, null, 2), 'utf8');
     return { success: true };
   } catch (error) {
-    console.error("Erreur lors de la sauvegarde :", error);
+    console.error('Erreur lors de la sauvegarde :', error);
     return { success: false, error: error.message };
   }
 });
 
-app.whenReady().then(createWindow);
+// 🚀 Lancer app et OSC server
+app.whenReady().then(() => {
+  startOscServer();
+  createWindow();
+});
+
+// 🧹 Nettoyage
+app.on('window-all-closed', () => {
+  stopOscServer();
+  if (process.platform !== 'darwin') app.quit();
+});
+
+app.on('before-quit', () => {
+  stopOscServer();
+});

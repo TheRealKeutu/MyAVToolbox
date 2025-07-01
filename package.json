@@ -2,24 +2,29 @@
   "name": "racktools",
   "version": "1.0.0",
   "main": "main.js",
+  "type": "module",
   "scripts": {
     "dev": "concurrently -k \"vite\" \"wait-on http://localhost:5173 && electron .\"",
     "dev-vite": "vite",
     "build": "vite build",
     "start": "electron .",
-    "start-electron": "electron ."
+    "start-electron": "electron .",
+    "osc-server": "node osc-server.js"
   },
   "dependencies": {
     "@serialport/parser-readline": "^13.0.0",
+    "express": "^5.1.0",
     "html2canvas": "^1.4.1",
     "jspdf": "^3.0.1",
     "lucide-react": "^0.513.0",
+    "osc": "^2.4.5",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-flow-renderer": "^10.3.17",
     "react-router-dom": "^7.6.1",
     "serialport": "^13.0.0",
-    "uuid": "^11.1.0"
+    "uuid": "^11.1.0",
+    "ws": "^8.18.3"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.5.2",

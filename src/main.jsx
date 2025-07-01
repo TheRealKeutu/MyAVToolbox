@@ -18,6 +18,7 @@ import AudioVideoSyncTester from './components/AudioVideoSyncTester.jsx';
 import AudioToolbox from './components/AudioToolbox.jsx';
 import PinkNoiseGenerator from './components/PinkNoiseGenerator.jsx';
 import LightingToolbox from './components/LightingToolbox.jsx';
+import MidiOscRouter from './components/MidiOscRouter.jsx';
 
 import Test from './components/Test.jsx';
 
@@ -62,6 +63,8 @@ function App() {
         return <CRCCalculator />;
       case 'AudioVideoSyncTester':
         return <AudioVideoSyncTester />;
+      case 'MidiOscRouter' :
+        return <MidiOscRouter />;
       
       case 'test':
         return <Test />;
