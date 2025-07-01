@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import lAcousticsData from '../data/lAcoustics_prealignment_presets.json';
+import Logo from '/lacoustics-path-difference.png'
 
 export default function PreAlignmentCalculator() {
   const families = lAcousticsData.families;
@@ -42,7 +43,7 @@ export default function PreAlignmentCalculator() {
         <section style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap', alignItems: 'flex-start' }}>
           <div style={{ flex: '0 0 auto' }}>
             <img
-              src="/lacoustics-path-difference.png"
+              src= {Logo}
               alt="Schéma L-Acoustics"
               style={{
                 maxWidth: '100%',

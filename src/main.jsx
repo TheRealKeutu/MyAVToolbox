@@ -10,15 +10,16 @@ import LAcousticsLoadCalculator from './components/LAcousticsLoadCalculator.jsx'
 import PreAlignmentCalculator from './components/PreAlignmentCalculator.jsx';
 import SynopticBuilder from './components/SynopticBuilder.jsx';
 import DMXDipswitch from './components/DMXDipswitch.jsx';
-import Test from './components/Test.jsx';
+import DMXFrameViewer from './components/DMXFrameViewer.jsx';
 import Toolbox from './components/VideoToolbox.jsx';
 import VideoTestPattern from './components/VideoTestPattern.jsx';
-import DMXFrameViewer from './components/DMXFrameViewer.jsx';
 import CRCCalculator from './components/CRCCalculator.jsx';
 import AudioVideoSyncTester from './components/AudioVideoSyncTester.jsx';
 import AudioToolbox from './components/AudioToolbox.jsx';
 import PinkNoiseGenerator from './components/PinkNoiseGenerator.jsx';
 import LightingToolbox from './components/LightingToolbox.jsx';
+
+import Test from './components/Test.jsx';
 
 import './styles.css';
 
@@ -49,9 +50,6 @@ function App() {
         return <AudioToolbox onSelect={setView} />
       case 'LightingToolbox':
         return <LightingToolbox onSelect={setView} />  
-      case 'test':
-        return <Test />;
- 
       case 'toolbox':
         return <Toolbox onSelect={setView} />;
       case 'rose-noise':
@@ -65,6 +63,8 @@ function App() {
       case 'AudioVideoSyncTester':
         return <AudioVideoSyncTester />;
       
+      case 'test':
+        return <Test />;
 
       default:
         return <div>Page non trouvée</div>;

@@ -14,7 +14,13 @@ function createWindow() {
     },
   });
 
-  win.loadURL('http://localhost:5173');
+  if (process.env.VITE_DEV_SERVER_URL) {
+    // Mode développement : charger Vite
+    win.loadURL(process.env.VITE_DEV_SERVER_URL);
+  } else {
+    // Mode production : charger le fichier HTML buildé
+    win.loadFile(path.join(__dirname, 'dist', 'index.html'));
+  }
 }
 
 function deduceGateway(ip) {
