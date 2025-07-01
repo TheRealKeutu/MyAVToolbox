@@ -14,6 +14,7 @@ export default function Sidebar({ currentPage, onSelect }) {
       <button className="button" onClick={() => onSelect('LightingToolbox')}>🎚️ éclairage</button>
       <button className="button" onClick={() => onSelect('power')}>⚡️ Électricité</button>
       <button className="button" onClick={() => onSelect('ipconfig')}>🛜 Réseau</button>
+      <button className="button" onClick={() => onSelect('MidiOscRouter')}>🎹 Routeur OSC / Midi</button>
       <button className="button" onClick={() => onSelect('SynopticBuilder')}>🔀 Synoptique</button>
       {/*<button className="button" onClick={() => onSelect('test')}>🧪 Test</button>*/}
     </div>
