@@ -11,6 +11,7 @@ export default function PinkNoiseGenerator() {
   const [gainDb, setGainDb] = useState(-18);
   const [devices, setDevices] = useState([]);
   const [selectedDevice, setSelectedDevice] = useState('');
+  const [mode, setMode] = useState('pink'); // 'pink' ou 'sine'
 
   const dbToGain = (db) => Math.pow(10, db / 20);
 
@@ -54,16 +55,27 @@ export default function PinkNoiseGenerator() {
 
   const start = async () => {
     const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    const buffer = generatePinkNoiseBuffer(audioCtx);
-    const source = audioCtx.createBufferSource();
     const gainNode = audioCtx.createGain();
     const destination = audioCtx.createMediaStreamDestination();
 
     gainNode.gain.value = dbToGain(gainDb);
-    source.buffer = buffer;
-    source.loop = true;
 
-    source.connect(gainNode).connect(destination);
+    let source;
+
+    if (mode === 'pink') {
+      const buffer = generatePinkNoiseBuffer(audioCtx);
+      source = audioCtx.createBufferSource();
+      source.buffer = buffer;
+      source.loop = true;
+      source.connect(gainNode);
+    } else if (mode === 'sine') {
+      source = audioCtx.createOscillator();
+      source.type = 'sine';
+      source.frequency.setValueAtTime(1000, audioCtx.currentTime);
+      source.connect(gainNode);
+    }
+
+    gainNode.connect(destination);
     source.start();
 
     audioElementRef.current.srcObject = destination.stream;
@@ -94,7 +106,21 @@ export default function PinkNoiseGenerator() {
 
   return (
     <div>
-      <h1>🔊 Générateur de Bruit Rose</h1>
+      <h1>🎛️ Générateur Audio</h1>
+
+      <div style={{ marginBottom: '1rem' }}>
+        <label>
+          🔧 Type de signal :
+          <select
+            value={mode}
+            onChange={(e) => setMode(e.target.value)}
+            style={{ marginLeft: '1rem' }}
+          >
+            <option value="pink">🔊 Bruit rose</option>
+            <option value="sine">🎵 Sinusoïde 1 kHz</option>
+          </select>
+        </label>
+      </div>
 
       <div style={{ marginBottom: '1rem' }}>
         <label>
@@ -129,7 +155,7 @@ export default function PinkNoiseGenerator() {
       </div>
 
       <button onClick={playing ? stop : start}>
-        {playing ? '⏹️ Stop' : '▶️ Lancer le bruit rose'}
+        {playing ? '⏹️ Stop' : mode === 'pink' ? '▶️ Lancer le bruit rose' : '▶️ Lancer le 1 kHz'}
       </button>
 
       <audio ref={audioElementRef} hidden />

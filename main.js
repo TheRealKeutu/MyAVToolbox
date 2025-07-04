@@ -1,55 +1,102 @@
+// main.js
 import { app, BrowserWindow, ipcMain } from 'electron';
 import os from 'os';
-import { exec, spawn } from 'child_process';
+import { exec } from 'child_process';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import dns from 'dns';
 import fs from 'fs';
+import osc from 'osc';
 
 const { promises: dnsPromises } = dns;
-
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-let oscProcess; // ← processus du serveur OSC
+let mainWindow;
+
+let currentOscConfig = {
+  ip: '0.0.0.0',
+  port: 57121,
+};
+
+let oscUDP = null;
+
+// 🛑 Empêche le lancement multiple
+if (!app.requestSingleInstanceLock()) {
+  app.quit();
+  process.exit(0);
+}
+
+// 🧠 Gestion d'une deuxième instance (ramène la fenêtre existante au premier plan)
+app.on('second-instance', () => {
+  const win = BrowserWindow.getAllWindows()[0];
+  if (win) {
+    if (win.isMinimized()) win.restore();
+    win.focus();
+  }
+});
+
+const iconPath = app.isPackaged 
+  ? path.join(process.resourcesPath, 'assets', 'icon.png')
+  : path.join(__dirname, 'assets', 'icon.png');
 
 function createWindow() {
-  const win = new BrowserWindow({
+  mainWindow = new BrowserWindow({
     width: 1200,
     height: 800,
+    icon: iconPath, 
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
+      contextIsolation: true,
+      nodeIntegration: false,
     },
   });
 
   if (process.env.VITE_DEV_SERVER_URL) {
-    win.loadURL(process.env.VITE_DEV_SERVER_URL);
+    mainWindow.loadURL(process.env.VITE_DEV_SERVER_URL);
   } else {
-    win.loadFile(path.join(__dirname, 'dist', 'index.html'));
+    mainWindow.loadFile(path.join(__dirname, 'dist', 'index.html'));
   }
 }
 
-// 🟢 Lancer automatiquement le serveur OSC
-function startOscServer() {
-  const serverPath = path.join(__dirname, 'server', 'osc-server.js');
-  oscProcess = spawn('node', [serverPath], {
-    stdio: 'inherit',
+function createOscUDP(ip, port) {
+  if (oscUDP) {
+    oscUDP.close();
+    oscUDP = null;
+  }
+
+  oscUDP = new osc.UDPPort({
+    localAddress: ip,
+    localPort: port,
+    metadata: true,
   });
 
-  oscProcess.on('error', (err) => {
-    console.error('Erreur lancement OSC server :', err);
+  oscUDP.on('ready', () => {
+    console.log(`✅ OSC listening on udp://${ip}:${port}`);
   });
 
-  oscProcess.on('exit', (code, signal) => {
-    console.log(`OSC server terminé (code ${code}, signal ${signal})`);
+  oscUDP.on('message', (oscMsg) => {
+    console.log('🔁 OSC IN:', oscMsg);
+    if (mainWindow) {
+      mainWindow.webContents.send('osc-incoming', oscMsg);
+    }
   });
+
+  oscUDP.on('error', (err) => {
+    console.error('❌ OSC UDP error:', err.message);
+  });
+
+  oscUDP.open();
 }
 
-// 🔴 Tuer le serveur OSC proprement
+function startOscServer() {
+  createOscUDP(currentOscConfig.ip, currentOscConfig.port);
+}
+
 function stopOscServer() {
-  if (oscProcess) {
-    oscProcess.kill();
-    oscProcess = null;
+  if (oscUDP) {
+    oscUDP.close();
+    oscUDP = null;
   }
 }
 
@@ -164,7 +211,7 @@ ipcMain.handle('scan-subnet', async (event, { subnet }) => {
 
 function pingHost(ip) {
   return new Promise((resolve, reject) => {
-    exec(`ping -c 1 -W 1 ${ip}`, (error, stdout, stderr) => {
+    exec(`ping -c 1 -W 1 ${ip}`, (error) => {
       if (error) {
         reject(error);
       } else {
@@ -185,18 +232,45 @@ ipcMain.handle('save-equipment-db', async (event, updatedEquipment) => {
   }
 });
 
-// 🚀 Lancer app et OSC server
+// Nouveau : gestion IPC OSC
+
+ipcMain.handle('osc-send', (event, { address, args, targetIp, targetPort }) => {
+  if (oscUDP) {
+    oscUDP.send({ address, args }, targetIp, targetPort);
+    console.log(`📤 OSC OUT → ${targetIp}:${targetPort} ${address}`);
+    return { success: true };
+  }
+  return { success: false, error: 'OSC UDP port non ouvert' };
+});
+
+ipcMain.handle('osc-set-listen-config', (event, { ip, port }) => {
+  if (
+    port &&
+    (port !== currentOscConfig.port || ip !== currentOscConfig.ip)
+  ) {
+    console.log(`🔁 Reconfiguration OSC : ${currentOscConfig.ip}:${currentOscConfig.port} → ${ip}:${port}`);
+    currentOscConfig = { ip, port };
+    createOscUDP(ip, port);
+    return { success: true };
+  }
+  return { success: false, error: 'Pas de changement détecté' };
+});
+
+// 🚀 Lancement
 app.whenReady().then(() => {
   startOscServer();
   createWindow();
 });
 
-// 🧹 Nettoyage
-app.on('window-all-closed', () => {
-  stopOscServer();
-  if (process.platform !== 'darwin') app.quit();
+app.on('activate', () => {
+  if (BrowserWindow.getAllWindows().length === 0) createWindow();
 });
 
 app.on('before-quit', () => {
   stopOscServer();
+});
+
+app.on('window-all-closed', () => {
+  stopOscServer();
+  if (process.platform !== 'darwin') app.quit();
 });

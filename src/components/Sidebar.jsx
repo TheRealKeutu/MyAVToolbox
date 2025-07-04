@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import logo from '/logo.png';
 
-export default function Sidebar({ currentPage, onSelect }) {
+export default function Sidebar({ currentPage, onSelect, darkMode, onToggleDarkMode }) {
   const [activeMenu, setActiveMenu] = useState(null);
 
   const handleBack = () => setActiveMenu(null);
@@ -14,7 +14,7 @@ export default function Sidebar({ currentPage, onSelect }) {
       <button className="button" onClick={() => onSelect('LightingToolbox')}>🎚️ éclairage</button>
       <button className="button" onClick={() => onSelect('power')}>⚡️ Électricité</button>
       <button className="button" onClick={() => onSelect('ipconfig')}>🛜 Réseau</button>
-      <button className="button" onClick={() => onSelect('MidiOscRouter')}>🎹 Routeur OSC / Midi</button>
+      <button className="button" onClick={() => onSelect('OscViewer')}>🎹 Monitoring OSC</button>
       <button className="button" onClick={() => onSelect('SynopticBuilder')}>🔀 Synoptique</button>
       {/*<button className="button" onClick={() => onSelect('test')}>🧪 Test</button>*/}
     </div>

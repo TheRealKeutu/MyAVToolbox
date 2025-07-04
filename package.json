@@ -1,5 +1,5 @@
 {
-  "name": "racktools",
+  "name": "Racktools",
   "version": "1.0.0",
   "main": "main.js",
   "type": "module",
@@ -9,7 +9,8 @@
     "build": "vite build",
     "start": "electron .",
     "start-electron": "electron .",
-    "osc-server": "node osc-server.js"
+    "osc-server": "node osc-server.js",
+    "dist": "electron-builder"
   },
   "dependencies": {
     "@serialport/parser-readline": "^13.0.0",
@@ -33,5 +34,26 @@
     "electron-packager": "^17.1.2",
     "vite": "^6.3.5",
     "wait-on": "^7.0.1"
+  },
+  "build": {
+    "asarUnpack": ["server/osc-server.js"],
+    "files": [
+      "dist/",
+      "main.js",
+      "preload.js",
+      {
+        "from": "server",
+        "to": "server",
+        "filter": ["osc-server.js"]
+      }
+    ],
+    "mac": {
+      "target": "dmg",
+      "icon": "assets/icon.png"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "assets/icon.png"
+    }
   }
 }

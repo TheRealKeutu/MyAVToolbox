@@ -25,6 +25,11 @@ body, html {
   align-items: center;
 }
 
+.dark-mode .sidebar {
+  background-color: #222;
+  color: #afa;
+}
+
 .logo {
   width: 100px;
   height: 100px;
@@ -208,4 +213,67 @@ label {
 
 .synoptic-connection-end:hover {
   background-color: #c82333;
+}
+
+/* Mode clair par défaut */
+.light-mode {
+  background-color: #fff;
+  color: #222;
+}
+
+/* Mode sombre */
+.dark-mode {
+  background-color: #121212;
+  color: #eee;
+}
+
+/* Exemple d’adaptation pour Sidebar, inputs, boutons, etc. */
+
+.dark-mode button {
+  background-color: #444;
+  color: #eee;
+}
+
+.light-mode button {
+  background-color: #ddd;
+  color: #222;
+}
+
+/* Pour ton container log dans MidiOscRouter ou autre, adapte la classe */
+.dark-mode .log-container {
+  background-color: #222;
+  color: #afa;
+}
+
+.light-mode .log-container {
+  background-color: #111;
+  color: #0f0;
+}
+
+/* Container principal */
+.welcome-container {
+  padding: 2rem;
+}
+
+/* Mode clair */
+.light-mode .welcome-container {
+  background-color: #fff;
+  color: #222;
+}
+
+/* Mode sombre */
+.dark-mode .welcome-container {
+  background-color: #111;
+  color: #afa;
+}
+
+/* Tu peux aussi styliser les titres ou paragraphes si tu veux */
+.light-mode .welcome-container h1,
+.light-mode .welcome-container p {
+  color: #222;
+}
+
+.dark-mode .welcome-container h1,
+.dark-mode .welcome-container p {
+  color: #afa;
 }

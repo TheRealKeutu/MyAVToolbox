@@ -17,4 +17,13 @@ contextBridge.exposeInMainWorld('electronAPI', {
   setStaticIP: (data) => ipcRenderer.invoke('set-static-ip', data),
   setDHCP: (data) => ipcRenderer.invoke('set-dhcp', data),
   scanSubnet: (data) => ipcRenderer.invoke('scan-subnet', data),
+
+   // OSC : envoyer un message OSC
+  oscSend: (oscMessage) => ipcRenderer.invoke('osc-send', oscMessage),
+
+  // OSC : changer la config d'écoute (ip + port)
+  oscSetListenConfig: (config) => ipcRenderer.invoke('osc-set-listen-config', config),
+
+  // OSC : écouter les messages entrants
+  onOscIncoming: (callback) => ipcRenderer.on('osc-incoming', (event, message) => callback(message)),
 });
