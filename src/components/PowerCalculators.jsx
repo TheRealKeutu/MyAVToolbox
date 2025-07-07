@@ -108,7 +108,7 @@ export default function PowerCalculator() {
 
       <hr />
 
-      <h2>🧮 Dimensionnement des équipements</h2>
+      <h2>🧮 Consommation des équipements</h2>
       <label>
         <input type="checkbox" checked={isThreePhase} onChange={() => setIsThreePhase(!isThreePhase)} />
         {' '}Triphasé

@@ -6,7 +6,7 @@ export default function Welcome() {
     <div className="welcome-container">
       <h1>Bienvenue dans RackTools 🎛️</h1>
       <p>Votre boîte à outils audiovisuelle tout-en-un</p>
-      <p>Des outils pour le son, la vidéo, la lumière, l'électricité et bientôt d'autres.</p>
+      <p>Des outils pour le son, la vidéo, la lumière, l'électricité et les réseaux.</p>
     </div>
   );
 }

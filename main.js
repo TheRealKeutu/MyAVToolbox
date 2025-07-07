@@ -128,6 +128,16 @@ function getHardwarePorts() {
   });
 }
 
+let dmxUsbUniverse = null;
+
+function startDmxUsbReceiver() {
+  const dmx = new DMX();
+  dmxUsbUniverse = dmx.addUniverse('usb', 'enttec-usb-dmx-pro', '/dev/ttyUSB0'); // Remplacer par le bon port
+
+  // Le module DMX ne supporte pas nativement la lecture, donc ici uniquement pour rappel futur.
+  // Pour un vrai retour de trame depuis USB, il faut un module plus bas niveau (non couvert ici).
+}
+
 ipcMain.handle('get-network-interfaces', async () => {
   const interfaces = os.networkInterfaces();
   const hardwarePorts = await getHardwarePorts();
@@ -259,6 +269,7 @@ ipcMain.handle('osc-set-listen-config', (event, { ip, port }) => {
 // 🚀 Lancement
 app.whenReady().then(() => {
   startOscServer();
+  // startDmxUsbReceiver(); ← facultatif (car lecture USB non gérée directement ici)
   createWindow();
 });
 

@@ -1,6 +1,8 @@
 {
-  "name": "Racktools",
+  "name": "racktools",
   "version": "1.0.0",
+  "description": "Outils techniques audiovisuels",
+  "author": "Thomas Gouazé",
   "main": "main.js",
   "type": "module",
   "scripts": {
@@ -13,7 +15,6 @@
     "dist": "electron-builder"
   },
   "dependencies": {
-    "@serialport/parser-readline": "^13.0.0",
     "express": "^5.1.0",
     "html2canvas": "^1.4.1",
     "jspdf": "^3.0.1",
@@ -23,7 +24,7 @@
     "react-dom": "^18.3.1",
     "react-flow-renderer": "^10.3.17",
     "react-router-dom": "^7.6.1",
-    "serialport": "^13.0.0",
+    "sacn": "^4.6.2",
     "uuid": "^11.1.0",
     "ws": "^8.18.3"
   },
@@ -32,11 +33,17 @@
     "concurrently": "^8.2.2",
     "electron": "^28.3.3",
     "electron-packager": "^17.1.2",
+    "electron-rebuild": "^3.2.9",
     "vite": "^6.3.5",
     "wait-on": "^7.0.1"
   },
   "build": {
-    "asarUnpack": ["server/osc-server.js"],
+    "appId": "com.keutu.racktools",
+    "productName": "RackTools",
+    "icon": "assets/icon.ico",
+    "asarUnpack": [
+      "server/osc-server.js"
+    ],
     "files": [
       "dist/",
       "main.js",
@@ -44,7 +51,15 @@
       {
         "from": "server",
         "to": "server",
-        "filter": ["osc-server.js"]
+        "filter": [
+          "osc-server.js"
+        ]
+      }
+    ],
+    "extraResources": [
+      {
+        "from": "assets/",
+        "to": "assets"
       }
     ],
     "mac": {
@@ -53,7 +68,12 @@
     },
     "win": {
       "target": "nsis",
-      "icon": "assets/icon.png"
+      "icon": "assets/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true
     }
   }
 }

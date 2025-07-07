@@ -59,24 +59,35 @@ export default function LAcousticsTable() {
 
   return (
     <div className="content">
-      <h1>🔌 Tableau L-Acoustics</h1>
+      <h1>🔌 Tableau charge L-Acoustics</h1>
       <p>Nombre d'enceintes par patte d'ampli et calcul du nombre d'amplis nécessaires.</p>
 
-      <div className="buttonGroup" style={{ flexDirection: 'row', flexWrap: 'wrap', gap: '0.5rem', marginTop: '1rem' }}>
-        {allSeries.map((s) => (
-          <button
-            key={s}
-            onClick={() => setFilter(s)}
-            className="button"
-            style={{
-              backgroundColor: filter === s ? '#facc15' : '#eee',
-              fontWeight: filter === s ? 'bold' : 'normal',
-            }}
-          >
-            {s}
-          </button>
-        ))}
-      </div>
+    <div style={{
+      display: 'flex',
+      gap: '6px',
+      borderBottom: '2px solid #ccc',
+      marginBottom: '1rem',
+      flexWrap: 'wrap'
+    }}>
+      {allSeries.map((serie) => (
+        <button
+          key={serie}
+          onClick={() => setFilter(serie)}
+          style={{
+            padding: '8px 16px',
+            border: 'none',
+            borderBottom: filter === serie ? '3px solid #facc15' : '3px solid transparent',
+            backgroundColor: 'transparent',
+            fontWeight: filter === serie ? 'bold' : 'normal',
+            color: filter === serie ? '#000' : '#666',
+            cursor: 'pointer',
+            outline: 'none',
+          }}
+        >
+          {serie}
+        </button>
+      ))}
+    </div>
 
       <div style={{ overflowX: 'auto', marginTop: '1rem' }}>
         <table className="table" style={{ minWidth: '700px' }}>
@@ -148,28 +159,29 @@ export default function LAcousticsTable() {
           >
             🔄 Réinitialiser
           </button>
-
-          <h3 style={{ marginTop: '2rem' }}>📈 Nombre d'amplis nécessaires</h3>
-          <table className="table" style={{ marginTop: '0.5rem' }}>
-            <thead>
-              <tr>
-                {amps.map((amp) => (
-                  <th key={amp}>{amp}</th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                {amps.map((amp) => (
-                  <td key={amp} style={{ textAlign: 'center', fontWeight: 'bold' }}>
-                    {totalPerAmp[amp]}
-                  </td>
-                ))}
-              </tr>
-            </tbody>
-          </table>
         </>
       )}
+
+      {/* Ce bloc est toujours affiché */}
+      <h3 style={{ marginTop: '2rem' }}>📈 Nombre d'amplis nécessaires</h3>
+      <table className="table" style={{ marginTop: '0.5rem' }}>
+        <thead>
+          <tr>
+            {amps.map((amp) => (
+              <th key={amp}>{amp}</th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            {amps.map((amp) => (
+              <td key={amp} style={{ textAlign: 'center', fontWeight: 'bold' }}>
+                {totalPerAmp[amp]}
+              </td>
+            ))}
+          </tr>
+        </tbody>
+      </table>
     </div>
   );
 }

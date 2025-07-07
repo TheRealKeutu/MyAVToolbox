@@ -19,6 +19,7 @@ import AudioToolbox from './components/AudioToolbox.jsx';
 import PinkNoiseGenerator from './components/PinkNoiseGenerator.jsx';
 import LightingToolbox from './components/LightingToolbox.jsx';
 import OscViewer from './components/OscViewer.jsx';
+import RFLinkCalculator from './components/RFLinkCalculator.jsx';
 
 import Test from './components/Test.jsx';
 
@@ -56,6 +57,7 @@ function App() {
       case 'AudioVideoSyncTester': return <AudioVideoSyncTester />;
       case 'OscViewer': return <OscViewer />;
       case 'test': return <Test />;
+      case 'RFLinkCalculator': return <RFLinkCalculator />;
       default: return <div>Page non trouvée</div>;
     }
   };

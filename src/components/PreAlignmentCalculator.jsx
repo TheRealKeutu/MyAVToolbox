@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import lAcousticsData from '../data/lAcoustics_prealignment_presets.json';
 import Logo from '/lacoustics-path-difference.png'
 
@@ -14,7 +14,6 @@ export default function PreAlignmentCalculator() {
 
   const handleFamilyClick = (family) => {
     setSelectedFamily(family);
-    setSelectedCombination(null);
     setDistances({});
   };
 
@@ -34,6 +33,25 @@ export default function PreAlignmentCalculator() {
       [elementName]: value,
     }));
   };
+
+  useEffect(() => {
+    // Si aucune configuration sélectionnée, on initialise une configuration par défaut "temporaire"
+    if (!selectedCombination) {
+      const defaultCombo = {
+        config: ['Enceinte A', 'Enceinte B'],
+        delays: { 'Enceinte A': 0, 'Enceinte B': 0 },
+        invertPolarity: [],
+      };
+
+      const defaultDistances = {
+        'Enceinte A': 0,
+        'Enceinte B': 0,
+      };
+
+      setSelectedCombination(defaultCombo);
+      setDistances(defaultDistances);
+    }
+  }, []);
 
   return (
     <div className="content">
@@ -135,24 +153,37 @@ export default function PreAlignmentCalculator() {
         </section>
       )}
 
-      <section style={{ marginTop: '2rem' }}>
-        <h2>Famille</h2>
-        <div className="buttonGroup">
-          {Object.keys(families).map((fam) => (
-            <button
-              key={fam}
-              onClick={() => handleFamilyClick(fam)}
-              className="button"
-              style={{
-                backgroundColor: selectedFamily === fam ? '#6c63ff' : '#ddd',
-                color: selectedFamily === fam ? '#fff' : '#000',
-              }}
-            >
-              {fam}
-            </button>
-          ))}
-        </div>
-      </section>
+        <section style={{ marginTop: '2rem' }}>
+          <h2>Famille</h2>
+          <div
+            style={{
+              display: 'flex',
+              gap: '6px',
+              borderBottom: '2px solid #ccc',
+              marginBottom: '1rem',
+              flexWrap: 'wrap',
+            }}
+          >
+            {Object.keys(families).map((fam) => (
+              <button
+                key={fam}
+                onClick={() => handleFamilyClick(fam)}
+                style={{
+                  padding: '8px 16px',
+                  border: 'none',
+                  borderBottom: selectedFamily === fam ? '3px solid #facc15' : '3px solid transparent',
+                  backgroundColor: 'transparent',
+                  fontWeight: selectedFamily === fam ? 'bold' : 'normal',
+                  color: selectedFamily === fam ? '#000' : '#666',
+                  cursor: 'pointer',
+                  outline: 'none',
+                }}
+              >
+                {fam}
+              </button>
+            ))}
+          </div>
+        </section>
 
       {selectedFamily && families[selectedFamily]?.combinations?.length > 0 && (
         <section style={{ marginTop: '2rem' }}>

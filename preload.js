@@ -26,4 +26,7 @@ contextBridge.exposeInMainWorld('electronAPI', {
 
   // OSC : écouter les messages entrants
   onOscIncoming: (callback) => ipcRenderer.on('osc-incoming', (event, message) => callback(message)),
+
+  // DMX 
+  onDMXData: (callback) => ipcRenderer.on('dmx-data', (_, data) => callback(data))
 });
