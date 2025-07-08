@@ -12,4 +12,8 @@
 
 ## Licence
 
-Ce projet est open source sous licence MIT.
+## License
+
+This project is licensed under the GNU General Public License v3.0.  
+See the [LICENSE](./LICENSE) file for more details.
+
