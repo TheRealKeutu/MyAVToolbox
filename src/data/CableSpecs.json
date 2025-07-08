@@ -1,0 +1,133 @@
+{
+  "xlr": {
+    "label": "XLR (Audio analogique)",
+    "maxLength": 90,
+    "note": "Balancé, peut aller jusqu'à ~100 m dans de bonnes conditions (studio, isolateurs).",
+    "lossPerMeterDb": 0.002,
+    "maxAcceptableLossDb": 3
+  },
+  "dmx": {
+    "label": "DMX512 (Éclairage)",
+    "maxLength": 100,
+    "note": "Jusqu’à 300 m en théorie, mais utiliser répéteur/splitter au-delà de 100 m.",
+    "lossPerMeterDb": 0.01,
+    "maxAcceptableLossDb": 5
+  },
+  "artnet": {
+    "label": "Art-Net / sACN",
+    "maxLength": 100,
+    "note": "Protocole IP ; limitation physique liée au câble Ethernet (Cat5e/6 max 100 m sur cuivre)."
+  },
+  "video": {
+    "label": "Vidéo HD-SDI",
+    "maxLength": 70,
+    "note": "HD‑SDI ~70 m max, au-delà → fibre ou convertisseur actif.",
+    "lossPerMeterDb": 0.15,
+    "maxAcceptableLossDb": 6
+  },
+  "3g-sdi": {
+    "label": "Vidéo 3G-SDI",
+    "maxLength": 100,
+    "note": "Typiquement 70 à 100 m max selon câble (Belden 1694A conseillé)."
+  },
+  "12g-sdi": {
+    "label": "Vidéo 12G-SDI",
+    "maxLength": 30,
+    "note": "Très sensible ; utiliser câble haute qualité (Belden 4794R)."
+  },
+  "hdmi": {
+    "label": "HDMI (grand public)",
+    "maxLength": 10,
+    "note": "Longueur max recommandée ~5–10 m sans amplification ; au-delà → optique ou HDBaseT."
+  },
+  "hdbaset": {
+    "label": "HDBaseT (vidéo sur Cat)",
+    "maxLength": 100,
+    "note": "Jusqu'à 100 m (1080p/4K) via Cat6a blindé ; sans compression."
+  },
+  "audioCat5": {
+    "label": "Audio sur Cat5 (ex: AES50, EtherSound)",
+    "maxLength": 100,
+    "note": "Jusqu’à ~100 m, utiliser câble Cat5e/Cat6 solide pour éviter les pertes."
+  },
+  "aes50": {
+    "label": "AES50",
+    "maxLength": 75,
+    "note": "Jusqu’à ~80–100 m théoriquement ; Cat5e blindé impératif."
+  },
+  "dante": {
+    "label": "Dante / Audio sur IP",
+    "maxLength": 100,
+    "note": "Max 100 m sur cuivre ; fibre recommandée au-delà."
+  },
+  "madi": {
+    "label": "MADI (coaxial ou fibre)",
+    "maxLength": 100,
+    "note": "Coaxial : jusqu'à 100 m ; fibre : jusqu’à 2 km (multimode) ou plus en monomode."
+  },
+  "rj45": {
+    "label": "Réseau RJ45 (Ethernet)",
+    "maxLength": 100,
+    "note": "Limite standard de l’Ethernet cuivre (Cat5e/Cat6)."
+  },
+  "fiber": {
+    "label": "Fibre optique multimode",
+    "maxLength": 2000,
+    "note": "Multimode : jusqu'à 2 km ; très peu de perte."
+  },
+  "fiber-sm": {
+    "label": "Fibre optique monomode",
+    "maxLength": 10000,
+    "note": "Jusqu’à 10 km voire + ; réservée aux très longues distances ou liaisons réseau backbone."
+  },
+  "power": {
+    "label": "Alimentation (électrique)",
+    "maxLength": 50,
+    "note": "Dépend de la section. Attention aux chutes de tension.",
+    "defaultVoltage": 230,
+    "defaultResistivity": 0.0178,
+    "defaultMaxDropPercent": 5
+  },
+  "speakon": {
+    "label": "Speakon (Audio puissance)",
+    "maxLength": 30,
+    "note": "Fortement dépendant de la puissance transmise et de la section (souvent 2.5mm² ou +)."
+  },
+  "powercon": {
+    "label": "PowerCON (Alim verrouillée)",
+    "maxLength": 50,
+    "note": "Même logique que câble secteur ; attention à la section selon intensité."
+  },
+  "socapex": {
+    "label": "Socapex (6 circuits)",
+    "maxLength": 30,
+    "note": "Utilisé pour alimenter plusieurs circuits lumières ; attention à la section individuelle."
+  },
+  "multicore": {
+    "label": "Multicore analogique",
+    "maxLength": 60,
+    "note": "Plusieurs lignes XLR groupées ; perte accrue selon blindage et qualité."
+  },
+  "triax": {
+    "label": "Triax (caméras broadcast)",
+    "maxLength": 500,
+    "note": "Longueur jusqu'à 500 m selon caméra et câble ; remplace par fibre dans les setups modernes."
+  },
+  "coaxial": {
+    "label": "Coaxial RF (antenne HF)",
+    "maxLength": 20,
+    "note": "Très sensible aux pertes. Préférer câble faible perte (RG213, LMR400, etc).",
+    "lossPerMeterDb": 0.5,
+    "maxAcceptableLossDb": 3
+  },
+  "usb": {
+    "label": "USB (caméras, contrôle)",
+    "maxLength": 5,
+    "note": "Longueur max recommandée sans répéteur : 5 m (USB 2.0), 3 m (USB 3.0)."
+  },
+  "midi": {
+    "label": "MIDI (contrôle musical)",
+    "maxLength": 15,
+    "note": "Max 15 m en passif. Au-delà : convertisseurs MIDI vers Ethernet/DMX."
+  }
+}

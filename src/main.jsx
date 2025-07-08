@@ -20,6 +20,8 @@ import PinkNoiseGenerator from './components/PinkNoiseGenerator.jsx';
 import LightingToolbox from './components/LightingToolbox.jsx';
 import OscViewer from './components/OscViewer.jsx';
 import RFLinkCalculator from './components/RFLinkCalculator.jsx';
+import CableRunEstimator from './components/CableRunEstimator.jsx';
+import ProjectorDistanceTool from './components/ProjectorDistanceTool.jsx';
 
 import Test from './components/Test.jsx';
 
@@ -56,8 +58,12 @@ function App() {
       case 'crc-calculator': return <CRCCalculator />;
       case 'AudioVideoSyncTester': return <AudioVideoSyncTester />;
       case 'OscViewer': return <OscViewer />;
-      case 'test': return <Test />;
       case 'RFLinkCalculator': return <RFLinkCalculator />;
+      case 'CableRunEstimator': return <CableRunEstimator />;
+      case 'ProjectorDistanceTool': return <ProjectorDistanceTool />;
+
+      case 'test': return <Test />;
+
       default: return <div>Page non trouvée</div>;
     }
   };

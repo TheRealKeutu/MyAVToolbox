@@ -27,8 +27,7 @@ export default function RFLinkCalculator() {
 
   return (
     <div>
-      <h2>📡 Calculateur de lien RF</h2>
-
+      <h2>📡 Calculateur de pertes RF</h2>
       <div>
         <label>
           Type de câble :
@@ -109,14 +108,14 @@ export default function RFLinkCalculator() {
           <div style={{
             height: '100%',
             width: `${Math.min(Math.max((totalGain + 20) * 2.5, 0), 100)}%`,
-            background: totalGain >= 0 ? '#4caf50' : (totalGain > -10 ? '#ffc107' : '#f44336'),
+            background: totalGain >= 0 ? '#4caf50' : (totalGain > -6 ? '#ffc107' : '#f44336'),
             transition: 'width 0.3s'
           }}></div>
         </div>
         <p style={{ fontSize: '0.9em' }}>
           {totalGain >= 0
             ? '✅ Bon niveau de signal'
-            : totalGain > -10
+            : totalGain > -6
               ? '⚠️ Signal dégradé'
               : '❌ Trop de pertes'}
         </p>
