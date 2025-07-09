@@ -1,105 +1,218 @@
-/* styles.css */
+/* ================================
+   📦 Base & Thème
+==================================*/
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+:root {
+  --color-bg: #ffffff23;
+  --color-text: #000000;
+  --color-muted: #f5f5f549;
+  --color-border: #ccc;
+  --color-accent: #005a9a;
+  --color-accent-dark: #005fa363;
+  --color-success: #28a746c3;
+  --color-error: #dc3546c4;
+  --color-shadow: rgba(0, 0, 0, 0.1);
+}
+
+.dark-mode {
+  --color-bg: #121212;
+  --color-text: #eee;
+  --color-muted: #222;
+  --color-border: #444;
+  --color-accent: #4ba6ff;
+  --color-accent-dark: #2b7fc9;
+  --color-shadow: rgba(0, 0, 0, 0.4);
+}
 
 body, html {
   margin: 0;
   padding: 0;
   height: 100%;
-  font-family: Arial, sans-serif;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
 }
+
+/* ================================
+   🧱 Layout général
+==================================*/
 
 .app {
   display: flex;
+  flex-direction: row;
   height: 100vh;
 }
 
 .sidebar {
   width: 260px;
   padding: 1rem;
-  background-color: #f5f5f5;
-  height: 100vh;
+  background-color: var(--color-muted);
   box-sizing: border-box;
   overflow-y: auto;
-  border-right: 1px solid #ccc;
   display: flex;
   flex-direction: column;
   align-items: center;
+  box-shadow: 2px 0 5px var(--color-shadow);
 }
 
-.dark-mode .sidebar {
-  background-color: #222;
-  color: #afa;
+.content {
+  flex: 1;
+  padding: 1rem;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+/* ================================
+   🎨 Typographie & Titres
+==================================*/
+
+.title {
+  font-size: 1.6rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: var(--color-accent);
+}
+
+.heading {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+/* ================================
+   🎛️ Composants UI
+==================================*/
+
+.buttonGroup {
+  display: flex;
+  flex-direction: column; /* Par défaut : vertical */
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.buttonGroup.vertical {
+  flex-direction: column;
+}
+
+.buttonGroup.horizontal {
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.buttonGroup.responsive-horizontal {
+  flex-direction: column;
+}
+
+@media (min-width: 600px) {
+  .buttonGroup.responsive-horizontal {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+.button {
+  flex: 1 1 auto;
+  min-width: 180px;
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-muted);
+  color: var(--color-text);
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.button:hover {
+  background-color: var(--color-accent);
+  color: white;
+  border-color: var(--color-accent-dark);
+  box-shadow: 0 2px 5px var(--color-shadow);
+}
+
+.button.primary {
+  background-color: var(--color-accent);
+  color: white;
+  border-color: var(--color-accent-dark);
+}
+
+.button.primary:hover {
+  background-color: var(--color-accent-dark);
+}
+
+.button.success {
+  background-color: var(--color-success);
+  color: white;
+}
+
+.button.error {
+  background-color: var(--color-error);
+  color: white;
+}
+
+.button.active {
+  background-color: var(--color-accent);
+  color: white;
+  border-color: var(--color-accent-dark);
+  box-shadow: 0 0 0 2px var(--color-accent-dark) inset;
+}
+
+.input, input, select, textarea {
+  padding: 0.5rem;
+  font-size: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 0.2rem;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  box-shadow: inset 0 1px 2px var(--color-shadow);
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.card {
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  box-shadow: 0 1px 3px var(--color-shadow);
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.fade-in {
+  animation: fadein 0.3s ease-in-out;
+}
+
+@keyframes fadein {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .logo {
   width: 100px;
   height: 100px;
   object-fit: contain;
-  margin-bottom: 1rem;
+  display: block;
 }
 
-.title {
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
-  text-align: center;
-}
-
-.heading {
-  font-size: 1.1rem;
-  margin-bottom: 0.5rem;
-}
-
-.buttonGroup {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  width: 100%;
-}
-
-.button {
-  padding: 0.5rem;
-  font-size: 1rem;
-  cursor: pointer;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  background-color: #ffffff;
-  text-align: left;
-  width: 100%;
-  transition: background 0.2s;
-}
-
-.button:hover {
-  background-color: #e0e0e0;
-}
-
-.content {
-  flex: 1;
-  padding: 1rem;
-  background-color: #ffffff;
-  height: 100vh;
-  box-sizing: border-box;
-  overflow-y: auto;
-}
-
-input, select {
-  padding: 0.4rem;
-  font-size: 1rem;
-  width: 100%;
-  box-sizing: border-box;
-  margin-top: 0.2rem;
-}
-
-label {
-  display: flex;
-  flex-direction: column;
-}
-
-.input {
-  padding: 0.5rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  width: 100%;
-  box-sizing: border-box;
-}
+/* ================================
+   🧮 Tableaux
+==================================*/
 
 .table {
   width: 100%;
@@ -107,16 +220,19 @@ label {
   margin-top: 1rem;
 }
 
-.table th,
-.table td {
-  border: 1px solid #ccc;
+.table th, .table td {
+  border: 1px solid var(--color-border);
   padding: 0.5rem;
   text-align: left;
 }
 
 .table th {
-  background-color: #f3f3f3;
+  background-color: var(--color-muted);
 }
+
+/* ================================
+   📐 Synoptic Tools
+==================================*/
 
 .synoptic-header {
   font-size: 1.8rem;
@@ -133,26 +249,23 @@ label {
 }
 
 .synoptic-button {
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  font-weight: 600;
+  @extend .button;
+  background-color: var(--color-accent);
   color: white;
-  background-color: #0077cc;
+  font-weight: 600;
   border: none;
-  cursor: pointer;
-  box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  transition: background-color 0.2s;
+  box-shadow: 1px 1px 3px var(--color-shadow);
 }
 
 .synoptic-button:hover {
-  background-color: #005fa3;
+  background-color: var(--color-accent-dark);
 }
 
 .synoptic-canvas {
   position: relative;
   width: 100%;
   height: 600px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--color-border);
   border-radius: 8px;
   overflow: hidden;
   background-color: #f9fafb;
@@ -166,31 +279,24 @@ label {
   min-width: 100px;
   max-width: 200px;
   padding: 0.5rem;
-  border: 1px solid #ccc;
-  background-color: white;
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
   border-radius: 8px;
-  box-shadow: 1px 1px 4px rgba(0,0,0,0.1);
+  box-shadow: 1px 1px 4px var(--color-shadow);
   user-select: none;
 }
 
 .synoptic-shape.selected {
-  border: 2px solid #0077cc;
-}
-
-.synoptic-image {
-  width: 100px;
-  height: 100px;
-  object-fit: contain;
-  margin: auto;
+  border: 2px solid var(--color-accent);
 }
 
 .synoptic-label-input,
 .synoptic-label-textarea {
   width: 100%;
   padding: 0.25rem;
-  border-radius: 4px;
   font-size: 0.9rem;
-  border: 1px solid #ccc;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
 }
 
 .synoptic-connection-button {
@@ -198,9 +304,9 @@ label {
   padding: 0.25rem 0.5rem;
   border-radius: 4px;
   color: white;
-  background-color: #28a745;
   border: none;
   cursor: pointer;
+  background-color: var(--color-success);
 }
 
 .synoptic-connection-button:hover {
@@ -208,72 +314,57 @@ label {
 }
 
 .synoptic-connection-end {
-  background-color: #dc3545;
+  background-color: var(--color-error);
 }
 
 .synoptic-connection-end:hover {
   background-color: #c82333;
 }
 
-/* Mode clair par défaut */
-.light-mode {
-  background-color: #fff;
-  color: #222;
+/* ================================
+   🧪 Log & Accueil
+==================================*/
+
+.log-container {
+  padding: 1rem;
+  font-family: monospace;
+  border-radius: 6px;
+  background-color: var(--color-muted);
+  color: var(--color-text);
+  overflow-y: auto;
+  max-height: 300px;
 }
 
-/* Mode sombre */
-.dark-mode {
-  background-color: #121212;
-  color: #eee;
-}
-
-/* Exemple d’adaptation pour Sidebar, inputs, boutons, etc. */
-
-.dark-mode button {
-  background-color: #444;
-  color: #eee;
-}
-
-.light-mode button {
-  background-color: #ddd;
-  color: #222;
-}
-
-/* Pour ton container log dans MidiOscRouter ou autre, adapte la classe */
-.dark-mode .log-container {
-  background-color: #222;
-  color: #afa;
-}
-
-.light-mode .log-container {
-  background-color: #111;
-  color: #0f0;
-}
-
-/* Container principal */
 .welcome-container {
   padding: 2rem;
+  border-radius: 8px;
+  background-color: var(--color-muted);
+  color: var(--color-text);
 }
 
-/* Mode clair */
-.light-mode .welcome-container {
-  background-color: #fff;
-  color: #222;
+.welcome-container h1,
+.welcome-container p {
+  margin-bottom: 1rem;
 }
 
-/* Mode sombre */
-.dark-mode .welcome-container {
-  background-color: #111;
-  color: #afa;
-}
+/* ================================
+   📱 Responsive
+==================================*/
 
-/* Tu peux aussi styliser les titres ou paragraphes si tu veux */
-.light-mode .welcome-container h1,
-.light-mode .welcome-container p {
-  color: #222;
-}
+@media (max-width: 768px) {
+  .app {
+    flex-direction: column;
+  }
 
-.dark-mode .welcome-container h1,
-.dark-mode .welcome-container p {
-  color: #afa;
+  .sidebar {
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 0.5rem;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
 }

@@ -133,7 +133,7 @@ export default function RFLinkCalculator() {
           {totalGain >= 0
             ? '✅ Bon niveau de signal'
             : totalGain > -6
-              ? '⚠️ Signal dégradé'
+              ? '⚠️ Signal dégradé mais acceptable'
               : '❌ Trop de pertes'}
         </p>
       </div>

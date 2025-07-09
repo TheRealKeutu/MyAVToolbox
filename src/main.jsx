@@ -28,7 +28,7 @@ import PreAlignmentCalculator from './components/PreAlignmentCalculator.jsx';
 import SynopticBuilder from './components/SynopticBuilder.jsx';
 import DMXDipswitch from './components/DMXDipswitch.jsx';
 import DMXFrameViewer from './components/DMXFrameViewer.jsx';
-import Toolbox from './components/VideoToolbox.jsx';
+import VideoToolbox from './components/VideoToolbox.jsx';
 import VideoTestPattern from './components/VideoTestPattern.jsx';
 import CRCCalculator from './components/CRCCalculator.jsx';
 import AudioVideoSyncTester from './components/AudioVideoSyncTester.jsx';
@@ -39,6 +39,8 @@ import OscViewer from './components/OscViewer.jsx';
 import RFLinkCalculator from './components/RFLinkCalculator.jsx';
 import CableRunEstimator from './components/CableRunEstimator.jsx';
 import ProjectorDistanceTool from './components/ProjectorDistanceTool.jsx';
+import CableSectionCalculator from './components/CableSectionCalculator.jsx';
+import PowerToolbox from './components/PowerToolbox.jsx';
 
 import Test from './components/Test.jsx';
 
@@ -68,7 +70,8 @@ function App() {
       case 'DmxDipswitch': return <DMXDipswitch />;
       case 'AudioToolbox': return <AudioToolbox onSelect={setView} />;
       case 'LightingToolbox': return <LightingToolbox onSelect={setView} />;
-      case 'toolbox': return <Toolbox onSelect={setView} />;
+      case 'toolbox': return <VideoToolbox onSelect={setView} />;
+      case 'PowerToolbox': return <PowerToolbox onSelect={setView} />;
       case 'rose-noise': return <PinkNoiseGenerator />;
       case 'video-test': return <VideoTestPattern />;
       case 'dmx-viewer': return <DMXFrameViewer />;
@@ -78,6 +81,7 @@ function App() {
       case 'RFLinkCalculator': return <RFLinkCalculator />;
       case 'CableRunEstimator': return <CableRunEstimator />;
       case 'ProjectorDistanceTool': return <ProjectorDistanceTool />;
+      case 'CableSectionCalculator': return <CableSectionCalculator />;
 
       case 'test': return <Test />;
 
