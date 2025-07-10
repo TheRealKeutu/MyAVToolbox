@@ -17,6 +17,7 @@
 
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
+
 import Sidebar from './components/Sidebar.jsx';
 import Welcome from './components/Welcome.jsx';
 import PowerCalculator from './components/PowerCalculators.jsx';
@@ -30,7 +31,6 @@ import DMXDipswitch from './components/DMXDipswitch.jsx';
 import DMXFrameViewer from './components/DMXFrameViewer.jsx';
 import VideoToolbox from './components/VideoToolbox.jsx';
 import VideoTestPattern from './components/VideoTestPattern.jsx';
-import CRCCalculator from './components/CRCCalculator.jsx';
 import AudioVideoSyncTester from './components/AudioVideoSyncTester.jsx';
 import AudioToolbox from './components/AudioToolbox.jsx';
 import PinkNoiseGenerator from './components/PinkNoiseGenerator.jsx';
@@ -49,48 +49,49 @@ import './styles.css';
 function App() {
   const [view, setView] = useState('welcome');
   const [darkMode, setDarkMode] = useState(() => {
-    // Restaurer le choix utilisateur dans localStorage au démarrage
-    return localStorage.getItem('darkMode') === 'true';
+    const stored = localStorage.getItem('darkMode');
+    return stored ? stored === 'true' : false;
   });
 
   useEffect(() => {
     localStorage.setItem('darkMode', darkMode);
+    document.documentElement.classList.toggle('dark-mode', darkMode);
   }, [darkMode]);
 
   const renderContent = () => {
+    const sharedProps = { darkMode };
+
     switch (view) {
-      case 'welcome': return <Welcome />;
-      case 'power': return <PowerCalculator />;
-      case 'bandwidth': return <BandwidthCalculator />;
-      case 'video': return <VideoCalculator />;
-      case 'ipconfig': return <IPConfig />;
-      case 'LAcousticsLoadCalc': return <LAcousticsLoadCalculator />;
-      case 'PreAlignmentCalculator': return <PreAlignmentCalculator />;
-      case 'SynopticBuilder': return <SynopticBuilder />;
-      case 'DmxDipswitch': return <DMXDipswitch />;
-      case 'AudioToolbox': return <AudioToolbox onSelect={setView} />;
-      case 'LightingToolbox': return <LightingToolbox onSelect={setView} />;
-      case 'toolbox': return <VideoToolbox onSelect={setView} />;
-      case 'PowerToolbox': return <PowerToolbox onSelect={setView} />;
-      case 'rose-noise': return <PinkNoiseGenerator />;
-      case 'video-test': return <VideoTestPattern />;
-      case 'dmx-viewer': return <DMXFrameViewer />;
-      case 'crc-calculator': return <CRCCalculator />;
-      case 'AudioVideoSyncTester': return <AudioVideoSyncTester />;
-      case 'OscViewer': return <OscViewer />;
-      case 'RFLinkCalculator': return <RFLinkCalculator />;
-      case 'CableRunEstimator': return <CableRunEstimator />;
-      case 'ProjectorDistanceTool': return <ProjectorDistanceTool />;
-      case 'CableSectionCalculator': return <CableSectionCalculator />;
-
-      case 'test': return <Test />;
-
-      default: return <div>Page non trouvée</div>;
+      case 'welcome': return <Welcome {...sharedProps} />;
+      case 'power': return <PowerCalculator {...sharedProps} />;
+      case 'bandwidth': return <BandwidthCalculator {...sharedProps} />;
+      case 'video': return <VideoCalculator {...sharedProps} />;
+      case 'ipconfig': return <IPConfig {...sharedProps} />;
+      case 'LAcousticsLoadCalc': return <LAcousticsLoadCalculator {...sharedProps} />;
+      case 'PreAlignmentCalculator': return <PreAlignmentCalculator {...sharedProps} />;
+      case 'SynopticBuilder': return <SynopticBuilder {...sharedProps} />;
+      case 'DmxDipswitch': return <DMXDipswitch {...sharedProps} />;
+      case 'AudioToolbox': return <AudioToolbox onSelect={setView} {...sharedProps} />;
+      case 'LightingToolbox': return <LightingToolbox onSelect={setView} {...sharedProps} />;
+      case 'toolbox': return <VideoToolbox onSelect={setView} {...sharedProps} />;
+      case 'PowerToolbox': return <PowerToolbox onSelect={setView} {...sharedProps} />;
+      case 'rose-noise': return <PinkNoiseGenerator {...sharedProps} />;
+      case 'video-test': return <VideoTestPattern {...sharedProps} />;
+      case 'dmx-viewer': return <DMXFrameViewer {...sharedProps} />;
+      case 'crc-calculator': return <CRCCalculator {...sharedProps} />;
+      case 'AudioVideoSyncTester': return <AudioVideoSyncTester {...sharedProps} />;
+      case 'OscViewer': return <OscViewer {...sharedProps} />;
+      case 'RFLinkCalculator': return <RFLinkCalculator {...sharedProps} />;
+      case 'CableRunEstimator': return <CableRunEstimator {...sharedProps} />;
+      case 'ProjectorDistanceTool': return <ProjectorDistanceTool {...sharedProps} />;
+      case 'CableSectionCalculator': return <CableSectionCalculator {...sharedProps} />;
+      case 'test': return <Test {...sharedProps} />;
+      default: return <div>Page not found</div>;
     }
   };
 
   return (
-    <div className={darkMode ? 'dark-mode' : 'light-mode'} style={{ display: 'flex', height: '100vh' }}>
+    <div style={{ display: 'flex', height: '100vh' }}>
       <Sidebar currentPage={view} onSelect={setView} />
       <div style={{ flex: 1, padding: '1rem' }}>
         <div style={{ marginBottom: '1rem', textAlign: 'right' }}>
@@ -101,11 +102,12 @@ function App() {
               padding: '0.4rem 0.8rem',
               borderRadius: '4px',
               border: 'none',
-              backgroundColor: darkMode ? '#444' : '#ddd',
-              color: darkMode ? '#eee' : '#222',
+              backgroundColor: 'var(--color-muted)',
+              color: 'var(--color-text)',
+              fontWeight: '500',
             }}
           >
-            {darkMode ? '🌞 Mode clair' : '🌙 Mode sombre'}
+            {darkMode ? '🌞 Light mode' : '🌙 Dark mode'}
           </button>
         </div>
         {renderContent()}

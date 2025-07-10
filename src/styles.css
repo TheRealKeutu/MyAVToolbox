@@ -16,7 +16,7 @@
   --color-shadow: rgba(0, 0, 0, 0.1);
 }
 
-.dark-mode {
+:root.dark-mode {
   --color-bg: #121212;
   --color-text: #eee;
   --color-muted: #222;
@@ -340,6 +340,7 @@ label {
   border-radius: 8px;
   background-color: var(--color-muted);
   color: var(--color-text);
+  background-color: var(--color-bg);
 }
 
 .welcome-container h1,
@@ -367,4 +368,54 @@ label {
     top: 0;
     z-index: 10;
   }
+}
+
+.main-content {
+  flex: 1;
+  padding: 1rem;
+  box-sizing: border-box;
+  overflow-y: auto;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+.top-bar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+}
+
+.toggle-theme {
+  cursor: pointer;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  border: none;
+  background-color: var(--color-muted);
+  color: var(--color-text);
+  transition: background-color 0.2s ease;
+  font-weight: 500;
+}
+
+.toggle-theme:hover {
+  background-color: var(--color-accent);
+  color: white;
+}
+
+.dark-mode .synoptic-canvas {
+  background-color: #1a1a1a;
+  background-image:
+    repeating-linear-gradient(to right, #2a2a2a 0 1px, transparent 1px 20px),
+    repeating-linear-gradient(to bottom, #2a2a2a 0 1px, transparent 1px 20px);
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
