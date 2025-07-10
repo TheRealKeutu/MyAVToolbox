@@ -1,19 +1,18 @@
 # RackTools
 
-**RackTools** est une application pour les techniciens audiovisuels, regroupant des outils pratiques pour la scène, le câblage, les calculs de puissance, et plus encore.
+**RackTools** is an application for AV technicians, bringing together practical tools for staging, cabling, power calculations, and more.
 
-## Fonctionnalités principales
+## Key Features
 
-- Créateur de synoptique (avec connexions dynamiques)
-- Calculateur de puissance électrique
-- Générateur de bruit rose, visualiseur DMX, testeur vidéo
-- Configuration réseau simplifiée
-- Boîte à outils pour techniciens
-
-## Licence
+- Technician's toolbox
+- Simplified network configuration
+- Electrical power and cable section calculator
+- Pink noise generator, audio calculator ...
+- RF link loss
+- OSC monitoring
+- Video and audio sync ...
 
 ## License
 
-This project is licensed under the GNU General Public License v3.0.  
+This project is licensed under the GNU General Public License v3.0.
 See the [LICENSE](./LICENSE) file for more details.
-
