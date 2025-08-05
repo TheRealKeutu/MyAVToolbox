@@ -32,7 +32,7 @@ export default function IPConfig() {
         setInterfaces(data);
       })
       .catch(err => {
-        console.error('Error during interface fetching :', err);
+        console.error('Error during interface fetching:', err);
       });
   };
 
@@ -44,9 +44,9 @@ export default function IPConfig() {
     const adapter = interfaces.find(i => i.name === e.target.value);
     setSelected(adapter);
     setIpConfig({
-      address: adapter.address || '',
-      netmask: adapter.netmask || '',
-      gateway: adapter.gateway || '192.168.1.1'
+      address: adapter?.address || '',
+      netmask: adapter?.netmask || '',
+      gateway: '192.168.1.1'
     });
     setScanResults([]);
   };
@@ -59,32 +59,25 @@ export default function IPConfig() {
   const handleSubmit = () => {
     if (!selected) return;
 
-    if (mode === 'static') {
-      const payload = {
-        name: selected.name,
-        ...ipConfig,
-      };
+    const payload = {
+      name: selected.name,
+      ...ipConfig,
+    };
 
-      window.electronAPI.invoke('set-static-ip', payload)
-        .then(() => {
-          setResultMsg('Configuration succesfully applied.');
-        })
-        .catch(err => {
-          setResultMsg('Erreur : ' + err.message);
-        });
-    } else {
-      window.electronAPI.invoke('set-dhcp', { label: selected.label })
-        .then(() => {
-          setResultMsg('DHCP command sent.');
-        })
-        .catch(err => {
-          setResultMsg('Error : ' + err.message);
-        });
-    }
+    const invokeMethod = mode === 'static' ? 'set-static-ip' : 'set-dhcp';
+    const invokeData = mode === 'static' ? payload : { name: selected.name };
+
+    window.electronAPI.invoke(invokeMethod, invokeData)
+      .then(() => {
+        setResultMsg(mode === 'static' ? 'Configuration successfully applied.' : 'DHCP command sent.');
+      })
+      .catch(err => {
+        setResultMsg('Error: ' + err.message);
+      });
   };
 
   const handleScan = () => {
-    if (!selected || !selected.address) return;
+    if (!selected?.address) return;
     const subnet = selected.address.split('.').slice(0, 3).join('.') + '.0';
     setIsScanning(true);
     window.electronAPI.invoke('scan-subnet', { subnet })
@@ -93,7 +86,7 @@ export default function IPConfig() {
         setIsScanning(false);
       })
       .catch(err => {
-        setResultMsg('Scan error : ' + err.message);
+        setResultMsg('Scan error: ' + err.message);
         setIsScanning(false);
       });
   };
@@ -107,12 +100,12 @@ export default function IPConfig() {
       </div>
 
       <div style={{ marginBottom: '1rem' }}>
-        <label><strong>Network Adaptator :</strong></label><br />
+        <label><strong>Network Adapter:</strong></label><br />
         <select value={selected?.name || ''} onChange={handleAdapterChange} style={{ width: '100%', padding: '0.5rem' }}>
           <option value="">-- Select --</option>
           {interfaces.map(iface => (
             <option key={iface.name} value={iface.name}>
-              {iface.label || iface.name} ({iface.address})
+              {iface.name} ({iface.address})
             </option>
           ))}
         </select>
@@ -121,7 +114,7 @@ export default function IPConfig() {
       {selected && (
         <>
           <div style={{ marginBottom: '1rem' }}>
-            <label><strong>Mode IPV4 :</strong></label><br />
+            <label><strong>IPV4 Mode:</strong></label><br />
             <select value={mode} onChange={(e) => setMode(e.target.value)} style={{ width: '100%', padding: '0.5rem' }}>
               <option value="dhcp">DHCP</option>
               <option value="static">Fixed IP</option>
@@ -130,7 +123,7 @@ export default function IPConfig() {
 
           {mode === 'static' && (
             <div className="buttonGroup" style={{ marginBottom: '1rem' }}>
-              <label>IP Adress :</label>
+              <label>IP Address:</label>
               <input
                 className="input"
                 name="address"
@@ -138,7 +131,7 @@ export default function IPConfig() {
                 onChange={handleInputChange}
               />
 
-              <label>Subnet mask :</label>
+              <label>Subnet Mask:</label>
               <input
                 className="input"
                 name="netmask"
@@ -146,7 +139,7 @@ export default function IPConfig() {
                 onChange={handleInputChange}
               />
 
-              <label>Passerelle :</label>
+              <label>Gateway:</label>
               <input
                 className="input"
                 name="gateway"
@@ -158,14 +151,14 @@ export default function IPConfig() {
 
           <div className="buttonGroup" style={{ flexDirection: 'row', flexWrap: 'wrap', gap: '1rem' }}>
             <button className="button" onClick={handleSubmit}>💾 Apply</button>
-            <button className="button" onClick={handleScan}>🔍 Subnet scan </button>
+            <button className="button" onClick={handleScan}>🔍 Subnet scan</button>
           </div>
 
           {isScanning && <p style={{ marginTop: '1rem' }}>⏳ Scanning...</p>}
 
           {scanResults.length > 0 && (
             <div style={{ marginTop: '1rem' }}>
-              <h3>Active devices detected :</h3>
+              <h3>Active devices detected:</h3>
               <ul>
                 {scanResults.filter(entry => entry.active).map((entry, idx) => (
                   <li key={idx}>
@@ -186,3 +179,4 @@ export default function IPConfig() {
     </div>
   );
 }
+

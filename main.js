@@ -157,23 +157,21 @@ function startDmxUsbReceiver() {
 
 ipcMain.handle('get-network-interfaces', async () => {
   const interfaces = os.networkInterfaces();
-  const hardwarePorts = await getHardwarePorts();
-  const result = [];
+  const results = [];
 
-  Object.entries(interfaces).forEach(([name, details]) => {
-    const ipv4 = details.find(d => d.family === 'IPv4' && !d.internal);
+  for (const [name, entries] of Object.entries(interfaces)) {
+    const ipv4 = entries.find(entry => entry.family === 'IPv4' && !entry.internal);
     if (ipv4) {
-      result.push({
+      results.push({
         name,
-        label: hardwarePorts[name] || name,
         address: ipv4.address,
         netmask: ipv4.netmask,
-        gateway: deduceGateway(ipv4.address),
+        mac: ipv4.mac
       });
     }
-  });
+  }
 
-  return result;
+  return results;
 });
 
 ipcMain.handle('set-static-ip', async (event, { name, address, netmask, gateway }) => {
