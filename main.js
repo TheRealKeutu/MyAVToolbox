@@ -256,6 +256,7 @@ function pingHost(ip) {
     });
   });
 }
+//
 
 ipcMain.handle('save-equipment-db', async (event, updatedEquipment) => {
   const dbPath = path.join(__dirname, 'assets', 'equipmentDB.json');
