@@ -44,10 +44,10 @@ export default function RFLinkCalculator() {
 
   return (
     <div>
-      <h2>📡 Calculateur de pertes RF</h2>
+      <h2>📡 RF loss calculator</h2>
       <div>
         <label>
-          Type de câble :
+          TCable type :
           <select value={selectedCable} onChange={(e) => setSelectedCable(e.target.value)}>
             {cableTypes.map(cable => (
               <option key={cable.name} value={cable.name}>
@@ -61,7 +61,7 @@ export default function RFLinkCalculator() {
       {selectedCable === 'Autre (manuel)' && (
         <div>
           <label>
-            Perte du câble personnalisée (dB/m) :
+            Custom cable loss (dB/m) :
             <input
               type="number"
               step="0.01"
@@ -74,44 +74,44 @@ export default function RFLinkCalculator() {
 
       <div>
         <label>
-          Longueur du câble (m) :
+          Cable length (m) :
           <input type="number" value={cableLength} onChange={(e) => setCableLength(Number(e.target.value))} />
         </label>
       </div>
 
       <div>
         <label>
-          Nombre de connecteurs :
+          Number of connectors :
           <input type="number" value={numConnectors} onChange={(e) => setNumConnectors(Number(e.target.value))} />
         </label>
       </div>
 
       <div>
         <label>
-          Perte par connecteur (dB) :
+          Connector loss (dB) :
           <input type="number" step="0.1" value={connectorLoss} onChange={(e) => setConnectorLoss(Number(e.target.value))} />
         </label>
       </div>
 
       <div>
         <label>
-          Gain antenne émission (dB) :
+          Transmitting antenna gain (dB) :
           <input type="number" value={antennaGainTx} onChange={(e) => setAntennaGainTx(Number(e.target.value))} />
         </label>
       </div>
 
       <div>
         <label>
-          Gain antenne réception (dB) :
+          Reception antenna gain (dB) :
           <input type="number" value={antennaGainRx} onChange={(e) => setAntennaGainRx(Number(e.target.value))} />
         </label>
       </div>
 
       <hr />
 
-      <p><strong>🔻 Perte totale câblage + connecteurs :</strong> {totalLoss.toFixed(2)} dB</p>
-      <p><strong>🔺 Gain des antennes + transmetteurs :</strong> {gain.toFixed(2)} dB</p>
-      <p><strong>📶 Bilan total du lien RF :</strong> {totalGain.toFixed(2)} dB</p>
+      <p><strong>🔻 Total loss of wiring + connectors :</strong> {totalLoss.toFixed(2)} dB</p>
+      <p><strong>🔺 Gain of antennas + transmitters :</strong> {gain.toFixed(2)} dB</p>
+      <p><strong>📶 Total RF Link Balance :</strong> {totalGain.toFixed(2)} dB</p>
 
             <div style={{ marginTop: '1rem' }}>
         <div style={{

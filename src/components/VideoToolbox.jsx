@@ -19,11 +19,14 @@ import React from 'react';
 
 export default function VideoToolbox({ onSelect }) {
   return (
-    <div className="buttonGroup">
-      <button className="button" onClick={() => onSelect('video-test')}>📺 Testeur vidéo</button>
-      <button className="button" onClick={() => onSelect('video')}>🎬 Calculateur de débit vidéo</button>
-      <button className="button" onClick={() => onSelect('AudioVideoSyncTester')}>🗣️ Audio Video Sync</button>
-      <button className="button" onClick={() => onSelect('ProjectorDistanceTool')}>📽️ Projection</button>
+    <div className="content">
+      <h1>Video ToolBox</h1>
+      <div className="buttonGroup">
+        <button className="button" onClick={() => onSelect('video-test')}>📺 Video test patterns</button>
+        <button className="button" onClick={() => onSelect('video')}>🎬 Framerate calculator</button>
+        <button className="button" onClick={() => onSelect('AudioVideoSyncTester')}>🗣️ Audio Video Sync</button>
+        <button className="button" onClick={() => onSelect('ProjectorDistanceTool')}>📽️ Projection distance calculator</button>
+      </div>
     </div>
   );
 }

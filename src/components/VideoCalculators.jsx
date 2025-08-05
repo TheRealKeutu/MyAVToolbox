@@ -53,14 +53,14 @@ export default function VideoCalculator() {
   return (
     <div style={{ padding: '2rem' }}>
         <h1>Vidéo 🎬</h1>
-      <h2>Calculateur de débit vidéo</h2>
-        <p>Un outil pour :</p>
-        <p>Calculer le débit approximatif selon le codec, la résolution et la fréquence d’images
-        Fournir des valeurs indicatives</p>
+      <h2>Video Bitrate Calculator</h2>
+        <p>A tool to :</p>
+        <p>Calculate approximate bitrate based on codec, resolution, and frame rate
+           Provide guideline values</p>
       
 
       <div>
-        <label>Résolution : </label>
+        <label>Resolution : </label>
         <select value={resolution} onChange={e => setResolution(e.target.value)}>
           {Object.keys(resolutions).map(r => (
             <option key={r} value={r}>{r}</option>
@@ -87,7 +87,7 @@ export default function VideoCalculator() {
       </div>
 
       <div>
-        <label>Durée (minutes) : </label>
+        <label>Duration (minutes) : </label>
         <input
           type="number"
           value={duration}
@@ -95,8 +95,8 @@ export default function VideoCalculator() {
         />
       </div>
 
-      <h3>Débit estimé : {bitrate} Mbit/s</h3>
-      <h3>Taille approximative du fichier : {filesize} Go</h3>
+      <h3>Estimated bitrate : {bitrate} Mbit/s</h3>
+      <h3>Approximate file size : {filesize} Go</h3>
     </div>
   );
 }

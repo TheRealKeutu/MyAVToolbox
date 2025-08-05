@@ -45,11 +45,11 @@ export default function DMXFrameViewer() {
 
   return (
     <div>
-      <h2>🎛 Visualiseur de trame DMX</h2>
+      <h2>🎛 DMX frame viewer</h2>
 
       <div style={{ marginBottom: '1rem' }}>
         <label>
-          Protocole :
+          Protocol :
           <select
             value={selectedProtocol}
             onChange={(e) => setSelectedProtocol(e.target.value)}
@@ -62,7 +62,7 @@ export default function DMXFrameViewer() {
         </label>
 
         <label style={{ marginLeft: '2rem' }}>
-          Univers :
+          Universe :
           <input
             type="number"
             value={selectedUniverse}
@@ -72,8 +72,8 @@ export default function DMXFrameViewer() {
         </label>
 
         <label style={{ marginLeft: '2rem' }}>
-          De <input type="number" min="1" max="512" value={startChannel} onChange={(e) => setStartChannel(Number(e.target.value))} />
-          à <input type="number" min="1" max="512" value={endChannel} onChange={(e) => setEndChannel(Number(e.target.value))} />
+          From <input type="number" min="1" max="512" value={startChannel} onChange={(e) => setStartChannel(Number(e.target.value))} />
+          To <input type="number" min="1" max="512" value={endChannel} onChange={(e) => setEndChannel(Number(e.target.value))} />
         </label>
       </div>
 

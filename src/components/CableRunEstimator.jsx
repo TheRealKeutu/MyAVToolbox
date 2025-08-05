@@ -53,12 +53,12 @@ export default function CableRunEstimator() {
       return {
         value: totalLoss.toFixed(2) + ' dB',
         warning: isTooMuch
-          ? '⚠️ Perte excessive, prévoir amplification ou fibre'
-          : '✅ Perte acceptable'
+          ? '⚠️ Too much loss, you may use fider or amplification'
+          : '✅ Acceptable loss'
       };
     }
 
-    return { value: 'N/A', warning: 'Pas de formule disponible' };
+    return { value: 'N/A', warning: 'No furmula available' };
   };
 
   const calculatePowerDrop = (length, current, section, spec) => {
@@ -79,8 +79,8 @@ export default function CableRunEstimator() {
       value: `${drop.toFixed(2)} V (${percent.toFixed(1)}%)`,
       warning:
         drop > maxDrop
-          ? '⚠️ Chute de tension excessive, augmenter la section'
-          : '✅ Chute de tension acceptable'
+          ? '⚠️ Too much tension loss, use larger section'
+          : '✅ Tension loss acceptable'
     };
   };
 
@@ -104,10 +104,10 @@ export default function CableRunEstimator() {
 
   return (
     <div style={{ padding: '1rem', maxWidth: 600 }}>
-      <h2>🔌 Estimateur de longueur de câble</h2>
+      <h2>🔌 Cable run estimator</h2>
 
       <label>
-        Type de câble/protocole :
+        Cable/protocole type :
         <select
           value={selectedType}
           onChange={e => setSelectedType(e.target.value)}
@@ -122,7 +122,7 @@ export default function CableRunEstimator() {
       <br /><br />
 
       <label>
-        Longueur estimée (mètres) :
+        Estimated length (meters) :
         <input
           type="number"
           value={length}
@@ -135,7 +135,7 @@ export default function CableRunEstimator() {
         <>
           <br /><br />
           <label>
-            Intensité (A) :
+            Intensity (A) :
             <input
               type="number"
               value={current}
@@ -146,7 +146,7 @@ export default function CableRunEstimator() {
 
           <br /><br />
           <label>
-            Section du câble (mm²) :
+            Cable section (mm²) :
             <input
               type="number"
               value={section}
@@ -154,7 +154,7 @@ export default function CableRunEstimator() {
               style={{ marginLeft: 10, width: 80 }}
             />
             <span style={{ marginLeft: 10, color: 'gray' }}>
-              (auto : basé sur l’intensité)
+              (auto : based on intensity)
             </span>
           </label>
         </>
@@ -164,7 +164,7 @@ export default function CableRunEstimator() {
 
       {loss && (
         <div>
-          <strong>Perte estimée :</strong> {loss.value}<br />
+          <strong>Estimated loss :</strong> {loss.value}<br />
           <span style={{ color: loss.warning.includes('⚠️') ? 'red' : 'green' }}>
             {loss.warning}
           </span>
@@ -186,9 +186,9 @@ export default function CableRunEstimator() {
           }}
         >
           <strong>
-            {isValid ? '✅ Longueur acceptable' : '⚠️ Longueur excessive'}
+            {isValid ? '✅ Acceptable length' : '⚠️ Excessive length'}
           </strong>
-          <p><em>Max recommandé : {spec.maxLength} m</em></p>
+          <p><em>Recommended Max : {spec.maxLength} m</em></p>
           <p>{spec.note}</p>
         </div>
       )}

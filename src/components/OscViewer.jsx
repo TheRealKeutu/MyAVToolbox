@@ -103,11 +103,11 @@ export default function MidiOscRouter() {
 
   return (
     <div style={{ fontFamily: 'sans-serif', maxWidth: 700, margin: 'auto' }}>
-      <h1>🎚️ Monitoring OSC</h1>
+      <h1>🎚️ OSC Monitoring</h1>
 
       <div style={{ display: 'flex', gap: '1rem', marginBottom: '1rem', flexWrap: 'wrap' }}>
         <label>
-          IP cible :
+          Target IP :
           <input
             value={ip}
             onChange={(e) => setIp(e.target.value)}
@@ -124,13 +124,13 @@ export default function MidiOscRouter() {
           />
         </label>
         <button onClick={sendOsc} style={{ padding: '0 1rem' }}>
-          Envoyer OSC /test
+          Send OSC test
         </button>
       </div>
 
       <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
         <label>
-          🛜 IP d’écoute OSC :
+          🛜 OSC listening IP :
           <input
             value={oscListenIp}
             onChange={(e) => setOscListenIp(e.target.value)}
@@ -138,7 +138,7 @@ export default function MidiOscRouter() {
           />
         </label>
         <label>
-          Port d’écoute :
+          Listening port :
           <input
             type="number"
             value={oscListenPort}
@@ -146,7 +146,7 @@ export default function MidiOscRouter() {
             style={{ marginLeft: 8, width: 80 }}
           />
         </label>
-        <button onClick={changeListenConfig}>🔁 Appliquer écoute OSC</button>
+        <button onClick={changeListenConfig}>🔁 Apply OSC listening config</button>
       </div>
 
       <h2>📜 Journal</h2>

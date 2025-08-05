@@ -55,14 +55,14 @@ export default function PreAlignmentCalculator() {
     // Si aucune configuration sélectionnée, on initialise une configuration par défaut "temporaire"
     if (!selectedCombination) {
       const defaultCombo = {
-        config: ['Enceinte A', 'Enceinte B'],
-        delays: { 'Enceinte A': 0, 'Enceinte B': 0 },
+        config: ['Speaker A', 'Speaker B'],
+        delays: { 'Speaker A': 0, 'Speaker B': 0 },
         invertPolarity: [],
       };
 
       const defaultDistances = {
-        'Enceinte A': 0,
-        'Enceinte B': 0,
+        'Speaker A': 0,
+        'Speaker B': 0,
       };
 
       setSelectedCombination(defaultCombo);
@@ -72,7 +72,7 @@ export default function PreAlignmentCalculator() {
 
   return (
     <div className="content">
-      <h1>Préalignement L-Acoustics</h1>
+      <h1>L-Acoustics Pre-alignment</h1>
 
       {selectedCombination && (
         <section style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap', alignItems: 'flex-start' }}>
@@ -92,7 +92,7 @@ export default function PreAlignmentCalculator() {
           </div>
 
           <div style={{ flex: 1 }}>
-            <h2>Délai à appliquer</h2>
+            <h2>Delay to apply</h2>
             <div className="buttonGroup">
               {(() => {
                 const msPerMeter = 1000 / getSoundSpeed(temperature);
@@ -118,11 +118,11 @@ export default function PreAlignmentCalculator() {
                       <div>
                         Delay : <strong>{totalDelay.toFixed(2)} ms</strong>
                         <span style={{ marginLeft: '0.5rem', fontSize: '0.9rem', color: '#777' }}>
-                          (préalignement: {delay} ms + distance: {delta.toFixed(2)} ms)
+                          (prealignment: {delay} ms + distance: {delta.toFixed(2)} ms)
                         </span>
                         {inverted && (
                           <span style={{ color: 'red', fontWeight: 'bold', marginLeft: '1rem' }}>
-                            ⚠️ Polarité inversée
+                            ⚠️ invert polarity
                           </span>
                         )}
                       </div>
@@ -138,7 +138,7 @@ export default function PreAlignmentCalculator() {
       {selectedCombination && (
         <section style={{ marginTop: '2rem' }}>
           <div>
-            <label><strong>Température ambiante (°C) :</strong></label>
+            <label><strong>Ambient temperature (°C) :</strong></label>
             <input
               type="number"
               value={temperature}
@@ -149,7 +149,7 @@ export default function PreAlignmentCalculator() {
           </div>
 
           <div style={{ marginTop: '1rem' }}>
-            <h2>Distance jusqu’au point de mesure</h2>
+            <h2>Distance to mesure</h2>
             <div className="buttonGroup">
               {selectedCombination.config.map((el) => {
                 const baseName = el.split('_')[0];
@@ -171,7 +171,7 @@ export default function PreAlignmentCalculator() {
       )}
 
         <section style={{ marginTop: '2rem' }}>
-          <h2>Famille</h2>
+          <h2>Family</h2>
           <div
             style={{
               display: 'flex',
@@ -204,7 +204,7 @@ export default function PreAlignmentCalculator() {
 
       {selectedFamily && families[selectedFamily]?.combinations?.length > 0 && (
         <section style={{ marginTop: '2rem' }}>
-          <h2>Configurations disponibles</h2>
+          <h2>Available configurations</h2>
           <div className="buttonGroup">
             {families[selectedFamily].combinations.map((combo, idx) => (
               <button

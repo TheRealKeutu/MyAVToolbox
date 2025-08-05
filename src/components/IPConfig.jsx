@@ -32,7 +32,7 @@ export default function IPConfig() {
         setInterfaces(data);
       })
       .catch(err => {
-        console.error('Erreur lors de la récupération des interfaces :', err);
+        console.error('Error during interface fetching :', err);
       });
   };
 
@@ -67,7 +67,7 @@ export default function IPConfig() {
 
       window.electronAPI.invoke('set-static-ip', payload)
         .then(() => {
-          setResultMsg('Configuration appliquée avec succès.');
+          setResultMsg('Configuration succesfully applied.');
         })
         .catch(err => {
           setResultMsg('Erreur : ' + err.message);
@@ -75,10 +75,10 @@ export default function IPConfig() {
     } else {
       window.electronAPI.invoke('set-dhcp', { label: selected.label })
         .then(() => {
-          setResultMsg('Commande DHCP envoyée.');
+          setResultMsg('DHCP command sent.');
         })
         .catch(err => {
-          setResultMsg('Erreur : ' + err.message);
+          setResultMsg('Error : ' + err.message);
         });
     }
   };
@@ -93,23 +93,23 @@ export default function IPConfig() {
         setIsScanning(false);
       })
       .catch(err => {
-        setResultMsg('Erreur de scan : ' + err.message);
+        setResultMsg('Scan error : ' + err.message);
         setIsScanning(false);
       });
   };
 
   return (
     <div className="content">
-      <h1>Configuration réseau 🛜</h1>
+      <h1>Network Configuration 🛜</h1>
 
       <div className="buttonGroup" style={{ marginBottom: '1rem' }}>
-        <button className="button" onClick={fetchInterfaces}>🔄 Rafraîchir les interfaces</button>
+        <button className="button" onClick={fetchInterfaces}>🔄 Refresh interfaces</button>
       </div>
 
       <div style={{ marginBottom: '1rem' }}>
-        <label><strong>Adaptateur réseau :</strong></label><br />
+        <label><strong>Network Adaptator :</strong></label><br />
         <select value={selected?.name || ''} onChange={handleAdapterChange} style={{ width: '100%', padding: '0.5rem' }}>
-          <option value="">-- Sélectionner --</option>
+          <option value="">-- Select --</option>
           {interfaces.map(iface => (
             <option key={iface.name} value={iface.name}>
               {iface.label || iface.name} ({iface.address})
@@ -124,13 +124,13 @@ export default function IPConfig() {
             <label><strong>Mode IPV4 :</strong></label><br />
             <select value={mode} onChange={(e) => setMode(e.target.value)} style={{ width: '100%', padding: '0.5rem' }}>
               <option value="dhcp">DHCP</option>
-              <option value="static">IP Fixe</option>
+              <option value="static">Fixed IP</option>
             </select>
           </div>
 
           {mode === 'static' && (
             <div className="buttonGroup" style={{ marginBottom: '1rem' }}>
-              <label>Adresse IP :</label>
+              <label>IP Adress :</label>
               <input
                 className="input"
                 name="address"
@@ -138,7 +138,7 @@ export default function IPConfig() {
                 onChange={handleInputChange}
               />
 
-              <label>Masque :</label>
+              <label>Subnet mask :</label>
               <input
                 className="input"
                 name="netmask"
@@ -157,15 +157,15 @@ export default function IPConfig() {
           )}
 
           <div className="buttonGroup" style={{ flexDirection: 'row', flexWrap: 'wrap', gap: '1rem' }}>
-            <button className="button" onClick={handleSubmit}>💾 Appliquer</button>
-            <button className="button" onClick={handleScan}>🔍 Scanner le sous-réseau</button>
+            <button className="button" onClick={handleSubmit}>💾 Apply</button>
+            <button className="button" onClick={handleScan}>🔍 Subnet scan </button>
           </div>
 
-          {isScanning && <p style={{ marginTop: '1rem' }}>⏳ Scan en cours...</p>}
+          {isScanning && <p style={{ marginTop: '1rem' }}>⏳ Scanning...</p>}
 
           {scanResults.length > 0 && (
             <div style={{ marginTop: '1rem' }}>
-              <h3>Appareils actifs détectés :</h3>
+              <h3>Active devices detected :</h3>
               <ul>
                 {scanResults.filter(entry => entry.active).map((entry, idx) => (
                   <li key={idx}>

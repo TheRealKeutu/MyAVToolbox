@@ -85,14 +85,14 @@ export default function AudioCalculator() {
 
       {/* Distance / Temps */}
       <section>
-        <h2>Calculateur Distance / Temps</h2>
+        <h2>Distance / Time Calculator</h2>
         <div className="buttonGroup">
           <label>
             Température (°C) :
             <input type="number" value={temperature} onChange={e => setTemperature(Number(e.target.value))} />
           </label>
           <label>
-            Temps (ms) :
+            Time (ms) :
             <input type="number" value={time} onChange={e => setTime(Number(e.target.value))} />
           </label>
           <label>
@@ -106,16 +106,16 @@ export default function AudioCalculator() {
 
       {/* Longueur d’onde */}
       <section>
-        <h2>Calcul longueur d’onde λ</h2>
+        <h2>Wavelength calculator λ</h2>
         <div className="buttonGroup">
           <label>
-            Fréquence (Hz) :
+            Frequency (Hz) :
             <input type="number" value={freq} onChange={e => setFreq(Number(e.target.value))} />
           </label>
           <div>
-            <p>Vitesse du son : {speed.toFixed(2)} m/s</p>
-            <p>Période : {period} s</p>
-            <p>Longueur d’onde λ : {wavelength} m</p>
+            <p>Speed of sound : {speed.toFixed(2)} m/s</p>
+            <p>Period : {period} s</p>
+            <p>Wavelength λ : {wavelength} m</p>
             <p>½ λ : {(wavelength / 2).toFixed(3)} m</p>
             <p>¼ λ : {(wavelength / 4).toFixed(3)} m</p>
           </div>
@@ -126,16 +126,16 @@ export default function AudioCalculator() {
 
       {/* BPM ↔ Millisecondes */}
       <section>
-        <h2>Convertisseur BPM / Millisecondes</h2>
+        <h2>BPM / Milliseconds converter</h2>
         <div className="buttonGroup">
           <label>
             BPM :
             <input type="number" value={bpm} min={1} onChange={e => setBpm(Number(e.target.value))} />
           </label>
           <div>
-            <p>♪ Noire (1/4) : {ms} ms</p>
-            <p>♪ Croche (1/8) : {eighthNote} ms</p>
-            <p>♪ Croche pointée (1/8T) : {dottedEighth} ms</p>
+            <p>♪ Quarter note (1/4) : {ms} ms</p>
+            <p>♪ Eighth note (1/8) : {eighthNote} ms</p>
+            <p>♪ Dotted eighth (1/8T) : {dottedEighth} ms</p>
           </div>
         </div>
       </section>

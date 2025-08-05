@@ -123,25 +123,25 @@ export default function PinkNoiseGenerator() {
 
   return (
     <div>
-      <h1>🎛️ Générateur Audio</h1>
+      <h1>🎛️ Audio generator</h1>
 
       <div style={{ marginBottom: '1rem' }}>
         <label>
-          🔧 Type de signal :
+          🔧 Signal type :
           <select
             value={mode}
             onChange={(e) => setMode(e.target.value)}
             style={{ marginLeft: '1rem' }}
           >
-            <option value="pink">🔊 Bruit rose</option>
-            <option value="sine">🎵 Sinusoïde 1 kHz</option>
+            <option value="pink">🔊 Pink noise</option>
+            <option value="sine">🎵 1 kHz sine</option>
           </select>
         </label>
       </div>
 
       <div style={{ marginBottom: '1rem' }}>
         <label>
-          🎚️ Niveau de sortie ({gainDb} dBFS)
+          🎚️ Output level ({gainDb} dBFS)
           <input
             type="range"
             min={-60}
@@ -156,7 +156,7 @@ export default function PinkNoiseGenerator() {
 
       <div style={{ marginBottom: '1rem' }}>
         <label>
-          🎧 Interface audio de sortie :
+          🎧 Output device :
           <select
             value={selectedDevice}
             onChange={(e) => setSelectedDevice(e.target.value)}
@@ -172,7 +172,7 @@ export default function PinkNoiseGenerator() {
       </div>
 
       <button onClick={playing ? stop : start}>
-        {playing ? '⏹️ Stop' : mode === 'pink' ? '▶️ Lancer le bruit rose' : '▶️ Lancer le 1 kHz'}
+        {playing ? '⏹️ Stop' : mode === 'pink' ? '▶️ Start pink noise' : '▶️ Start 1 kHz sine'}
       </button>
 
       <audio ref={audioElementRef} hidden />

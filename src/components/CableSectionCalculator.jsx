@@ -119,8 +119,8 @@ export default function PowerCalculator() {
     return {
       value: `${drop.toFixed(2)} V (${percent.toFixed(1)}%)`,
       warning: drop > maxDrop
-        ? '⚠️ Chute de tension excessive, augmenter la section'
-        : '✅ Chute de tension acceptable'
+        ? '⚠️ Excessive voltage drop, increase cable cross-section'
+        : '✅ Acceptable tension loss'
     };
   };
 
@@ -129,28 +129,33 @@ export default function PowerCalculator() {
   return (
     <div className="content">
 
-      <hr style={{ margin: '2rem 0' }} />
+      <h1>📏 Cable section estimator</h1>
 
-      <h2>📏 Estimation de la section de câble</h2>
-
-      <label>
-        <input
-          type="checkbox"
-          checked={isThreePhase}
-          onChange={() => setIsThreePhase(!isThreePhase)}
-        />
-        {' '}Triphasé
-      </label>
+      <button
+        className="button"
+        onClick={() => setIsThreePhase(!isThreePhase)}
+        style={{
+            marginBottom: '1rem',
+            backgroundColor: isThreePhase ? '#0066cc' : '#ccc',
+            color: isThreePhase ? 'white' : 'black',
+            border: 'none',
+            padding: '0.5rem 1rem',
+            borderRadius: '4px',
+            cursor: 'pointer'
+        }}
+        >
+        {isThreePhase ? 'Mode : Three-phase⚡️⚡️⚡️' : 'Mode : Single-phase ⚡️'}
+      </button>
 
       <div className="buttonGroup">
-        <label>Longueur du câble (m) :</label>
+        <label>Cable length (m) :</label>
         <input
           type="number"
           value={cableLength}
           onChange={(e) => setCableLength(e.target.value)}
         />
 
-        <label>Intensité (A) :</label>
+        <label>Intensity (A) :</label>
         <input
           type="number"
           value={cableCurrent}
@@ -166,7 +171,7 @@ export default function PowerCalculator() {
 
         {loss && (
           <div style={{ marginTop: '1rem' }}>
-            <strong>Chute de tension estimée :</strong> {loss.value}<br />
+            <strong>estimated tension loss :</strong> {loss.value}<br />
             <span style={{ color: loss.warning.includes('⚠️') ? 'red' : 'green' }}>{loss.warning}</span>
           </div>
         )}

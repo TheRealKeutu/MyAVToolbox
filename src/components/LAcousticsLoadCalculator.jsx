@@ -76,8 +76,8 @@ export default function LAcousticsTable() {
 
   return (
     <div className="content">
-      <h1>🔌 Tableau charge L-Acoustics</h1>
-      <p>Nombre d'enceintes par patte d'ampli et calcul du nombre d'amplis nécessaires.</p>
+      <h1>🔌 L-Acoustics load table</h1>
+      <p>Number of speakers by output, and a calculator to determine the number of amps needed.</p>
 
     <div style={{
       display: 'flex',
@@ -110,11 +110,11 @@ export default function LAcousticsTable() {
         <table className="table" style={{ minWidth: '700px' }}>
           <thead>
             <tr>
-              <th>Modèle</th>
+              <th>Model</th>
               {amps.map((amp) => (
                 <th key={amp}>{amp}</th>
               ))}
-              <th>Ajouter</th>
+              <th>Add</th>
             </tr>
           </thead>
           <tbody>
@@ -137,13 +137,13 @@ export default function LAcousticsTable() {
 
       {selection.length > 0 && (
         <>
-          <h2 style={{ marginTop: '2rem' }}>📦 Configuration sélectionnée</h2>
+          <h2 style={{ marginTop: '2rem' }}>📦 Selected configuration </h2>
 
           <table className="table" style={{ marginTop: '1rem' }}>
             <thead>
               <tr>
-                <th>Modèle</th>
-                <th>Quantité</th>
+                <th>Model</th>
+                <th>Quantity</th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -174,13 +174,13 @@ export default function LAcousticsTable() {
             onClick={handleReset}
             style={{ marginTop: '1rem', backgroundColor: '#eee' }}
           >
-            🔄 Réinitialiser
+            🔄 Reinitialise
           </button>
         </>
       )}
 
       {/* Ce bloc est toujours affiché */}
-      <h3 style={{ marginTop: '2rem' }}>📈 Nombre d'amplis nécessaires</h3>
+      <h3 style={{ marginTop: '2rem' }}>📈 Number of amps needed</h3>
       <table className="table" style={{ marginTop: '0.5rem' }}>
         <thead>
           <tr>

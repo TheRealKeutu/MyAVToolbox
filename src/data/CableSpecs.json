@@ -1,133 +1,133 @@
 {
   "xlr": {
-    "label": "XLR (Audio analogique)",
+    "label": "XLR (Analog Audio)",
     "maxLength": 90,
-    "note": "Balancé, peut aller jusqu'à ~100 m dans de bonnes conditions (studio, isolateurs).",
+    "note": "Balanced, can reach up to ~100 m in good conditions (studio, isolators).",
     "lossPerMeterDb": 0.002,
     "maxAcceptableLossDb": 3
   },
   "dmx": {
-    "label": "DMX512 (Éclairage)",
+    "label": "DMX512 (Lighting)",
     "maxLength": 100,
-    "note": "Jusqu’à 300 m en théorie, mais utiliser répéteur/splitter au-delà de 100 m.",
+    "note": "Up to 300 m theoretically, but use a repeater/splitter beyond 100 m.",
     "lossPerMeterDb": 0.01,
     "maxAcceptableLossDb": 5
   },
   "artnet": {
     "label": "Art-Net / sACN",
     "maxLength": 100,
-    "note": "Protocole IP ; limitation physique liée au câble Ethernet (Cat5e/6 max 100 m sur cuivre)."
+    "note": "IP protocol; physical limit related to Ethernet cable (Cat5e/6 max 100 m on copper)."
   },
   "video": {
-    "label": "Vidéo HD-SDI",
+    "label": "HD-SDI Video",
     "maxLength": 70,
-    "note": "HD‑SDI ~70 m max, au-delà → fibre ou convertisseur actif.",
+    "note": "HD‑SDI ~70 m max, beyond that → fiber or active converter.",
     "lossPerMeterDb": 0.15,
     "maxAcceptableLossDb": 6
   },
   "3g-sdi": {
-    "label": "Vidéo 3G-SDI",
+    "label": "3G-SDI Video",
     "maxLength": 100,
-    "note": "Typiquement 70 à 100 m max selon câble (Belden 1694A conseillé)."
+    "note": "Typically 70 to 100 m max depending on cable (Belden 1694A recommended)."
   },
   "12g-sdi": {
-    "label": "Vidéo 12G-SDI",
+    "label": "12G-SDI Video",
     "maxLength": 30,
-    "note": "Très sensible ; utiliser câble haute qualité (Belden 4794R)."
+    "note": "Very sensitive; use high-quality cable (Belden 4794R)."
   },
   "hdmi": {
-    "label": "HDMI (grand public)",
+    "label": "HDMI (consumer)",
     "maxLength": 10,
-    "note": "Longueur max recommandée ~5–10 m sans amplification ; au-delà → optique ou HDBaseT."
+    "note": "Max recommended length ~5–10 m without amplification; beyond that → optical or HDBaseT."
   },
   "hdbaset": {
-    "label": "HDBaseT (vidéo sur Cat)",
+    "label": "HDBaseT (video over Cat)",
     "maxLength": 100,
-    "note": "Jusqu'à 100 m (1080p/4K) via Cat6a blindé ; sans compression."
+    "note": "Up to 100 m (1080p/4K) via shielded Cat6a; uncompressed."
   },
   "audioCat5": {
-    "label": "Audio sur Cat5 (ex: AES50, EtherSound)",
+    "label": "Audio over Cat5 (e.g., AES50, EtherSound)",
     "maxLength": 100,
-    "note": "Jusqu’à ~100 m, utiliser câble Cat5e/Cat6 solide pour éviter les pertes."
+    "note": "Up to ~100 m, use solid Cat5e/Cat6 cable to avoid loss."
   },
   "aes50": {
     "label": "AES50",
     "maxLength": 75,
-    "note": "Jusqu’à ~80–100 m théoriquement ; Cat5e blindé impératif."
+    "note": "Up to ~80–100 m theoretically; shielded Cat5e is essential."
   },
   "dante": {
-    "label": "Dante / Audio sur IP",
+    "label": "Dante / Audio over IP",
     "maxLength": 100,
-    "note": "Max 100 m sur cuivre ; fibre recommandée au-delà."
+    "note": "Max 100 m on copper; fiber recommended beyond that."
   },
   "madi": {
-    "label": "MADI (coaxial ou fibre)",
+    "label": "MADI (coax or fiber)",
     "maxLength": 100,
-    "note": "Coaxial : jusqu'à 100 m ; fibre : jusqu’à 2 km (multimode) ou plus en monomode."
+    "note": "Coax: up to 100 m; fiber: up to 2 km (multimode) or more with single-mode."
   },
   "rj45": {
-    "label": "Réseau RJ45 (Ethernet)",
+    "label": "RJ45 Network (Ethernet)",
     "maxLength": 100,
-    "note": "Limite standard de l’Ethernet cuivre (Cat5e/Cat6)."
+    "note": "Standard limit for copper Ethernet (Cat5e/Cat6)."
   },
   "fiber": {
-    "label": "Fibre optique multimode",
+    "label": "Multimode Optical Fiber",
     "maxLength": 2000,
-    "note": "Multimode : jusqu'à 2 km ; très peu de perte."
+    "note": "Multimode: up to 2 km; very low loss."
   },
   "fiber-sm": {
-    "label": "Fibre optique monomode",
+    "label": "Single-mode Optical Fiber",
     "maxLength": 10000,
-    "note": "Jusqu’à 10 km voire + ; réservée aux très longues distances ou liaisons réseau backbone."
+    "note": "Up to 10 km or more; used for long-distance or backbone links."
   },
   "power": {
-    "label": "Alimentation (électrique)",
+    "label": "Power (electric)",
     "maxLength": 50,
-    "note": "Dépend de la section. Attention aux chutes de tension.",
+    "note": "Depends on wire gauge. Watch for voltage drop.",
     "defaultVoltage": 230,
     "defaultResistivity": 0.0178,
     "defaultMaxDropPercent": 5
   },
   "speakon": {
-    "label": "Speakon (Audio puissance)",
+    "label": "Speakon (Speaker Power)",
     "maxLength": 30,
-    "note": "Fortement dépendant de la puissance transmise et de la section (souvent 2.5mm² ou +)."
+    "note": "Strongly depends on transmitted power and gauge (often 2.5 mm² or more)."
   },
   "powercon": {
-    "label": "PowerCON (Alim verrouillée)",
+    "label": "PowerCON (locked power)",
     "maxLength": 50,
-    "note": "Même logique que câble secteur ; attention à la section selon intensité."
+    "note": "Same logic as power cable; gauge must match current."
   },
   "socapex": {
     "label": "Socapex (6 circuits)",
     "maxLength": 30,
-    "note": "Utilisé pour alimenter plusieurs circuits lumières ; attention à la section individuelle."
+    "note": "Used to power multiple lighting circuits; be mindful of individual gauge."
   },
   "multicore": {
-    "label": "Multicore analogique",
+    "label": "Analog Multicore",
     "maxLength": 60,
-    "note": "Plusieurs lignes XLR groupées ; perte accrue selon blindage et qualité."
+    "note": "Multiple grouped XLR lines; loss increases with shielding quality."
   },
   "triax": {
-    "label": "Triax (caméras broadcast)",
+    "label": "Triax (broadcast cameras)",
     "maxLength": 500,
-    "note": "Longueur jusqu'à 500 m selon caméra et câble ; remplace par fibre dans les setups modernes."
+    "note": "Length up to 500 m depending on camera and cable; now often replaced by fiber."
   },
   "coaxial": {
-    "label": "Coaxial RF (antenne HF)",
+    "label": "RF Coaxial (wireless antenna)",
     "maxLength": 20,
-    "note": "Très sensible aux pertes. Préférer câble faible perte (RG213, LMR400, etc).",
+    "note": "Very sensitive to loss. Use low-loss cable (RG213, LMR400, etc).",
     "lossPerMeterDb": 0.5,
     "maxAcceptableLossDb": 3
   },
   "usb": {
-    "label": "USB (caméras, contrôle)",
+    "label": "USB (cameras, control)",
     "maxLength": 5,
-    "note": "Longueur max recommandée sans répéteur : 5 m (USB 2.0), 3 m (USB 3.0)."
+    "note": "Max recommended length without repeater: 5 m (USB 2.0), 3 m (USB 3.0)."
   },
   "midi": {
-    "label": "MIDI (contrôle musical)",
+    "label": "MIDI (musical control)",
     "maxLength": 15,
-    "note": "Max 15 m en passif. Au-delà : convertisseurs MIDI vers Ethernet/DMX."
+    "note": "Max 15 m passively. Beyond that: use MIDI to Ethernet/DMX converters."
   }
 }

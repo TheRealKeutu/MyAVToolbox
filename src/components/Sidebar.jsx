@@ -25,14 +25,14 @@ export default function Sidebar({ currentPage, onSelect, darkMode, onToggleDarkM
 
   const renderMainMenu = () => (
     <div className="buttonGroup vertical">
-      <button className="button" onClick={() => onSelect('welcome')}> 🏠 Accueil</button>
-      <button className="button" onClick={() => onSelect('AudioToolbox')}> 🔊 Son</button>
-      <button className="button" onClick={() => onSelect('toolbox')}> 🎬 Vidéo</button>
-      <button className="button" onClick={() => onSelect('LightingToolbox')}> 🎚️ Éclairage</button>
-      <button className="button" onClick={() => onSelect('ipconfig')}> 🛜 Réseau</button>
-      <button className="button" onClick={() => onSelect('OscViewer')}> 🎹 Monitoring OSC</button>
-      <button className="button" onClick={() => onSelect('PowerToolbox')}> ⚡️ Electricité</button>
-      <button className="button" onClick={() => onSelect('CableRunEstimator')}> 🧶 Longueur de câble</button>
+      <button className="button" onClick={() => onSelect('welcome')}> 🏠 Home</button>
+      <button className="button" onClick={() => onSelect('AudioToolbox')}> 🔊 Audio</button>
+      <button className="button" onClick={() => onSelect('toolbox')}> 🎬 Video</button>
+      <button className="button" onClick={() => onSelect('LightingToolbox')}> 💡 Lighting</button>
+      <button className="button" onClick={() => onSelect('ipconfig')}> 🛜 Network</button>
+      <button className="button" onClick={() => onSelect('OscViewer')}> 🎹 OSC monitoring</button>
+      <button className="button" onClick={() => onSelect('PowerToolbox')}> ⚡️ Power</button>
+      <button className="button" onClick={() => onSelect('CableRunEstimator')}> 🧶 Cable length</button>
     </div>
   );
 

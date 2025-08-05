@@ -19,9 +19,13 @@ import React from 'react';
 
 export default function PowerToolbox({ onSelect }) {
   return (
-    <div className="buttonGroup">
-        <button className="button" onClick={() => onSelect('power')}>⚡️ consommation équipements</button>
-        <button className="button" onClick={() => onSelect('CableSectionCalculator')}>⚡️ Section de câble et puissance</button>
-    </div>
+    <div className="content">
+      <h1>Power ToolBox</h1>
+
+      <div className="buttonGroup">
+          <button className="button" onClick={() => onSelect('power')}>⚡️ Equipment consumption</button>
+          <button className="button" onClick={() => onSelect('CableSectionCalculator')}>⚡️ Cable section and power</button>
+      </div>
+    </div>  
   );
 }

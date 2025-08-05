@@ -19,12 +19,16 @@ import React from 'react';
 
 export default function AudioToolbox({ onSelect }) {
   return (
-    <div className="buttonGroup">
-      <button className="button" onClick={() => onSelect('rose-noise')}>🎵 Générateur de signal</button>
-      <button className="button" onClick={() => onSelect('bandwidth')}>🎛 Calculateur audio</button>
-      <button className="button" onClick={() => onSelect('LAcousticsLoadCalc')}>📦 LAcoustics calculateur de charge </button>
-      <button className="button" onClick={() => onSelect('PreAlignmentCalculator')}>📐 LAcoustics Pré-alignement</button>
-      <button className="button" onClick={() => onSelect('RFLinkCalculator')}>📶 Bilan Liaisons RF</button>
-    </div>
+    <div className="content">
+      <h1>Audio ToolBox</h1>
+      
+      <div className="buttonGroup">
+        <button className="button" onClick={() => onSelect('rose-noise')}>🎵 Signal generator</button>
+        <button className="button" onClick={() => onSelect('bandwidth')}>🎛 Audio calculators</button>
+        <button className="button" onClick={() => onSelect('LAcousticsLoadCalc')}>📦 LAcoustics Load calculator </button>
+        <button className="button" onClick={() => onSelect('PreAlignmentCalculator')}>📐 LAcoustics Pre-alignment</button>
+        <button className="button" onClick={() => onSelect('RFLinkCalculator')}>📶 RF link calculator</button>
+      </div>
+    </div>  
   );
 }

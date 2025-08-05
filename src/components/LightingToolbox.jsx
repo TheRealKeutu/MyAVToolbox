@@ -19,9 +19,13 @@ import React from 'react';
 
 export default function LightingToolbox({ onSelect }) {
   return (
-    <div className="buttonGroup">
-      <button className="button" onClick={() => onSelect('DmxDipswitch')}>🎚️ DMX dipswitches</button>
-      {/*<button className="button" onClick={() => onSelect('dmx-viewer')}>🎚️ Trame DMX</button>*/}
+    <div className="content">
+      <h1>Lighting ToolBox</h1>
+
+      <div className="buttonGroup">
+        <button className="button" onClick={() => onSelect('DmxDipswitch')}>🎚️ DMX dipswitches</button>
+        {/*<button className="button" onClick={() => onSelect('dmx-viewer')}>🎚️ Trame DMX</button>*/}
+      </div>
     </div>
   );
 }

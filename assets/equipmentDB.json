@@ -1,23 +1,27 @@
 {
-  "lumière": [
-    { "name": "Projecteur LED", "power": 150 },
+  "lighting": [
+    { "name": "LED spotlight", "power": 150 },
     { "name": "PAR 64", "power": 1000 },
-    { "name": "Lyre motorisée", "power": 250 }
+    { "name": "Moving head", "power": 250 },
+    { "name": "Sunstrip", "power": 500 }
   ],
-  "son": [
-    { "name": "Enceinte active", "power": 500 },
-    { "name": "Console audio", "power": 150 },
-    { "name": "Amplificateur", "power": 800 },
+  "audio": [
+    { "name": "Active speaker", "power": 500 },
+    { "name": "Audio console", "power": 150 },
+    { "name": "Amplifier", "power": 800 },
     { "name": "L Acoustics LA4X", "power": 1600 }
   ],
-  "vidéo": [
-    { "name": "Vidéo projecteur", "power": 300 },
-    { "name": "Écran LED", "power": 450 },
-    { "name": "Régie vidéo", "power": 200 }
+  "video": [
+    { "name": "Video projector", "power": 300 },
+    { "name": "LED screen", "power": 450 },
+    { "name": "Video control desk", "power": 200 }
   ],
-  "traiteur": [
-    { "name": "Machine à café", "power": 1200 },
-    { "name": "Plaque chauffante", "power": 2000 },
-    { "name": "Réfrigérateur", "power": 150 }
+  "catering": [
+    { "name": "Coffee machine", "power": 1200 },
+    { "name": "Hot plate", "power": 2000 },
+    { "name": "Refrigerator", "power": 150 }
+  ],
+  "Miscellaneous": [
+    { "name": "Computer", "power": 120 }
   ]
 }

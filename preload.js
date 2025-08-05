@@ -17,6 +17,8 @@
 
 const { contextBridge, ipcRenderer } = require('electron');
 
+// Ouverture navigateur externe
+
 contextBridge.exposeInMainWorld('electronAPI', {
   // Réseau
   configureStaticIP: (config) => ipcRenderer.send('configure-static-ip', config),
@@ -45,5 +47,9 @@ contextBridge.exposeInMainWorld('electronAPI', {
   onOscIncoming: (callback) => ipcRenderer.on('osc-incoming', (event, message) => callback(message)),
 
   // DMX 
-  onDMXData: (callback) => ipcRenderer.on('dmx-data', (_, data) => callback(data))
+  onDMXData: (callback) => ipcRenderer.on('dmx-data', (_, data) => callback(data)),
+
+  // Ouverture navigateur externe
+  openExternal: (url) => ipcRenderer.send('open-external', url)
+
 });

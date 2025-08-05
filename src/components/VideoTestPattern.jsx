@@ -18,23 +18,23 @@
 import React, { useState, useRef, useEffect } from 'react';
 
 const patterns = [
-  'Grille',
-  'Barres SMPTE',
-  'Dégradé',
-  'Blanc',
-  'Noir',
+  'Grid',
+  'SMPTE bars',
+  'Gradient',
+  'White',
+  'Black',
   'Checkerboard',
-  'Lignes 1px',
+  '1px lines',
   'Overscan'
 ];
 
 export default function VideoTestPattern() {
-  const [pattern, setPattern] = useState('Grille');
+  const [pattern, setPattern] = useState('Grid');
   const popupRef = useRef(null);
 
   const getPatternStyle = (p = pattern) => {
     switch (p) {
-      case 'Grille':
+      case 'Grid':
         return {
           backgroundColor: '#000',
           backgroundImage: `
@@ -43,17 +43,17 @@ export default function VideoTestPattern() {
           `,
           backgroundSize: '40px 40px',
         };
-      case 'Barres SMPTE':
+      case 'SMPTE bars':
         return {
           background: 'linear-gradient(to right, #c0c0c0 14.28%, #ffffff 14.28%, #ffffff 28.56%, #00ff00 28.56%, #00ff00 42.84%, #ff0000 42.84%, #ff0000 57.12%, #0000ff 57.12%, #0000ff 71.4%, #ffff00 71.4%, #ffff00 85.68%, #00ffff 85.68%, #ff00ff 100%)',
         };
-      case 'Dégradé':
+      case 'Gradient':
         return {
           background: 'linear-gradient(to right, black, white)',
         };
-      case 'Blanc':
+      case 'White':
         return { backgroundColor: 'white' };
-      case 'Noir':
+      case 'Black':
         return { backgroundColor: 'black' };
       case 'Checkerboard':
         return {
@@ -61,7 +61,7 @@ export default function VideoTestPattern() {
             linear-gradient(45deg, white 25%, black 25%, black 50%, white 50%, white 75%, black 75%, black 100%)`,
           backgroundSize: '40px 40px',
         };
-      case 'Lignes 1px':
+      case '1px lines':
         return {
           backgroundImage: `repeating-linear-gradient(to bottom, black, black 1px, white 1px, white 2px)`,
         };
@@ -140,11 +140,11 @@ export default function VideoTestPattern() {
 
   return (
     <div>
-      <h1>🖥️ Testeur de Signal Vidéo</h1>
+      <h1>🖥️ Video test patterns</h1>
 
       <div style={{ marginBottom: '1rem' }}>
         <label>
-          Motif :
+          Pattern :
           <select
             value={pattern}
             onChange={(e) => setPattern(e.target.value)}
@@ -157,11 +157,11 @@ export default function VideoTestPattern() {
         </label>
 
         <button onClick={enterFullscreen} style={{ marginLeft: '1rem' }}>
-          ⛶ Plein écran
+          ⛶ Fullscreen
         </button>
 
         <button onClick={openInNewWindow} style={{ marginLeft: '1rem' }}>
-          🖥️ Ouvrir dans une fenêtre flottante
+          🖥️ open in floating windows
         </button>
       </div>
 

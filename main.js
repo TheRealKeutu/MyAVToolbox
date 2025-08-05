@@ -16,7 +16,7 @@
  */
 
 // main.js
-import { app, BrowserWindow, ipcMain } from 'electron';
+import { app, BrowserWindow, ipcMain,shell } from 'electron';
 import os from 'os';
 import { exec } from 'child_process';
 import path from 'path';
@@ -281,6 +281,10 @@ ipcMain.handle('osc-set-listen-config', (event, { ip, port }) => {
     return { success: true };
   }
   return { success: false, error: 'Pas de changement détecté' };
+});
+
+ipcMain.on('open-external', (event, url) => {
+  shell.openExternal(url);
 });
 
 // 🚀 Lancement
