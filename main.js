@@ -236,7 +236,18 @@ ipcMain.handle('scan-subnet', async (event, { subnet }) => {
 
 function pingHost(ip) {
   return new Promise((resolve, reject) => {
-    exec(`ping -c 1 -W 1 ${ip}`, (error) => {
+    const platform = process.platform;
+    let cmd;
+
+    if (platform === 'win32') {
+      // Windows : 1 ping, timeout 1000ms
+      cmd = `ping -n 1 -w 1000 ${ip}`;
+    } else {
+      // macOS/Linux
+      cmd = `ping -c 1 -W 1 ${ip}`;
+    }
+
+    exec(cmd, (error) => {
       if (error) {
         reject(error);
       } else {
