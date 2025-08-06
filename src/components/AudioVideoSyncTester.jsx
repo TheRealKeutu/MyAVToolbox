@@ -102,11 +102,11 @@ export default function AudioVideoSyncTester() {
 
   return (
     <div>
-      <h1>🧪 Test de Synchronisation Audio / Vidéo</h1>
+      <h1>🧪 Audio / Vidéo sync</h1>
 
       <div style={{ marginBottom: '1rem' }}>
         <label>
-          ⏱ Intervalle :
+          ⏱ Interval :
           <input
             type="number"
             value={intervalMs}
@@ -117,7 +117,7 @@ export default function AudioVideoSyncTester() {
         </label>
 
         <label style={{ marginLeft: '1rem' }}>
-          🎚 Décalage audio :
+          🎚 Audio offset :
           <input
             type="number"
             value={offsetMs}
@@ -127,9 +127,9 @@ export default function AudioVideoSyncTester() {
           ms
         </label>
 
-        <button onClick={startTest} style={{ marginLeft: '1rem' }}>▶️ Démarrer</button>
+        <button onClick={startTest} style={{ marginLeft: '1rem' }}>▶️ Start</button>
         <button onClick={stopTest} style={{ marginLeft: '1rem' }}>⏹ Stop</button>
-        <button onClick={openExternalWindow} style={{ marginLeft: '1rem' }}>🖥 Fenêtre flottante</button>
+        <button onClick={openExternalWindow} style={{ marginLeft: '1rem' }}>🖥 Floating window</button>
       </div>
 
       <div
@@ -151,9 +151,9 @@ export default function AudioVideoSyncTester() {
       </div>
 
       <p style={{ marginTop: '1rem', color: '#555', fontSize: '14px', maxWidth: '600px' }}>
-        Utilisez ce test pour identifier un éventuel décalage entre l'audio et la vidéo.
-        Si le "BEEP" ne coïncide pas exactement avec l’apparition du carré vert ou du mot, 
-        vous avez probablement un retard à corriger sur votre matériel.
+        Use this test to identify a possible lag between audio and video.
+        If the "beep" doesn't exactly coincide with the appearance of the green square or word,
+        you probably have a hardware delay that needs to be corrected.
       </p>
     </div>
   );
