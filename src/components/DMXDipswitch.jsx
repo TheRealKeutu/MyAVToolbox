@@ -42,11 +42,11 @@ export default function DMXDipswitch() {
 
   return (
     <div className="content">
-      <h1>Adresses DMX – Dipswitches</h1>
+      <h1>DMX Addresses – Dipswitches</h1>
 
       <div style={{ marginBottom: '1.5rem' }}>
         <label>
-          <strong>Adresse DMX (1–512):</strong>{' '}
+          <strong>DMX Address (1–512):</strong>{' '}
           <input
             type="number"
             min={1}
@@ -66,7 +66,7 @@ export default function DMXDipswitch() {
             onChange={(e) => setInverse(e.target.checked)}
             style={{ marginRight: '0.5rem' }}
           />
-          Mode inverse
+          Inverted mode
         </label>
       </div>
 
@@ -138,14 +138,15 @@ export default function DMXDipswitch() {
         }}
       >
         <p><strong>Binaire :</strong> {dipswitches.join('')}</p>
+        <p><strong>Binary:</strong> {dipswitches.join('')}</p>
         <p>
-          <strong>Hexadécimal :</strong>{' '}
+          <strong>Hexadecimal:</strong>{' '}
           {address.toString(16).toUpperCase().padStart(3, '0')}
         </p>
       </div>
 
       <p style={{ marginTop: '1rem', fontSize: '13px', color: '#555', maxWidth: '600px' }}>
-        Les dipswitches sont affichés de gauche (#1) à droite (#9). Cliquez pour les activer/désactiver. Le mode inverse simule les boîtiers où "ON" est en bas.
+        Dipswitches are displayed from left (#1) to right (#9). Click to toggle them. Inverted mode simulates enclosures where "ON" is at the bottom.
       </p>
     </div>
   );
