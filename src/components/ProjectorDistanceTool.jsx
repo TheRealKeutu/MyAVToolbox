@@ -18,7 +18,7 @@
 import React, { useState } from 'react';
 
 export default function ProjectorDistanceTool() {
-  const [modeInverse, setModeInverse] = useState(false);
+  const [inverseMode, setInverseMode] = useState(false);
 
   const [width, setWidth] = useState(3);
   const [ratio, setRatio] = useState('16:9');
@@ -38,22 +38,22 @@ export default function ProjectorDistanceTool() {
 
   return (
     <div>
-      <h2>🎥 Projecteur & Distance Tool</h2>
+      <h2>🎥 Projector & Distance Tool</h2>
 
       <button
-        className={`button ${modeInverse ? 'active' : ''}`}
-        onClick={() => setModeInverse(!modeInverse)}
+        className={`button ${inverseMode ? 'active' : ''}`}
+        onClick={() => setInverseMode(!inverseMode)}
       >
-        {modeInverse ? '🔁 Mode inversé activé' : '🔁 Activer mode inversé'}
+        {inverseMode ? '🔁 Inverse mode enabled' : '🔁 Enable inverse mode'}
       </button>
 
       <br /><br />
 
-      <label>Largeur de l’image (m) :
+      <label>Image width (m):
         <input type="number" value={width} onChange={e => setWidth(+e.target.value)} />
       </label><br />
 
-      <label>Ratio d’image :
+      <label>Aspect ratio:
         <select value={ratio} onChange={e => setRatio(e.target.value)}>
           <option>16:9</option>
           <option>4:3</option>
@@ -62,40 +62,39 @@ export default function ProjectorDistanceTool() {
         </select>
       </label><br />
 
-      {!modeInverse ? (
+      {!inverseMode ? (
         <>
-          <label>Distance de projection (m) :
+          <label>Projection distance (m):
             <input type="number" value={distance} onChange={e => setDistance(+e.target.value)} />
           </label><br />
 
-          <label>Luminosité ambiante (lux) :
+          <label>Ambient brightness (lux):
             <input type="number" value={lux} onChange={e => setLux(+e.target.value)} />
           </label><br />
 
-          <label>Gain de l’écran :
+          <label>Screen gain:
             <input type="number" step="0.1" value={gain} onChange={e => setGain(+e.target.value)} />
           </label><br />
 
           <hr />
-          <p><strong>Hauteur de l’image :</strong> {imageHeight.toFixed(2)} m</p>
-          <p><strong>Throw Ratio :</strong> {throwRatio.toFixed(2)}</p>
-          <p><strong>Lumens nécessaires :</strong> {lumensRequired} lm</p>
+          <p><strong>Image height:</strong> {imageHeight.toFixed(2)} m</p>
+          <p><strong>Throw ratio:</strong> {throwRatio.toFixed(2)}</p>
+          <p><strong>Required lumens:</strong> {lumensRequired} lm</p>
         </>
       ) : (
         <>
-          <label>Focale min (throw ratio) :
+          <label>Minimum throw ratio:
             <input type="number" step="0.01" value={throwMin} onChange={e => setThrowMin(+e.target.value)} />
           </label><br />
-          <label>Focale max (throw ratio) :
+          <label>Maximum throw ratio:
             <input type="number" step="0.01" value={throwMax} onChange={e => setThrowMax(+e.target.value)} />
           </label><br />
 
           <hr />
-          <p><strong>Hauteur de l’image :</strong> {imageHeight.toFixed(2)} m</p>
-          <p><strong>Distance de placement :</strong> entre {minDistance} m et {maxDistance} m</p>
+          <p><strong>Image height:</strong> {imageHeight.toFixed(2)} m</p>
+          <p><strong>Recommended throw distance:</strong> between {minDistance} m and {maxDistance} m</p>
         </>
       )}
     </div>
   );
 }
-
