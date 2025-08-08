@@ -100,6 +100,7 @@ body, html {
   margin: 0.5rem 0;
   border-radius: 6px;
   background: rgba(0, 0, 0, 0.02);
+  background-color: var(--color-bg);
   box-sizing: border-box;
 }
 
@@ -134,6 +135,21 @@ body, html {
   color: var(--color-text);
   cursor: pointer;
   text-align: center;
+  transition: all 0.2s ease;
+}
+
+.sidebar-button {
+  flex: 1 1 auto;
+  width: 100%;
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-muted);
+  color: var(--color-text);
+  cursor: pointer;
+  text-align: left;
   transition: all 0.2s ease;
 }
 
@@ -431,4 +447,67 @@ label {
 
 .small-input {
   width: 80px;
+}
+
+/* ================================
+   🌙 Dark Mode Overrides
+==================================*/
+
+.dark-mode .button:hover {
+  background-color: var(--color-accent-dark);
+  color: #fff;
+}
+
+.dark-mode .card,
+.dark-mode .input,
+.dark-mode input,
+.dark-mode select,
+.dark-mode textarea,
+.dark-mode .form-row,
+.dark-mode .buttonGroup,
+.dark-mode .control-group,
+.dark-mode .label,
+.dark-mode .log-container,
+.dark-mode .welcome-container,
+.dark-mode .main-content,
+.dark-mode .sidebar,
+.dark-mode .content {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  border-color: var(--color-border);
+}
+
+.dark-mode .table th,
+.dark-mode .power-calculator-table th {
+  background-color: #2a2a2a;
+  color: var(--color-text);
+}
+
+.dark-mode .table td,
+.dark-mode .power-calculator-table td {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  border-color: var(--color-border);
+}
+
+.dark-mode .power-calculator-table th {
+  background: #2a2a2a;
+}
+
+.dark-mode .toggle-theme:hover {
+  background-color: var(--color-accent-dark);
+  color: white;
+}
+
+.dark-mode .synoptic-shape {
+  background-color: var(--color-bg);
+  border-color: var(--color-border);
+  color: var(--color-text);
+}
+
+.dark-mode .synoptic-label-input,
+.dark-mode .synoptic-label-textarea {
+  background-color: var(--color-bg);
+  border-color: var(--color-border);
+  color: var(--color-text);
 }

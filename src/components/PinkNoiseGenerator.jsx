@@ -125,13 +125,13 @@ export default function PinkNoiseGenerator() {
     <div>
       <h1>🎛️ Audio generator</h1>
 
-      <div style={{ marginBottom: '1rem' }}>
+      <div style={{ marginBottom: '1rem', paddingRight: '1rem' }}>
         <label>
           🔧 Signal type :
           <select
             value={mode}
             onChange={(e) => setMode(e.target.value)}
-            style={{ marginLeft: '1rem' }}
+            style={{ marginLeft: '1rem', paddingRight: '1rem' }}
           >
             <option value="pink">🔊 Pink noise</option>
             <option value="sine">🎵 1 kHz sine</option>
@@ -139,7 +139,7 @@ export default function PinkNoiseGenerator() {
         </label>
       </div>
 
-      <div style={{ marginBottom: '1rem' }}>
+      <div style={{ marginBottom: '1rem', paddingRight: '1rem' }}>
         <label>
           🎚️ Output level ({gainDb} dBFS)
           <input
@@ -154,7 +154,7 @@ export default function PinkNoiseGenerator() {
         </label>
       </div>
 
-      <div style={{ marginBottom: '1rem' }}>
+      <div style={{ marginBottom: '1rem', paddingRight: '1rem' }}>
         <label>
           🎧 Output device :
           <select

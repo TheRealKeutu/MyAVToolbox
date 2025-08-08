@@ -1,5 +1,5 @@
 {
-  "name": "racktools",
+  "name": "myavtoolbox",
   "version": "1.0.0",
   "description": "AV Tools",
   "author": "Thomas Gouazé",
@@ -40,8 +40,8 @@
     "wait-on": "^7.0.1"
   },
   "build": {
-    "appId": "com.keutu.racktools",
-    "productName": "RackTools",
+    "appId": "com.keutu.myavtoolbox",
+    "productName": "MyAvToolbox",
     "directories": {
       "buildResources": "assets"
     },

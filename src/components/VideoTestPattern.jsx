@@ -142,13 +142,13 @@ export default function VideoTestPattern() {
     <div>
       <h1>🖥️ Video test patterns</h1>
 
-      <div style={{ marginBottom: '1rem' }}>
+      <div style={{ marginBottom: '1rem', paddingRight: '1rem' }}>
         <label>
           Pattern :
           <select
             value={pattern}
             onChange={(e) => setPattern(e.target.value)}
-            style={{ marginLeft: '1rem' }}
+            style={{ marginLeft: '1rem', paddingRight: '1rem'}}
           >
             {patterns.map((p) => (
               <option key={p} value={p}>{p}</option>

@@ -25,21 +25,21 @@ export default function Sidebar({ currentPage, onSelect, darkMode, onToggleDarkM
 
   const renderMainMenu = () => (
     <div className="buttonGroup vertical">
-      <button className="button" onClick={() => onSelect('welcome')}> 🏠 Home</button>
-      <button className="button" onClick={() => onSelect('AudioToolbox')}> 🔊 Audio</button>
-      <button className="button" onClick={() => onSelect('toolbox')}> 🎬 Video</button>
-      <button className="button" onClick={() => onSelect('LightingToolbox')}> 💡 Lighting</button>
-      <button className="button" onClick={() => onSelect('ipconfig')}> 🛜 Network</button>
-      <button className="button" onClick={() => onSelect('OscViewer')}> 🎹 OSC monitoring</button>
-      <button className="button" onClick={() => onSelect('PowerToolbox')}> ⚡️ Power</button>
-      <button className="button" onClick={() => onSelect('CableRunEstimator')}> 🧶 Cable length</button>
+      <button className="sidebar-button" onClick={() => onSelect('welcome')}> 🏠 Home</button>
+      <button className="sidebar-button" onClick={() => onSelect('AudioToolbox')}> 🔊 Audio</button>
+      <button className="sidebar-button" onClick={() => onSelect('toolbox')}> 🎬 Video</button>
+      <button className="sidebar-button" onClick={() => onSelect('LightingToolbox')}> 💡 Lighting</button>
+      <button className="sidebar-button" onClick={() => onSelect('ipconfig')}> 🛜 Network</button>
+      <button className="sidebar-button" onClick={() => onSelect('OscViewer')}> 🎹 OSC monitoring</button>
+      <button className="sidebar-button" onClick={() => onSelect('PowerToolbox')}> ⚡️ Power</button>
+      <button className="sidebar-button" onClick={() => onSelect('CableRunEstimator')}> 🧶 Cable length</button>
     </div>
   );
 
   return (
     <aside className="sidebar">
       <img src={logo} alt="Logo RackTools" className="logo" />
-      <h1 className="title">RackTools</h1>
+      <h1 className="title">MyAvToolbox</h1>
 
       <div className="fade-in">
         {activeMenu === 'son'

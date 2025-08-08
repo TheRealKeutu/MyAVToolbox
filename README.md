@@ -1,6 +1,5 @@
-# RackTools
-
-**RackTools** is an application for AV technicians, bringing together practical tools for staging, cabling, power calculations, and more.
+# MyAvToolbox
+**MyAvToolbox** is an application for AV technicians, bringing together practical tools for staging, cabling, power calculations, and more.
 
 ## Key Features
 
