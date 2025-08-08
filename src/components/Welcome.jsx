@@ -26,7 +26,7 @@ export default function Welcome({ darkMode }) {
 
   return (
     <div className={`welcome-container ${darkMode ? 'dark-mode' : ''}`}>
-      <h1>Welcome to RackTools !</h1>
+      <h1>Welcome to MyAvToolbox !</h1>
       <h3>Your all in one AV Toolbox</h3>
       <p>Tools for sound, video, lighting, network and many more to come.</p>
       <br />
@@ -43,7 +43,7 @@ export default function Welcome({ darkMode }) {
       </p>
       <p>Distributed under pay what you want model</p>
       <p>
-        <a href="#" onClick={openLink('https://ko-fi.com/racktools')}>
+        <a href="#" onClick={openLink('https://ko-fi.com/MyAvToolbox')}>
           Donate
         </a>
       </p>
