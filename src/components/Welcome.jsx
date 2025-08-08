@@ -30,7 +30,7 @@ export default function Welcome({ darkMode }) {
       <h3>Your all in one AV Toolbox</h3>
       <p>Tools for sound, video, lighting, network and many more to come.</p>
       <br />
-      <p>Version 1.0.0</p>
+      <p>Version 1.0.1</p>
       <p>Copyright (C) 2025 Thomas Gouazé</p>
       <p>
         License :{' '}

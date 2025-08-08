@@ -38,7 +38,8 @@ export default function Sidebar({ currentPage, onSelect, darkMode, onToggleDarkM
 
   return (
     <aside className="sidebar">
-      <img src={logo} alt="Logo RackTools" className="logo" />
+      <br></br>
+      <img src={logo} alt="Logo RackTools" className="sidebar-logo" />
       <h1 className="title">MyAvToolbox</h1>
 
       <div className="fade-in">
