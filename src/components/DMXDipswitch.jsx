@@ -59,15 +59,19 @@ export default function DMXDipswitch() {
           />
         </label>
 
-        <label style={{ marginLeft: '2rem' }}>
-          <input
-            type="checkbox"
-            checked={inverse}
-            onChange={(e) => setInverse(e.target.checked)}
-            style={{ marginRight: '0.5rem' }}
-          />
-          Inverted mode
-        </label>
+        <button
+          onClick={() => setInverse((prev) => !prev)}
+          style={{
+            marginLeft: '2rem',
+            padding: '0.5rem 1rem',
+            backgroundColor: inverse ? '#ff4d4f' : '#1890ff',
+            color: 'white',
+            border: 'none',
+            borderRadius: '4px',
+            cursor: 'pointer',
+          }}
+          >{inverse ? 'Normal mode' : 'Inverted mode'}
+        </button>
       </div>
 
       {/* Dipswitch */}
