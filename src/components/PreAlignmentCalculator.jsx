@@ -160,7 +160,7 @@ export default function PreAlignmentCalculator() {
                       type="number"
                       value={distances[baseName] || ''}
                       onChange={(e) => handleDistanceChange(baseName, e.target.value)}
-                      placeholder="Distance en mètres"
+                      placeholder="Distance in meters"
                     />
                   </label>
                 );
