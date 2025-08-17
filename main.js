@@ -159,15 +159,34 @@ ipcMain.handle('get-network-interfaces', async () => {
   const interfaces = os.networkInterfaces();
   const results = [];
 
-  for (const [name, entries] of Object.entries(interfaces)) {
-    const ipv4 = entries.find(entry => entry.family === 'IPv4' && !entry.internal);
-    if (ipv4) {
-      results.push({
-        name,
-        address: ipv4.address,
-        netmask: ipv4.netmask,
-        mac: ipv4.mac
-      });
+  if (process.platform === 'darwin') {
+    // 🔄 macOS : mapping device → Hardware Port
+    const ports = await getHardwarePorts();
+    for (const [dev, entries] of Object.entries(interfaces)) {
+      const ipv4 = entries.find(entry => entry.family === 'IPv4' && !entry.internal);
+      if (ipv4 && ports[dev]) {
+        results.push({
+          name: ports[dev],   // "Wi-Fi" ou "Ethernet"
+          device: dev,        // en0, en1...
+          address: ipv4.address,
+          netmask: ipv4.netmask,
+          mac: ipv4.mac
+        });
+      }
+    }
+  } else if (process.platform === 'win32') {
+    // 🔄 Windows : on se base sur os.networkInterfaces()
+    for (const [name, entries] of Object.entries(interfaces)) {
+      const ipv4 = entries.find(entry => entry.family === 'IPv4' && !entry.internal);
+      if (ipv4) {
+        results.push({
+          name,       // "Ethernet", "Wi-Fi"
+          device: name,
+          address: ipv4.address,
+          netmask: ipv4.netmask,
+          mac: ipv4.mac
+        });
+      }
     }
   }
 
@@ -176,9 +195,19 @@ ipcMain.handle('get-network-interfaces', async () => {
 
 ipcMain.handle('set-static-ip', async (event, { name, address, netmask, gateway }) => {
   return new Promise((resolve, reject) => {
-    const label = Object.entries(hardwarePortsCache).find(([dev]) => dev === name)?.[1] || name;
-    const safeLabel = label.replace(/"/g, '\\"');
-    const cmd = `networksetup -setmanual "${safeLabel}" ${address} ${netmask} ${gateway}`;
+    let cmd;
+
+    if (process.platform === 'darwin') {
+      // 🔄 macOS : utilise le service name
+      const safeLabel = name.replace(/"/g, '\\"');
+      cmd = `networksetup -setmanual "${safeLabel}" ${address} ${netmask} ${gateway}`;
+    } else if (process.platform === 'win32') {
+      // 🔄 Windows : netsh interface ip set address
+      cmd = `netsh interface ip set address name="${name}" static ${address} ${netmask} ${gateway}`;
+    } else {
+      return reject(new Error('Unsupported OS.'));
+    }
+
     exec(cmd, (err, stdout, stderr) => {
       if (err) {
         console.error('Erreur IP statique :', err);
@@ -190,10 +219,20 @@ ipcMain.handle('set-static-ip', async (event, { name, address, netmask, gateway 
   });
 });
 
-ipcMain.handle('set-dhcp', async (event, { label }) => {
+ipcMain.handle('set-dhcp', async (event, { name }) => {
   return new Promise((resolve, reject) => {
-    const safeLabel = label.replace(/"/g, '\\"');
-    exec(`networksetup -setdhcp "${safeLabel}"`, (err, stdout, stderr) => {
+    let cmd;
+
+    if (process.platform === 'darwin') {
+      const safeLabel = name.replace(/"/g, '\\"');
+      cmd = `networksetup -setdhcp "${safeLabel}"`;
+    } else if (process.platform === 'win32') {
+      cmd = `netsh interface ip set address name="${name}" dhcp`;
+    } else {
+      return reject(new Error('Unsupported OS.'));
+    }
+
+    exec(cmd, (err, stdout, stderr) => {
       if (err) {
         console.error(`Erreur DHCP : ${err.message}`);
         reject(new Error(stderr || err.message || 'Erreur DHCP'));
