@@ -1,0 +1,8 @@
+{
+  "LA4":   { "powerDraw": 5.5 },  
+  "LA4X":  { "powerDraw": 7.2 },  
+  "LA8":   { "powerDraw": 10.0 },  
+  "LA12X": { "powerDraw": 13.0 },  
+  "LA2Xi": { "powerDraw": 3.2 },  
+  "LA7":   { "powerDraw": 11.5 }  
+}
