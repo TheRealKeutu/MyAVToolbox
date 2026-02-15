@@ -133,9 +133,9 @@ export default function LAcousticsTable() {
   let globalMessage = "";
   let globalColor = "black";
   if (selection.length === 0) {
-    globalMessage = "Ajoutez des enceintes pour démarrer la vérification.";
+    globalMessage = "Addspeakers to start configuration check.";
   } else if (Object.keys(deficits).length > 0) {
-    globalMessage = "❌ Insuffisant : certaines enceintes ne sont pas couvertes.";
+    globalMessage = "❌ Insufficent : some speakers are not covered.";
     globalColor = "red";
   } else {
     const extra = amps
@@ -143,10 +143,10 @@ export default function LAcousticsTable() {
       .filter((x) => x.n > 0);
     if (extra.length > 0) {
       globalMessage =
-        "⚠️ Suffisant : configuration valide (amplis supplémentaires non utilisés).";
+        "⚠️ Ok :  valid configuration (Spare Amps not used).";
       globalColor = "orange";
     } else {
-      globalMessage = "✅ Parfait : tous les besoins sont couverts sans surplus.";
+      globalMessage = "✅ Perfect : All needs covered.";
       globalColor = "green";
     }
   }
@@ -249,7 +249,7 @@ export default function LAcousticsTable() {
               <tr>
                 <th>Model</th>
                 <th>Quantity</th>
-                <th>Action</th>
+                <th>Delete</th>
               </tr>
             </thead>
             <tbody>
@@ -380,7 +380,7 @@ export default function LAcousticsTable() {
       {/* Déficits détaillés */}
       {Object.keys(deficits).length > 0 && (
         <div style={{ marginTop: "0.5rem" }}>
-          <strong>Manques par modèle :</strong>
+          <strong>miss by type :</strong>
           <ul style={{ marginTop: 6 }}>
             {Object.entries(deficits).map(([model, missing]) => {
               const options = amps
@@ -394,13 +394,13 @@ export default function LAcousticsTable() {
               const best = options[0];
               return (
                 <li key={model}>
-                  {model} : {missing} non couverts.{" "}
+                  {model} : {missing} non covered.{" "}
                   {best ? (
                     <em>
-                      Ex. ajouter {best.need} × {best.amp} (cap. {best.cap}/amp)
+                      Ex. Add {best.need} × {best.amp} (cap. {best.cap}/amp)
                     </em>
                   ) : (
-                    <em>Aucun type d’ampli compatible dans la table.</em>
+                    <em>No amp type compatible in the table.</em>
                   )}
                 </li>
               );
@@ -412,7 +412,7 @@ export default function LAcousticsTable() {
       {/* Allocation détaillée si faisable */}
       {feasible && (
         <details style={{ marginTop: "0.5rem" }}>
-          <summary>Voir l’affectation proposée</summary>
+          <summary>See proposed affectation</summary>
           <ul style={{ marginTop: 6 }}>
             {Object.entries(allocation).map(([model, perAmp]) => (
               <li key={model}>
