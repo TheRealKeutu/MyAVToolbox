@@ -1,0 +1,76 @@
+name: Build executable
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Build ${{ matrix.name }}
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: macOS
+            os: macos-latest
+            artifact-name: MyAvToolbox-macOS
+            artifact-path: |
+              dist/*.dmg
+              dist/*.zip
+          - name: Windows
+            os: windows-latest
+            artifact-name: MyAvToolbox-Windows
+            artifact-path: |
+              dist/*.exe
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build frontend
+        run: npm run build
+
+      - name: Build executable
+        run: npm run dist -- --publish never
+
+      - name: Upload executable
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.artifact-name }}
+          path: ${{ matrix.artifact-path }}
+          if-no-files-found: error
+
+  release:
+    name: Create GitHub release
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: Download executables
+        uses: actions/download-artifact@v4
+        with:
+          path: release-assets
+
+      - name: Create release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: build-${{ github.run_number }}
+          name: MyAvToolbox build ${{ github.run_number }}
+          body: |
+            Automated build from commit ${{ github.sha }} on main.
+          files: release-assets/**/*
