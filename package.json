@@ -33,6 +33,7 @@
     "@vitejs/plugin-react": "^4.5.2",
     "concurrently": "^8.2.2",
     "electron": "^28.3.3",
+    "electron-builder": "^26.15.3",
     "electron-packager": "^17.1.2",
     "electron-rebuild": "^3.2.9",
     "rollup-plugin-visualizer": "^6.0.3",
