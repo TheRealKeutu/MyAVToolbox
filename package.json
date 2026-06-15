@@ -43,6 +43,7 @@
   "build": {
     "appId": "com.keutu.myavtoolbox",
     "productName": "MyAvToolbox",
+    "artifactName": "${productName}-${version}-${os}-${arch}.${ext}",
     "directories": {
       "buildResources": "assets"
     },

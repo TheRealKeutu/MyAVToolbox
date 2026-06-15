@@ -17,14 +17,21 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - name: macOS
-            os: macos-latest
-            artifact-name: MyAvToolbox-macOS
+          - name: macOS x64
+            os: macos-13
+            build-command: npm run dist -- --mac dmg --x64 --publish never
+            artifact-name: MyAvToolbox-macOS-x64
             artifact-path: |
-              dist/*.dmg
-              dist/*.zip
+              dist/*x64.dmg
+          - name: macOS arm64
+            os: macos-14
+            build-command: npm run dist -- --mac dmg --arm64 --publish never
+            artifact-name: MyAvToolbox-macOS-arm64
+            artifact-path: |
+              dist/*arm64.dmg
           - name: Windows
             os: windows-latest
+            build-command: npm run dist -- --win nsis --x64 --publish never
             artifact-name: MyAvToolbox-Windows
             artifact-path: |
               dist/*.exe
@@ -46,7 +53,7 @@ jobs:
         run: npm run build
 
       - name: Build executable
-        run: npm run dist -- --publish never
+        run: ${{ matrix.build-command }}
 
       - name: Upload executable
         uses: actions/upload-artifact@v4
@@ -73,4 +80,7 @@ jobs:
           name: MyAvToolbox build ${{ github.run_number }}
           body: |
             Automated build from commit ${{ github.sha }} on main.
+
+            macOS builds are not notarized. If macOS blocks the app after download, run:
+            xattr -dr com.apple.quarantine /Applications/MyAvToolbox.app
           files: release-assets/**/*
